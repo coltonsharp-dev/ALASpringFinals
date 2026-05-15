@@ -1,0 +1,1469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>STRATOSYN | 7th Grade Life Science — Final Exam</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --void:   #06080f;
+    --d1:     #0b0f1e;
+    --d2:     #111828;
+    --d3:     #161e30;
+    --glass:  rgba(255,255,255,0.044);
+    --gb:     rgba(255,255,255,0.08);
+    --shine:  rgba(255,255,255,0.13);
+    --b:      rgba(255,255,255,0.07);
+    --b2:     rgba(255,255,255,0.12);
+    --green:  #3effa0;
+    --gold:   #f5c842;
+    --red:    #f87171;
+    --blue:   #38bdf8;
+    --purple: #c084fc;
+    --cyan:   #00e5ff;
+    --orange: #fb923c;
+    --leaf:   #6ee7b7;
+    --tx:     #dde6f5;
+    --tx2:    #8898b8;
+    --tx3:    #4a5570;
+    --accent: #3effa0;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--void);
+    color: var(--tx);
+    font-family: 'DM Mono', monospace;
+    min-height: 100vh;
+    overflow-x: hidden;
+    line-height: 1.7;
+  }
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    background-image:
+      linear-gradient(rgba(62,255,160,0.022) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(62,255,160,0.022) 1px, transparent 1px);
+    background-size: 48px 48px;
+    pointer-events: none; z-index: 0;
+  }
+  body::after {
+    content: '';
+    position: fixed;
+    top: -20%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 900px;
+    height: 600px;
+    background: radial-gradient(ellipse at center,
+      rgba(62,255,160,0.08) 0%,
+      rgba(56,189,248,0.04) 40%,
+      transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .progress-bar {
+    position:fixed; top:0; left:0; right:0; height:3px; z-index:200;
+    background:linear-gradient(90deg, var(--green), var(--cyan), var(--purple));
+    transform-origin: left;
+    transform: scaleX(0);
+    transition: transform 0.1s;
+    box-shadow: 0 0 12px rgba(62,255,160,0.5);
+  }
+
+  .topnav {
+    position: sticky; top: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 14px 32px;
+    background: rgba(6,8,15,0.85);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--b);
+  }
+  .brand {
+    display: flex; align-items: center; gap: 10px;
+    font-family: 'DM Mono', monospace;
+    font-size: 12px; font-weight: 500; letter-spacing: 0.18em;
+    color: var(--green); text-transform: uppercase;
+  }
+  .brand-mark {
+    width: 22px; height: 22px;
+    border-radius: 6px;
+    background: linear-gradient(135deg, var(--green), var(--cyan));
+    display: grid; place-items: center;
+    color: var(--void); font-weight: 800; font-size: 13px;
+    font-family: 'Syne', sans-serif;
+    box-shadow: 0 0 14px rgba(62,255,160,0.4);
+  }
+  .brand .sub { color: var(--tx3); }
+  .nav-title { font-family:'Syne',sans-serif; font-weight:700; font-size:14px; color:var(--tx3); }
+  .nav-badge {
+    font-size:11px; font-weight:500; letter-spacing:0.1em;
+    padding:4px 12px; border-radius:100px;
+    background:rgba(62,255,160,0.12); border:1px solid rgba(62,255,160,0.25);
+    color:var(--green);
+  }
+
+  .page { position:relative; z-index:1; max-width:920px; margin:0 auto; padding:32px 32px 100px; }
+
+  .exam-header { margin-bottom: 40px; text-align:center; }
+  .sec-label { font-size:11px; letter-spacing:0.22em; text-transform:uppercase; color:var(--green); margin-bottom:12px; }
+  .sec-title { font-family:'Syne',sans-serif; font-weight:800; font-size:clamp(36px,6vw,64px); line-height:1.0; letter-spacing:-0.02em; margin-bottom:18px; }
+  .sec-title span { background:linear-gradient(135deg,var(--green),var(--cyan),var(--purple)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+  .sec-desc { font-size:13px; font-weight:300; color:var(--tx2); max-width:660px; margin:0 auto; line-height:1.8; }
+  .sec-meta {
+    margin-top: 18px;
+    font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--tx3);
+  }
+  .sec-meta .dot { color: var(--tx3); margin: 0 8px; opacity: 0.5; }
+
+  .pill-row {
+    display:flex; gap:10px; justify-content:center;
+    margin-top: 28px; flex-wrap: wrap;
+  }
+  .pill {
+    display:flex; align-items:center; gap:8px;
+    background: var(--glass);
+    border: 1px solid var(--b);
+    border-radius: 100px;
+    padding: 7px 16px;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    color: var(--tx2);
+  }
+  .pill .dot {
+    width: 6px; height: 6px; border-radius: 50%;
+  }
+
+  .section-divider {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin: 56px 0 28px;
+  }
+  .section-divider span {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--tx3);
+    white-space: nowrap;
+  }
+  .section-divider::before, .section-divider::after {
+    content: ''; flex: 1; height: 1px;
+    background: linear-gradient(90deg, transparent, var(--b2), transparent);
+  }
+
+  .question {
+    background: var(--glass);
+    border: 1px solid var(--b);
+    border-radius: 14px;
+    padding: 26px;
+    margin-bottom: 16px;
+    transition: border-color 0.3s;
+  }
+
+  .q-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--b);
+    gap: 12px;
+  }
+  .q-num {
+    font-family:'Syne',sans-serif; font-weight:700;
+    font-size: 17px;
+    color: var(--green);
+    letter-spacing: -0.01em;
+  }
+  .q-tag {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 100px;
+    background: var(--d2);
+    border: 1px solid var(--b);
+    color: var(--tx3);
+  }
+  .q-tag.ncf { color: var(--blue); border-color: rgba(56,189,248,0.25); background: rgba(56,189,248,0.06); }
+  .q-tag.cell { color: var(--green); border-color: rgba(62,255,160,0.25); background: rgba(62,255,160,0.06); }
+  .q-tag.body { color: var(--red); border-color: rgba(248,113,113,0.25); background: rgba(248,113,113,0.06); }
+  .q-tag.weather { color: var(--cyan); border-color: rgba(0,229,255,0.25); background: rgba(0,229,255,0.06); }
+  .q-tag.tect { color: var(--orange); border-color: rgba(251,146,60,0.25); background: rgba(251,146,60,0.06); }
+  .q-tag.per { color: var(--gold); border-color: rgba(245,200,66,0.25); background: rgba(245,200,66,0.06); }
+  .q-tag.frq { color: var(--purple); border-color: rgba(192,132,252,0.3); background: rgba(192,132,252,0.06); }
+  .q-tag.fill { color: var(--leaf); border-color: rgba(110,231,183,0.3); background: rgba(110,231,183,0.06); }
+
+  .q-prompt {
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--tx);
+    line-height: 1.85;
+    margin-bottom: 18px;
+  }
+  .q-prompt p { margin-bottom: 8px; }
+  .q-prompt strong { color: var(--tx); font-weight: 500; }
+  .q-prompt em { color: var(--tx2); font-style: italic; }
+
+  .m { color: var(--green); font-weight: 500; }
+  .mblue { color: var(--blue); font-weight: 500; }
+  .mgold { color: var(--gold); font-weight: 500; }
+  .mred { color: var(--red); font-weight: 500; }
+  .morange { color: var(--orange); font-weight: 500; }
+  .mpurple { color: var(--purple); font-weight: 500; }
+
+  .options {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+  .option {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 13px 16px;
+    background: var(--d1);
+    border: 1px solid var(--b);
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-size: 13px;
+    color: var(--tx);
+    line-height: 1.5;
+    text-align: left;
+    font-family: 'DM Mono', monospace;
+  }
+  .option:hover {
+    border-color: var(--green);
+    background: rgba(62,255,160,0.06);
+    transform: translateX(2px);
+  }
+  .option.selected {
+    background: linear-gradient(135deg, rgba(62,255,160,0.16), rgba(0,229,255,0.10));
+    border-color: var(--green);
+  }
+  .opt-letter {
+    flex-shrink: 0;
+    width: 26px; height: 26px;
+    border-radius: 50%;
+    background: var(--d2);
+    border: 1px solid var(--b2);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--tx2);
+    transition: all 0.2s;
+  }
+  .option:hover .opt-letter {
+    border-color: var(--green);
+    color: var(--green);
+  }
+  .option.selected .opt-letter {
+    background: var(--green);
+    border-color: var(--green);
+    color: var(--void);
+  }
+  .opt-text { flex: 1; }
+
+  /* Fill-in inputs */
+  .fill-row {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+  .fill-input {
+    flex: 1;
+    min-width: 200px;
+    background: var(--d2);
+    border: 1px solid var(--b2);
+    border-radius: 8px;
+    padding: 11px 16px;
+    font-family: 'DM Mono', monospace;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--tx);
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  .fill-input:focus { border-color: var(--green); }
+
+  /* FRQ textarea */
+  .frq-work { margin-top: 6px; }
+  .frq-textarea {
+    width: 100%;
+    min-height: 120px;
+    background: var(--d2);
+    border: 1px dashed rgba(255,255,255,0.12);
+    border-radius: 8px;
+    padding: 12px 16px;
+    font-family: 'DM Mono', monospace;
+    font-size: 13px;
+    color: var(--tx);
+    line-height: 1.7;
+    outline: none;
+    resize: vertical;
+    transition: border-color 0.2s;
+  }
+  .frq-textarea:focus {
+    border-color: var(--purple);
+    border-style: solid;
+  }
+  .frq-textarea::placeholder { color: var(--tx3); font-style: italic; }
+
+  .student-info {
+    margin: 32px 0 24px;
+    padding: 24px 28px;
+    background: var(--glass);
+    border: 1px solid var(--b2);
+    border-radius: 18px;
+    backdrop-filter: blur(12px);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+  }
+  .si-field { display: flex; flex-direction: column; gap: 8px; }
+  .si-label {
+    font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--tx3); font-weight: 500;
+  }
+  .si-input {
+    background: rgba(0,0,0,0.25);
+    border: 1px solid var(--b);
+    border-radius: 10px;
+    padding: 12px 14px;
+    color: var(--tx);
+    font-family: 'DM Mono', monospace;
+    font-size: 14px;
+    transition: all 0.2s;
+  }
+  .si-input:focus {
+    outline: none;
+    border-color: var(--green);
+    box-shadow: 0 0 0 3px rgba(62,255,160,0.12);
+  }
+  @media (max-width: 700px) {
+    .student-info { grid-template-columns: 1fr; }
+  }
+
+  .copy-section {
+    margin: 60px 0 40px;
+    padding: 36px 32px;
+    background: linear-gradient(135deg, rgba(62,255,160,0.06), rgba(192,132,252,0.04));
+    border: 1px solid var(--b2);
+    border-radius: 22px;
+    text-align: center;
+  }
+  .copy-section h3 {
+    font-family: 'Syne', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--tx);
+    margin-bottom: 8px;
+  }
+  .copy-section p {
+    font-size: 13px;
+    color: var(--tx2);
+    margin-bottom: 24px;
+    line-height: 1.7;
+  }
+  .copy-btn {
+    display: inline-flex; align-items: center; justify-content: center;
+    gap: 12px;
+    padding: 18px 40px;
+    background: linear-gradient(135deg, var(--green), var(--cyan));
+    color: var(--void);
+    font-family: 'DM Mono', monospace;
+    font-weight: 500;
+    font-size: 15px;
+    letter-spacing: 0.05em;
+    border: none;
+    border-radius: 100px;
+    cursor: pointer;
+    transition: all 0.25s;
+    box-shadow: 0 8px 32px rgba(62,255,160,0.25);
+  }
+  .copy-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 40px rgba(62,255,160,0.4);
+  }
+  .copy-btn svg { width: 18px; height: 18px; stroke: currentColor; fill: none; stroke-width: 2; }
+  .copy-btn.copied { background: linear-gradient(135deg, var(--cyan), var(--purple)); }
+  .copy-status {
+    margin-top: 18px;
+    font-size: 12px;
+    color: var(--tx2);
+    min-height: 18px;
+    letter-spacing: 0.04em;
+  }
+  .copy-status.success { color: var(--green); }
+  .copy-preview {
+    margin-top: 28px;
+    padding: 20px 24px;
+    background: rgba(0,0,0,0.3);
+    border: 1px solid var(--b);
+    border-radius: 14px;
+    text-align: left;
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    line-height: 1.8;
+    color: var(--tx2);
+    white-space: pre-wrap;
+    max-height: 320px;
+    overflow-y: auto;
+    display: none;
+  }
+  .copy-preview.shown { display: block; }
+
+  .scroll-top {
+    position:fixed; bottom:32px; right:32px; z-index:50;
+    width:42px; height:42px; border-radius:50%;
+    background:var(--d2); border:1px solid var(--b2);
+    display:flex; align-items:center; justify-content:center;
+    cursor:pointer; color:var(--tx3);
+    transition:all 0.2s;
+    opacity:0; pointer-events:none;
+  }
+  .scroll-top.visible { opacity:1; pointer-events:auto; }
+  .scroll-top:hover { border-color:var(--green); color:var(--green); }
+  .scroll-top svg { width:16px; height:16px; stroke:currentColor; fill:none; stroke-width:2; stroke-linecap:round; stroke-linejoin:round; }
+
+  @media (max-width: 700px) {
+    .page { padding: 24px 16px 80px; }
+    .topnav { padding: 12px 16px; flex-wrap: wrap; gap: 10px; }
+    .options { grid-template-columns: 1fr; }
+    .question { padding: 20px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="progress-bar" id="progressBar"></div>
+
+<nav class="topnav">
+  <div class="brand">
+    <span class="brand-mark">S</span>
+    <span>STRATOSYN <span class="sub">/ Life Science</span></span>
+  </div>
+  <span class="nav-title">Cumulative Final</span>
+  <span class="nav-badge">Grade 7 · Rm 501</span>
+</nav>
+
+<div class="page">
+
+  <div class="exam-header">
+    <div class="sec-label">Final Exam · 7th Grade Life Science</div>
+    <h1 class="sec-title">The Whole<br><span>Year. One Test.</span></h1>
+    <p class="sec-desc">80 questions covering every unit from this year &mdash; non-contact forces, cells, human body systems, extreme weather and biomes, plate tectonics, and the periodic table. Q1&ndash;65 multiple choice, Q66&ndash;75 fill-in-the-blank, Q76&ndash;80 free response. Click an option to select it (you can change your mind). When you are finished, fill in your name at the top, then hit <strong>Copy My Answers</strong> at the bottom to grab everything formatted for Canvas, email, or printing.</p>
+
+    <div class="sec-meta">
+      Ms. Madewell <span class="dot">·</span> Room 501 <span class="dot">·</span> ALA Vistancia
+    </div>
+
+    <div class="pill-row">
+      <div class="pill"><span class="dot" style="background:var(--green)"></span>65 Multiple Choice</div>
+      <div class="pill"><span class="dot" style="background:var(--leaf)"></span>10 Fill-in</div>
+      <div class="pill"><span class="dot" style="background:var(--purple)"></span>5 Free Response</div>
+      <div class="pill"><span class="dot" style="background:var(--gold)"></span>Submit by Copy</div>
+    </div>
+  </div>
+
+  <div class="student-info">
+    <div class="si-field">
+      <label class="si-label" for="studentName">Name</label>
+      <input class="si-input" type="text" id="studentName" placeholder="Last, First" autocomplete="off">
+    </div>
+    <div class="si-field">
+      <label class="si-label" for="studentPeriod">Period / Date</label>
+      <input class="si-input" type="text" id="studentPeriod" placeholder="e.g. Period 3 · 5/15" autocomplete="off">
+    </div>
+  </div>
+
+  <!-- ======================================================== -->
+  <!-- SECTION A · MULTIPLE CHOICE (Q1–Q65)                      -->
+  <!-- ======================================================== -->
+  <div class="section-divider"><span>Section A · Multiple Choice (1–65)</span></div>
+
+  <!-- ====== UNIT 1: NON-CONTACT FORCES (Q1–Q10) ====== -->
+
+  <div class="question" id="q1" data-type="mc">
+    <div class="q-header"><span class="q-num">Question 1</span><span class="q-tag ncf">Non-Contact Forces</span></div>
+    <div class="q-prompt">Which of the following is a <strong>non-contact</strong> force?</div>
+    <div class="options">
+      <button class="option" data-letter="A" data-q="q1"><span class="opt-letter">A</span><span class="opt-text">Friction</span></button>
+      <button class="option" data-letter="B" data-q="q1"><span class="opt-letter">B</span><span class="opt-text">Tension in a rope</span></button>
+      <button class="option" data-letter="C" data-q="q1"><span class="opt-letter">C</span><span class="opt-text">Gravity</span></button>
+      <button class="option" data-letter="D" data-q="q1"><span class="opt-letter">D</span><span class="opt-text">A push from your hand</span></button>
+    </div>
+  </div>
+
+  <div class="question" id="q2" data-type="mc">
+    <div class="q-header"><span class="q-num">Question 2</span><span class="q-tag ncf">Non-Contact Forces</span></div>
+    <div class="q-prompt">Two magnets are placed near each other and they push apart. This means:</div>
+    <div class="options">
+      <button class="option" data-letter="A" data-q="q2"><span class="opt-letter">A</span><span class="opt-text">Like poles are facing each other (N–N or S–S)</span></button>
+      <button class="option" data-letter="B" data-q="q2"><span class="opt-letter">B</span><span class="opt-text">Opposite poles are facing each other</span></button>
+      <button class="option" data-letter="C" data-q="q2"><span class="opt-letter">C</span><span class="opt-text">One of the magnets is broken</span></button>
+      <button class="option" data-letter="D" data-q="q2"><span class="opt-letter">D</span><span class="opt-text">The magnets have no charge</span></button>
+    </div>
+  </div>
+
+  <div class="question" id="q3" data-type="mc">
+    <div class="q-header"><span class="q-num">Question 3</span><span class="q-tag ncf">Non-Contact Forces</span></div>
+    <div class="q-prompt">As the distance between two objects with mass <strong>increases</strong>, the gravitational force between them:</div>
+    <div class="options">
+      <button class="option" data-letter="A" data-q="q3"><span class="opt-letter">A</span><span class="opt-text">Stays exactly the same</span></button>
+      <button class="option" data-letter="B" data-q="q3"><span class="opt-letter">B</span><span class="opt-text">Increases</span></button>
+      <button class="option" data-letter="C" data-q="q3"><span class="opt-letter">C</span><span class="opt-text">Decreases</span></button>
+      <button class="option" data-letter="D" data-q="q3"><span class="opt-letter">D</span><span class="opt-text">Becomes negative</span></button>
+    </div>
+  </div>
+
+  <div class="question" id="q4" data-type="mc">
+    <div class="q-header"><span class="q-num">Question 4</span><span class="q-tag ncf">Non-Contact Forces</span></div>
+    <div class="q-prompt">A balloon is rubbed on someone's hair, then sticks to a wall. The non-contact force responsible is:</div>
+    <div class="options">
+      <button class="option" data-letter="A" data-q="q4"><span class="opt-letter">A</span><span class="opt-text">Magnetism</span></button>
+      <button class="option" data-letter="B" data-q="q4"><span class="opt-letter">B</span><span class="opt-text">Gravity</span></button>
+      <button class="option" data-letter="C" data-q="q4"><span class="opt-letter">C</span><span class="opt-text">Static electricity</span></button>
+      <button class="option" data-letter="D" data-q="q4"><span class="opt-letter">D</span><span class="opt-text">Friction</span></button>
+    </div>
+  </div>
+
+  <div class="question" id="q5" data-type="mc">
+    <div class="q-header"><span class="q-num">Question 5</span><span class="q-tag ncf">Non-Contact Forces</span></div>
+    <div class="q-prompt">When an object becomes <strong>negatively</strong> charged, what particles have moved onto it?</div>
+    <div class="options">
+      <button class="option" data-letter="A" data-q="q5"><span class="opt-letter">A</span><span class="opt-text">Protons</span></button>
+      <button class="option" data-letter="B" data-q="q5"><span class="opt-letter">B</span><span class="opt-text">Neutrons</span></button>
+      <button class="option" data-letter="C" data-q="q5"><span class="opt-letter">C</span><span class="opt-text">Electrons</span></button>
+      <button class="option" data-letter="D" data-q="q5"><span class="opt-letter">D</span><span class="opt-text">Whole atoms</span></button>
+    </div>
+  </div>
+
+  <div class="question" id="q6" data-type="mc">
+    <div class="q-header"><span class="q-num">Question 6</span><span class="q-tag ncf">Non-Contact Forces</span></div>
+    <div class="q-prompt">Gravity on the Moon is about 1/6 of Earth's. An astronaut's <strong>mass</strong> on the Moon, compared to Earth, is:</div>
+    <div class="options">
+      <button class="option" data-letter="A" data-q="q6"><span class="opt-letter">A</span><span class="opt-text">1/6 as much</span></button>
+      <button class="option" data-letter="B" data-q="q6"><span class="opt-letter">B</span><span class="opt-text">6 times greater</span></button>
+      <button class="option" data-letter="C" data-q="q6"><span class="opt-letter">C</span><span class="opt-text">Exactly the same</span></button>
+      <button class="option" data-letter="D" data-q="q6"><span class="opt-letter">D</span><span class="opt-text">Zero</span></button>
+    </div>
+  </div>
+
+  <div class="question" id="q7" data-type="mc">
+    <div class="q-header"><span class="q-num">Question 7</span><span class="q-tag ncf">Non-Contact Forces</span></div>
+    <div class="q-prompt">The region of space around a magnet where it can exert a force on another magnet is called the:</div>
+    <div class="options">
+      <button class="option" data-letter="A" data-q="q7"><span class="opt-letter">A</span><span class="opt-text">Magnetic field</span></button>
+      <button class="option" data-letter="B" data-q="q7"><span class="opt-letter">B</span><span class="opt-text">Charge cloud</span></button>
+      <button class="option" data-letter="C" data-q="q7"><span class="opt-letter">C</span><span class="opt-text">Gravity well</span></button>
+      <button class="option" data-letter="D" data-q="q7"><span class="opt-letter">D</span><span class="opt-text">Static zone</span></button>
+    </div>
+  </div>
+
+  <div class="question" id="q8" data-type="mc">
+    <div class="q-header"><span class="q-num">Question 8</span><span class="q-tag ncf">Non-Contact Forces</span></div>
+    <div class="q-prompt">Which best describes <strong>weight</strong>?</div>
+    <div class="options">
+      <button class="option" data-letter="A" data-q="q8"><span class="opt-letter">A</span><span class="opt-text">The amount of matter in an object</span></button>
+      <button class="option" data-letter="B" data-q="q8"><span class="opt-letter">B</span><span class="opt-text">The pull of gravity on an object's mass</span></button>
+      <button class="option" data-letter="C" data-q="q8"><span class="opt-letter">C</span><span class="opt-text">The volume of an object</span></button>
+      <button class="option" data-letter="D" data-q="q8"><span class="opt-letter">D</span><span class="opt-text">The speed at which an object falls</span></button>
+    </div>
+  </div>
+
+  <div class="question" id="q9" data-type="mc">
+    <div class="q-header"><span class="q-num">Question 9</span><span class="q-tag ncf">Non-Contact Forces</span></div>
+    <div class="q-prompt">Object A has a charge of <span class="m">+2</span>. Object B has a charge of <span class="m">−3</span>. The electric force between them will be:</div>
+    <div class="options">
+      <button class="option" data-letter="A" data-q="q9"><span class="opt-letter">A</span><span class="opt-text">Repulsive (push apart)</span></button>
+      <button class="option" data-letter="B" data-q="q9"><span class="opt-letter">B</span><span class="opt-text">Attractive (pull together)</span></button>
+      <button class="option" data-letter="C" data-q="q9"><span class="opt-letter">C</span><span class="opt-text">Zero</span></button>
+      <button class="option" data-letter="D" data-q="q9"><span class="opt-letter">D</span><span class="opt-text">Magnetic only</span></button>
+    </div>
+  </div>
+
+  <div class="question" id="q10" data-type="mc">
+    <div class="q-header"><span class="q-num">Question 10</span><span class="q-tag ncf">Non-Contact Forces</span></div>
+    <div class="q-prompt">If you snap a bar magnet exactly in half, what happens?</div>
+    <div class="options">
+      <button class="option" data-letter="A" data-q="q10"><span class="opt-letter">A</span><span class="opt-text">You get one piece with N pole and one piece with S pole, separated</span></button>
+      <button class="option" data-letter="B" data-q="q10"><span class="opt-letter">B</span><span class="opt-text">Both pieces lose their magnetism</span></button>
+      <button class="option" data-letter="C" data-q="q10"><span class="opt-letter">C</span><span class="opt-text">You get two new magnets, each with its own N pole and S pole</span></button>
+      <button class="option" data-letter="D" data-q="q10"><span class="opt-letter">D</span><span class="opt-text">One piece keeps both poles, the other has none</span></button>
+    </div>
+  </div>
+
+  <!-- ====== UNIT 2: CELLS (Q11–Q21) ====== -->
+
+  <div class="question" id="q11" data-type="mc">
+    <div class="q-header"><span class="q-num">Question 11</span><span class="q-tag cell">Cells</span></div>
+    <div class="q-prompt">The basic unit of all living things is the:</div>
+    <div class="options">
+      <button class="option" data-letter="A" data-q="q11"><span class="opt-letter">A</span><span class="opt-text">Atom</span></button>
+      <button class="option" data-letter="B" data-q="q11"><span class="opt-letter">B</span><span class="opt-text">Tissue</span></button>
+      <button class="option" data-letter="C" data-q="q11"><span class="opt-letter">C</span><span class="opt-text">Cell</span></button>
+      <button class="option" data-letter="D" data-q="q11"><span class="opt-letter">D</span><span class="opt-text">Organ</span></button>
+    </div>
+  </div>
+
+  <div class="question" id="q12" data-type="mc">
+    <div class="q-header"><span class="q-num">Question 12</span><span class="q-tag cell">Cells</span></div>
+    <div class="q-prompt">Which organelle is often called the <strong>"powerhouse of the cell"</strong> because it produces most of the cell's energy?</div>
+    <div class="options">
+      <button class="option" data-letter="A" data-q="q12"><span class="opt-letter">A</span><span class="opt-text">Nucleus</span></button>
+      <button class="option" data-letter="B" data-q="q12"><span class="opt-letter">B</span><span class="opt-text">Mitochondria</span></button>
+      <button class="option" data-letter="C" data-q="q12"><span class="opt-letter">C</span><span class="opt-text">Ribosome</span></button>
+      <button class="option" data-letter="D" data-q="q12"><span class="opt-letter">D</span><span class="opt-text">Vacuole</span></button>
+    </div>
+  </div>
+
+  <div class="question" id="q13" data-type="mc">
+    <div class="q-header"><span class="q-num">Question 13</span><span class="q-tag cell">Cells</span></div>
+    <div class="q-prompt">Which structure is found in <strong>plant</strong> cells but NOT in animal cells?</div>
+    <div class="options">
+      <button class="option" data-letter="A" data-q="q13"><span class="opt-letter">A</span><span class="opt-text">Nucleus</span></button>
+      <button class="option" data-letter="B" data-q="q13"><span class="opt-letter">B</span><span class="opt-text">Mitochondria</span></button>
+      <button class="option" data-letter="C" data-q="q13"><span class="opt-letter">C</span><span class="opt-text">Cell wall</span></button>
+      <button class="option" data-letter="D" data-q="q13"><span class="opt-letter">D</span><span class="opt-text">Ribosome</span></button>
+    </div>
+  </div>
+
+  <div class="question" id="q14" data-type="mc">
+    <div class="q-header"><span class="q-num">Question 14</span><span class="q-tag cell">Cells</span></div>
+    <div class="q-prompt">Photosynthesis takes place primarily in which organelle?</div>
+    <div class="options">
+      <button class="option" data-letter="A" data-q="q14"><span class="opt-letter">A</span><span class="opt-text">Mitochondria</span></button>
+      <button class="option" data-letter="B" data-q="q14"><span class="opt-letter">B</span><span class="opt-text">Nucleus</span></button>
+      <button class="option" data-letter="C" data-q="q14"><span class="opt-letter">C</span><span class="opt-text">Chloroplast</span></button>
+      <button class="option" data-letter="D" data-q="q14"><span class="opt-letter">D</span><span class="opt-text">Lysosome</span></button>
+    </div>
+  </div>
+
+  <div class="question" id="q15" data-type="mc">
+    <div class="q-header"><span class="q-num">Question 15</span><span class="q-tag cell">Cells</span></div>
+    <div class="q-prompt">Which statement is <strong>NOT</strong> part of the cell theory?</div>
+    <div class="options">
+      <button class="option" data-letter="A" data-q="q15"><span class="opt-letter">A</span><span class="opt-text">All living things are made of one or more cells</span></button>
+      <button class="option" data-letter="B" data-q="q15"><span class="opt-letter">B</span><span class="opt-text">The cell is the basic unit of life</span></button>
+      <button class="option" data-letter="C" data-q="q15"><span class="opt-letter">C</span><span class="opt-text">All cells come from other cells</span></button>
+      <button class="option" data-letter="D" data-q="q15"><span class="opt-letter">D</span><span class="opt-text">Every cell must contain a nucleus</span></button>
+    </div>
+  </div>
+
+  <div class="question" id="q16" data-type="mc">
+    <div class="q-header"><span class="q-num">Question 16</span><span class="q-tag cell">Cells</span></div>
+    <div class="q-prompt">The <strong>"control center"</strong> of a eukaryotic cell, where DNA is stored, is the:</div>
+    <div class="options">
+      <button class="option" data-letter="A" data-q="q16"><span class="opt-letter">A</span><span class="opt-text">Mitochondria</span></button>
+      <button class="option" data-letter="B" data-q="q16"><span class="opt-letter">B</span><span class="opt-text">Nucleus</span></button>
+      <button class="option" data-letter="C" data-q="q16"><span class="opt-letter">C</span><span class="opt-text">Vacuole</span></button>
+      <button class="option" data-letter="D" data-q="q16"><span class="opt-letter">D</span><span class="opt-text">Cell membrane</span></button>
+    </div>
+  </div>
+
+  <div class="question" id="q17" data-type="mc">
+    <div class="q-header"><span class="q-num">Question 17</span><span class="q-tag cell">Cells</span></div>
+    <div class="q-prompt">Prokaryotic cells (such as bacteria) do <strong>NOT</strong> have which of the following?</div>
+    <div class="options">
+      <button class="option" data-letter="A" data-q="q17"><span class="opt-letter">A</span><span class="opt-text">DNA</span></button>
+      <button class="option" data-letter="B" data-q="q17"><span class="opt-letter">B</span><span class="opt-text">A cell membrane</span></button>
+      <button class="option" data-letter="C" data-q="q17"><span class="opt-letter">C</span><span class="opt-text">Cytoplasm</span></button>
+      <button class="option" data-letter="D" data-q="q17"><span class="opt-letter">D</span><span class="opt-text">A membrane-bound nucleus</span></button>
+    </div>
+  </div>
+
+  <div class="question" id="q18" data-type="mc">
+    <div class="q-header"><span class="q-num">Question 18</span><span class="q-tag cell">Cells</span></div>
+    <div class="q-prompt">The thin barrier that controls what enters and leaves a cell is the:</div>
+    <div class="options">
+      <button class="option" data-letter="A" data-q="q18"><span class="opt-letter">A</span><span class="opt-text">Cell wall</span></button>
+      <button class="option" data-letter="B" data-q="q18"><span class="opt-letter">B</span><span class="opt-text">Nucleus</span></button>
+      <button class="option" data-letter="C" data-q="q18"><span class="opt-letter">C</span><span class="opt-text">Cell membrane</span></button>
+      <button class="option" data-letter="D" data-q="q18"><span class="opt-letter">D</span><span class="opt-text">Vacuole</span></button>
+    </div>
+  </div>
+
+  <div class="question" id="q19" data-type="mc">
+    <div class="q-header"><span class="q-num">Question 19</span><span class="q-tag cell">Cells</span></div>
+    <div class="q-prompt">Which list shows the levels of organization from <strong>smallest to largest</strong>?</div>
+    <div class="options">
+      <button class="option" data-letter="A" data-q="q19"><span class="opt-letter">A</span><span class="opt-text">Cell → tissue → organ → organ system</span></button>
+      <button class="option" data-letter="B" data-q="q19"><span class="opt-letter">B</span><span class="opt-text">Tissue → cell → organ → organ system</span></button>
+      <button class="option" data-letter="C" data-q="q19"><span class="opt-letter">C</span><span class="opt-text">Organ → tissue → cell → organ system</span></button>
+      <button class="option" data-letter="D" data-q="q19"><span class="opt-letter">D</span><span class="opt-text">Organism → organ → tissue → cell</span></button>
+    </div>
+  </div>
+
+  <div class="question" id="q20" data-type="mc">
+    <div class="q-header"><span class="q-num">Question 20</span><span class="q-tag cell">Cells</span></div>
+    <div class="q-prompt">Which equation best summarizes <strong>photosynthesis</strong>?</div>
+    <div class="options">
+      <button class="option" data-letter="A" data-q="q20"><span class="opt-letter">A</span><span class="opt-text">Glucose + O₂ → CO₂ + H₂O + energy</span></button>
+      <button class="option" data-letter="B" data-q="q20"><span class="opt-letter">B</span><span class="opt-text">CO₂ + H₂O + light → glucose + O₂</span></button>
+      <button class="option" data-letter="C" data-q="q20"><span class="opt-letter">C</span><span class="opt-text">Water → hydrogen + oxygen</span></button>
+      <button class="option" data-letter="D" data-q="q20"><span class="opt-letter">D</span><span class="opt-text">ATP → ADP + heat</span></button>
+    </div>
+  </div>
+
+  <div class="question" id="q21" data-type="mc">
+    <div class="q-header"><span class="q-num">Question 21</span><span class="q-tag cell">Cells</span></div>
+    <div class="q-prompt">Cellular respiration releases usable energy by breaking down which molecule?</div>
+    <div class="options">
+      <button class="option" data-letter="A" data-q="q21"><span class="opt-letter">A</span><span class="opt-text">Glucose</span></button>
+      <button class="option" data-letter="B" data-q="q21"><span class="opt-letter">B</span><span class="opt-text">DNA</span></button>
+      <button class="option" data-letter="C" data-q="q21"><span class="opt-letter">C</span><span class="opt-text">Water</span></button>
+      <button class="option" data-letter="D" data-q="q21"><span class="opt-letter">D</span><span class="opt-text">Cell walls</span></button>
+    </div>
+  </div>
+
+  <!-- ====== UNIT 3: HUMAN BODY SYSTEMS (Q22–Q32) ====== -->
+
+  <div class="question" id="q22" data-type="mc">
+    <div class="q-header"><span class="q-num">Question 22</span><span class="q-tag body">Human Body Systems</span></div>
+    <div class="q-prompt">Which body system pumps blood through the body?</div>
+    <div class="options">
+      <button class="option" data-letter="A" data-q="q22"><span class="opt-letter">A</span><span class="opt-text">Respiratory</span></button>
+      <button class="option" data-letter="B" data-q="q22"><span class="opt-letter">B</span><span class="opt-text">Nervous</span></button>
+      <button class="option" data-letter="C" data-q="q22"><span class="opt-letter">C</span><span class="opt-text">Circulatory</span></button>
+      <button class="option" data-letter="D" data-q="q22"><span class="opt-letter">D</span><span class="opt-text">Digestive</span></button>
+    </div>
+  </div>
+
+  <div class="question" id="q23" data-type="mc">
+    <div class="q-header"><span class="q-num">Question 23</span><span class="q-tag body">Human Body Systems</span></div>
+    <div class="q-prompt">The <strong>diaphragm</strong> is a major muscle for which body system?</div>
+    <div class="options">
+      <button class="option" data-letter="A" data-q="q23"><span class="opt-letter">A</span><span class="opt-text">Skeletal</span></button>
+      <button class="option" data-letter="B" data-q="q23"><span class="opt-letter">B</span><span class="opt-text">Respiratory</span></button>
+      <button class="option" data-letter="C" data-q="q23"><span class="opt-letter">C</span><span class="opt-text">Digestive</span></button>
+      <button class="option" data-letter="D" data-q="q23"><span class="opt-letter">D</span><span class="opt-text">Excretory</span></button>
+    </div>
+  </div>
+
+  <div class="question" id="q24" data-type="mc">
+    <div class="q-header"><span class="q-num">Question 24</span><span class="q-tag body">Human Body Systems</span></div>
+    <div class="q-prompt">Where does most <strong>chemical digestion</strong> and absorption of nutrients occur?</div>
+    <div class="options">
+      <button class="option" data-letter="A" data-q="q24"><span class="opt-letter">A</span><span class="opt-text">Stomach</span></button>
+      <button class="option" data-letter="B" data-q="q24"><span class="opt-letter">B</span><span class="opt-text">Esophagus</span></button>
+      <button class="option" data-letter="C" data-q="q24"><span class="opt-letter">C</span><span class="opt-text">Small intestine</span></button>
+      <button class="option" data-letter="D" data-q="q24"><span class="opt-letter">D</span><span class="opt-text">Large intestine</span></button>
+    </div>
+  </div>
+
+  <div class="question" id="q25" data-type="mc">
+    <div class="q-header"><span class="q-num">Question 25</span><span class="q-tag body">Human Body Systems</span></div>
+    <div class="q-prompt">Which system is made up of the brain, spinal cord, and nerves and sends signals throughout the body?</div>
+    <div class="options">
+      <button class="option" data-letter="A" data-q="q25"><span class="opt-letter">A</span><span class="opt-text">Endocrine</span></button>
+      <button class="option" data-letter="B" data-q="q25"><span class="opt-letter">B</span><span class="opt-text">Nervous</span></button>
+      <button class="option" data-letter="C" data-q="q25"><span class="opt-letter">C</span><span class="opt-text">Skeletal</span></button>
+      <button class="option" data-letter="D" data-q="q25"><span class="opt-letter">D</span><span class="opt-text">Muscular</span></button>
+    </div>
+  </div>
+
+  <div class="question" id="q26" data-type="mc">
+    <div class="q-header"><span class="q-num">Question 26</span><span class="q-tag body">Human Body Systems</span></div>
+    <div class="q-prompt">The main job of <strong>red blood cells</strong> is to carry:</div>
+    <div class="options">
+      <button class="option" data-letter="A" data-q="q26"><span class="opt-letter">A</span><span class="opt-text">Oxygen</span></button>
+      <button class="option" data-letter="B" data-q="q26"><span class="opt-letter">B</span><span class="opt-text">Hormones only</span></button>
+      <button class="option" data-letter="C" data-q="q26"><span class="opt-letter">C</span><span class="opt-text">Solid wastes</span></button>
+      <button class="option" data-letter="D" data-q="q26"><span class="opt-letter">D</span><span class="opt-text">Glucose only</span></button>
+    </div>
+  </div>
+
+  <div class="question" id="q27" data-type="mc">
+    <div class="q-header"><span class="q-num">Question 27</span><span class="q-tag body">Human Body Systems</span></div>
+    <div class="q-prompt">Bones meet other bones at structures called:</div>
+    <div class="options">
+      <button class="option" data-letter="A" data-q="q27"><span class="opt-letter">A</span><span class="opt-text">Tissues</span></button>
+      <button class="option" data-letter="B" data-q="q27"><span class="opt-letter">B</span><span class="opt-text">Organs</span></button>
+      <button class="option" data-letter="C" data-q="q27"><span class="opt-letter">C</span><span class="opt-text">Joints</span></button>
+      <button class="option" data-letter="D" data-q="q27"><span class="opt-letter">D</span><span class="opt-text">Tendons</span></button>
+    </div>
+  </div>
+
+  <div class="question" id="q28" data-type="mc">
+    <div class="q-header"><span class="q-num">Question 28</span><span class="q-tag body">Human Body Systems</span></div>
+    <div class="q-prompt">The kidneys, which filter wastes from the blood, are part of which system?</div>
+    <div class="options">
+      <button class="option" data-letter="A" data-q="q28"><span class="opt-letter">A</span><span class="opt-text">Digestive</span></button>
+      <button class="option" data-letter="B" data-q="q28"><span class="opt-letter">B</span><span class="opt-text">Excretory</span></button>
+      <button class="option" data-letter="C" data-q="q28"><span class="opt-letter">C</span><span class="opt-text">Respiratory</span></button>
+      <button class="option" data-letter="D" data-q="q28"><span class="opt-letter">D</span><span class="opt-text">Endocrine</span></button>
+    </div>
+  </div>
+
+  <div class="question" id="q29" data-type="mc">
+    <div class="q-header"><span class="q-num">Question 29</span><span class="q-tag body">Human Body Systems</span></div>
+    <div class="q-prompt"><strong>Hormones</strong> are chemical messengers released by which system?</div>
+    <div class="options">
+      <button class="option" data-letter="A" data-q="q29"><span class="opt-letter">A</span><span class="opt-text">Nervous</span></button>
+      <button class="option" data-letter="B" data-q="q29"><span class="opt-letter">B</span><span class="opt-text">Endocrine</span></button>
+      <button class="option" data-letter="C" data-q="q29"><span class="opt-letter">C</span><span class="opt-text">Skeletal</span></button>
+      <button class="option" data-letter="D" data-q="q29"><span class="opt-letter">D</span><span class="opt-text">Integumentary</span></button>
+    </div>
+  </div>
+
+  <div class="question" id="q30" data-type="mc">
+    <div class="q-header"><span class="q-num">Question 30</span><span class="q-tag body">Human Body Systems</span></div>
+    <div class="q-prompt">The respiratory and circulatory systems work <strong>together</strong> to:</div>
+    <div class="options">
+      <button class="option" data-letter="A" data-q="q30"><span class="opt-letter">A</span><span class="opt-text">Digest food into nutrients</span></button>
+      <button class="option" data-letter="B" data-q="q30"><span class="opt-letter">B</span><span class="opt-text">Exchange oxygen and carbon dioxide between air and blood</span></button>
+      <button class="option" data-letter="C" data-q="q30"><span class="opt-letter">C</span><span class="opt-text">Filter and remove urine</span></button>
+      <button class="option" data-letter="D" data-q="q30"><span class="opt-letter">D</span><span class="opt-text">Send electrical signals to the brain</span></button>
+    </div>
+  </div>
+
+  <div class="question" id="q31" data-type="mc">
+    <div class="q-header"><span class="q-num">Question 31</span><span class="q-tag body">Human Body Systems</span></div>
+    <div class="q-prompt">Skin, hair, and nails make up the:</div>
+    <div class="options">
+      <button class="option" data-letter="A" data-q="q31"><span class="opt-letter">A</span><span class="opt-text">Integumentary system</span></button>
+      <button class="option" data-letter="B" data-q="q31"><span class="opt-letter">B</span><span class="opt-text">Endocrine system</span></button>
+      <button class="option" data-letter="C" data-q="q31"><span class="opt-letter">C</span><span class="opt-text">Skeletal system</span></button>
+      <button class="option" data-letter="D" data-q="q31"><span class="opt-letter">D</span><span class="opt-text">Lymphatic system</span></button>
+    </div>
+  </div>
+
+  <div class="question" id="q32" data-type="mc">
+    <div class="q-header"><span class="q-num">Question 32</span><span class="q-tag body">Human Body Systems</span></div>
+    <div class="q-prompt">Which is <strong>NOT</strong> a function of the skeletal system?</div>
+    <div class="options">
+      <button class="option" data-letter="A" data-q="q32"><span class="opt-letter">A</span><span class="opt-text">Supports the body</span></button>
+      <button class="option" data-letter="B" data-q="q32"><span class="opt-letter">B</span><span class="opt-text">Protects organs like the brain and lungs</span></button>
+      <button class="option" data-letter="C" data-q="q32"><span class="opt-letter">C</span><span class="opt-text">Produces blood cells in bone marrow</span></button>
+      <button class="option" data-letter="D" data-q="q32"><span class="opt-letter">D</span><span class="opt-text">Pumps blood</span></button>
+    </div>
+  </div>
+
+  <!-- ====== UNIT 4: EXTREME WEATHER & BIOMES (Q33–Q43) ====== -->
+
+  <div class="question" id="q33" data-type="mc">
+    <div class="q-header"><span class="q-num">Question 33</span><span class="q-tag weather">Weather &amp; Biomes</span></div>
+    <div class="q-prompt">What is the difference between <strong>weather</strong> and <strong>climate</strong>?</div>
+    <div class="options">
+      <button class="option" data-letter="A" data-q="q33"><span class="opt-letter">A</span><span class="opt-text">Climate is short-term, weather is long-term</span></button>
+      <button class="option" data-letter="B" data-q="q33"><span class="opt-letter">B</span><span class="opt-text">Weather is day-to-day; climate is the long-term average over many years</span></button>
+      <button class="option" data-letter="C" data-q="q33"><span class="opt-letter">C</span><span class="opt-text">They mean exactly the same thing</span></button>
+      <button class="option" data-letter="D" data-q="q33"><span class="opt-letter">D</span><span class="opt-text">Climate only describes deserts</span></button>
+    </div>
+  </div>
+
+  <div class="question" id="q34" data-type="mc">
+    <div class="q-header"><span class="q-num">Question 34</span><span class="q-tag weather">Weather &amp; Biomes</span></div>
+    <div class="q-prompt">A rapidly rotating column of air that touches the ground is a:</div>
+    <div class="options">
+      <button class="option" data-letter="A" data-q="q34"><span class="opt-letter">A</span><span class="opt-text">Hurricane</span></button>
+      <button class="option" data-letter="B" data-q="q34"><span class="opt-letter">B</span><span class="opt-text">Blizzard</span></button>
+      <button class="option" data-letter="C" data-q="q34"><span class="opt-letter">C</span><span class="opt-text">Tornado</span></button>
+      <button class="option" data-letter="D" data-q="q34"><span class="opt-letter">D</span><span class="opt-text">Drought</span></button>
+    </div>
+  </div>
+
+  <div class="question" id="q35" data-type="mc">
+    <div class="q-header"><span class="q-num">Question 35</span><span class="q-tag weather">Weather &amp; Biomes</span></div>
+    <div class="q-prompt">Hurricanes form over:</div>
+    <div class="options">
+      <button class="option" data-letter="A" data-q="q35"><span class="opt-letter">A</span><span class="opt-text">Cold ocean water</span></button>
+      <button class="option" data-letter="B" data-q="q35"><span class="opt-letter">B</span><span class="opt-text">Warm ocean water near the equator</span></button>
+      <button class="option" data-letter="C" data-q="q35"><span class="opt-letter">C</span><span class="opt-text">Mountain ranges</span></button>
+      <button class="option" data-letter="D" data-q="q35"><span class="opt-letter">D</span><span class="opt-text">Polar ice sheets</span></button>
+    </div>
+  </div>
+
+  <div class="question" id="q36" data-type="mc">
+    <div class="q-header"><span class="q-num">Question 36</span><span class="q-tag weather">Weather &amp; Biomes</span></div>
+    <div class="q-prompt">A long period of below-average rainfall is called a:</div>
+    <div class="options">
+      <button class="option" data-letter="A" data-q="q36"><span class="opt-letter">A</span><span class="opt-text">Hurricane</span></button>
+      <button class="option" data-letter="B" data-q="q36"><span class="opt-letter">B</span><span class="opt-text">Drought</span></button>
+      <button class="option" data-letter="C" data-q="q36"><span class="opt-letter">C</span><span class="opt-text">Flood</span></button>
+      <button class="option" data-letter="D" data-q="q36"><span class="opt-letter">D</span><span class="opt-text">Tornado</span></button>
+    </div>
+  </div>
+
+  <div class="question" id="q37" data-type="mc">
+    <div class="q-header"><span class="q-num">Question 37</span><span class="q-tag weather">Weather &amp; Biomes</span></div>
+    <div class="q-prompt">Which biome has the <strong>highest biodiversity</strong> (the most different species)?</div>
+    <div class="options">
+      <button class="option" data-letter="A" data-q="q37"><span class="opt-letter">A</span><span class="opt-text">Tundra</span></button>
+      <button class="option" data-letter="B" data-q="q37"><span class="opt-letter">B</span><span class="opt-text">Desert</span></button>
+      <button class="option" data-letter="C" data-q="q37"><span class="opt-letter">C</span><span class="opt-text">Tropical rainforest</span></button>
+      <button class="option" data-letter="D" data-q="q37"><span class="opt-letter">D</span><span class="opt-text">Taiga</span></button>
+    </div>
+  </div>
+
+  <div class="question" id="q38" data-type="mc">
+    <div class="q-header"><span class="q-num">Question 38</span><span class="q-tag weather">Weather &amp; Biomes</span></div>
+    <div class="q-prompt">The biome characterized by <strong>permafrost</strong> (permanently frozen soil) and short summers is the:</div>
+    <div class="options">
+      <button class="option" data-letter="A" data-q="q38"><span class="opt-letter">A</span><span class="opt-text">Tundra</span></button>
+      <button class="option" data-letter="B" data-q="q38"><span class="opt-letter">B</span><span class="opt-text">Tropical rainforest</span></button>
+      <button class="option" data-letter="C" data-q="q38"><span class="opt-letter">C</span><span class="opt-text">Grassland</span></button>
+      <button class="option" data-letter="D" data-q="q38"><span class="opt-letter">D</span><span class="opt-text">Desert</span></button>
+    </div>
+  </div>
+
+  <div class="question" id="q39" data-type="mc">
+    <div class="q-header"><span class="q-num">Question 39</span><span class="q-tag weather">Weather &amp; Biomes</span></div>
+    <div class="q-prompt">Cacti, kangaroo rats, and rattlesnakes are all adapted to which biome?</div>
+    <div class="options">
+      <button class="option" data-letter="A" data-q="q39"><span class="opt-letter">A</span><span class="opt-text">Tundra</span></button>
+      <button class="option" data-letter="B" data-q="q39"><span class="opt-letter">B</span><span class="opt-text">Taiga</span></button>
+      <button class="option" data-letter="C" data-q="q39"><span class="opt-letter">C</span><span class="opt-text">Desert</span></button>
+      <button class="option" data-letter="D" data-q="q39"><span class="opt-letter">D</span><span class="opt-text">Marine</span></button>
+    </div>
+  </div>
+
+  <div class="question" id="q40" data-type="mc">
+    <div class="q-header"><span class="q-num">Question 40</span><span class="q-tag weather">Weather &amp; Biomes</span></div>
+    <div class="q-prompt">The <strong>vast majority</strong> of Earth's water is found in the:</div>
+    <div class="options">
+      <button class="option" data-letter="A" data-q="q40"><span class="opt-letter">A</span><span class="opt-text">Lakes and rivers</span></button>
+      <button class="option" data-letter="B" data-q="q40"><span class="opt-letter">B</span><span class="opt-text">Glaciers and ice caps</span></button>
+      <button class="option" data-letter="C" data-q="q40"><span class="opt-letter">C</span><span class="opt-text">Oceans</span></button>
+      <button class="option" data-letter="D" data-q="q40"><span class="opt-letter">D</span><span class="opt-text">Atmosphere</span></button>
+    </div>
+  </div>
+
+  <div class="question" id="q41" data-type="mc">
+    <div class="q-header"><span class="q-num">Question 41</span><span class="q-tag weather">Weather &amp; Biomes</span></div>
+    <div class="q-prompt">The amount of <strong>solar energy</strong> a region receives depends most on its:</div>
+    <div class="options">
+      <button class="option" data-letter="A" data-q="q41"><span class="opt-letter">A</span><span class="opt-text">Time of day only</span></button>
+      <button class="option" data-letter="B" data-q="q41"><span class="opt-letter">B</span><span class="opt-text">Latitude (distance from the equator)</span></button>
+      <button class="option" data-letter="C" data-q="q41"><span class="opt-letter">C</span><span class="opt-text">Wind speed</span></button>
+      <button class="option" data-letter="D" data-q="q41"><span class="opt-letter">D</span><span class="opt-text">Plant cover</span></button>
+    </div>
+  </div>
+
+  <div class="question" id="q42" data-type="mc">
+    <div class="q-header"><span class="q-num">Question 42</span><span class="q-tag weather">Weather &amp; Biomes</span></div>
+    <div class="q-prompt">In the <strong>eye</strong> of a hurricane, air pressure is:</div>
+    <div class="options">
+      <button class="option" data-letter="A" data-q="q42"><span class="opt-letter">A</span><span class="opt-text">Higher than the surrounding air</span></button>
+      <button class="option" data-letter="B" data-q="q42"><span class="opt-letter">B</span><span class="opt-text">Equal to the surrounding air</span></button>
+      <button class="option" data-letter="C" data-q="q42"><span class="opt-letter">C</span><span class="opt-text">Lower than the surrounding air</span></button>
+      <button class="option" data-letter="D" data-q="q42"><span class="opt-letter">D</span><span class="opt-text">Always exactly zero</span></button>
+    </div>
+  </div>
+
+  <div class="question" id="q43" data-type="mc">
+    <div class="q-header"><span class="q-num">Question 43</span><span class="q-tag weather">Weather &amp; Biomes</span></div>
+    <div class="q-prompt">Which biome typically has <strong>4 distinct seasons</strong> and trees that lose their leaves each fall (deciduous)?</div>
+    <div class="options">
+      <button class="option" data-letter="A" data-q="q43"><span class="opt-letter">A</span><span class="opt-text">Tropical rainforest</span></button>
+      <button class="option" data-letter="B" data-q="q43"><span class="opt-letter">B</span><span class="opt-text">Temperate forest</span></button>
+      <button class="option" data-letter="C" data-q="q43"><span class="opt-letter">C</span><span class="opt-text">Tundra</span></button>
+      <button class="option" data-letter="D" data-q="q43"><span class="opt-letter">D</span><span class="opt-text">Desert</span></button>
+    </div>
+  </div>
+
+  <!-- ====== UNIT 5: PLATE TECTONICS (Q44–Q54) ====== -->
+
+  <div class="question" id="q44" data-type="mc">
+    <div class="q-header"><span class="q-num">Question 44</span><span class="q-tag tect">Plate Tectonics</span></div>
+    <div class="q-prompt">The <strong>thinnest, outermost</strong> layer of Earth (where we live) is the:</div>
+    <div class="options">
+      <button class="option" data-letter="A" data-q="q44"><span class="opt-letter">A</span><span class="opt-text">Mantle</span></button>
+      <button class="option" data-letter="B" data-q="q44"><span class="opt-letter">B</span><span class="opt-text">Outer core</span></button>
+      <button class="option" data-letter="C" data-q="q44"><span class="opt-letter">C</span><span class="opt-text">Inner core</span></button>
+      <button class="option" data-letter="D" data-q="q44"><span class="opt-letter">D</span><span class="opt-text">Crust</span></button>
+    </div>
+  </div>
+
+  <div class="question" id="q45" data-type="mc">
+    <div class="q-header"><span class="q-num">Question 45</span><span class="q-tag tect">Plate Tectonics</span></div>
+    <div class="q-prompt">Which layer of Earth is a <strong>liquid</strong> made mostly of melted iron and nickel?</div>
+    <div class="options">
+      <button class="option" data-letter="A" data-q="q45"><span class="opt-letter">A</span><span class="opt-text">Inner core</span></button>
+      <button class="option" data-letter="B" data-q="q45"><span class="opt-letter">B</span><span class="opt-text">Outer core</span></button>
+      <button class="option" data-letter="C" data-q="q45"><span class="opt-letter">C</span><span class="opt-text">Crust</span></button>
+      <button class="option" data-letter="D" data-q="q45"><span class="opt-letter">D</span><span class="opt-text">Lithosphere</span></button>
+    </div>
+  </div>
+
+  <div class="question" id="q46" data-type="mc">
+    <div class="q-header"><span class="q-num">Question 46</span><span class="q-tag tect">Plate Tectonics</span></div>
+    <div class="q-prompt">The scientist who first proposed that the continents had drifted apart over time was:</div>
+    <div class="options">
+      <button class="option" data-letter="A" data-q="q46"><span class="opt-letter">A</span><span class="opt-text">Isaac Newton</span></button>
+      <button class="option" data-letter="B" data-q="q46"><span class="opt-letter">B</span><span class="opt-text">Alfred Wegener</span></button>
+      <button class="option" data-letter="C" data-q="q46"><span class="opt-letter">C</span><span class="opt-text">Charles Darwin</span></button>
+      <button class="option" data-letter="D" data-q="q46"><span class="opt-letter">D</span><span class="opt-text">James Hutton</span></button>
+    </div>
+  </div>
+
+  <div class="question" id="q47" data-type="mc">
+    <div class="q-header"><span class="q-num">Question 47</span><span class="q-tag tect">Plate Tectonics</span></div>
+    <div class="q-prompt">The supercontinent that existed about 250 million years ago, before breaking apart, was:</div>
+    <div class="options">
+      <button class="option" data-letter="A" data-q="q47"><span class="opt-letter">A</span><span class="opt-text">Gondwana</span></button>
+      <button class="option" data-letter="B" data-q="q47"><span class="opt-letter">B</span><span class="opt-text">Laurasia</span></button>
+      <button class="option" data-letter="C" data-q="q47"><span class="opt-letter">C</span><span class="opt-text">Pangaea</span></button>
+      <button class="option" data-letter="D" data-q="q47"><span class="opt-letter">D</span><span class="opt-text">Atlantis</span></button>
+    </div>
+  </div>
+
+  <div class="question" id="q48" data-type="mc">
+    <div class="q-header"><span class="q-num">Question 48</span><span class="q-tag tect">Plate Tectonics</span></div>
+    <div class="q-prompt">Tectonic plates move because of:</div>
+    <div class="options">
+      <button class="option" data-letter="A" data-q="q48"><span class="opt-letter">A</span><span class="opt-text">Earth's rotation alone</span></button>
+      <button class="option" data-letter="B" data-q="q48"><span class="opt-letter">B</span><span class="opt-text">The pull of the magnetic poles</span></button>
+      <button class="option" data-letter="C" data-q="q48"><span class="opt-letter">C</span><span class="opt-text">Convection currents in the mantle</span></button>
+      <button class="option" data-letter="D" data-q="q48"><span class="opt-letter">D</span><span class="opt-text">Ocean tides on the surface</span></button>
+    </div>
+  </div>
+
+  <div class="question" id="q49" data-type="mc">
+    <div class="q-header"><span class="q-num">Question 49</span><span class="q-tag tect">Plate Tectonics</span></div>
+    <div class="q-prompt">At a <strong>divergent</strong> plate boundary, plates are:</div>
+    <div class="options">
+      <button class="option" data-letter="A" data-q="q49"><span class="opt-letter">A</span><span class="opt-text">Sliding past each other</span></button>
+      <button class="option" data-letter="B" data-q="q49"><span class="opt-letter">B</span><span class="opt-text">Moving apart from each other</span></button>
+      <button class="option" data-letter="C" data-q="q49"><span class="opt-letter">C</span><span class="opt-text">Colliding head-on</span></button>
+      <button class="option" data-letter="D" data-q="q49"><span class="opt-letter">D</span><span class="opt-text">Completely still</span></button>
+    </div>
+  </div>
+
+  <div class="question" id="q50" data-type="mc">
+    <div class="q-header"><span class="q-num">Question 50</span><span class="q-tag tect">Plate Tectonics</span></div>
+    <div class="q-prompt">A <strong>mid-ocean ridge</strong> forms at which type of plate boundary?</div>
+    <div class="options">
+      <button class="option" data-letter="A" data-q="q50"><span class="opt-letter">A</span><span class="opt-text">Convergent (continent–continent)</span></button>
+      <button class="option" data-letter="B" data-q="q50"><span class="opt-letter">B</span><span class="opt-text">Divergent (oceanic)</span></button>
+      <button class="option" data-letter="C" data-q="q50"><span class="opt-letter">C</span><span class="opt-text">Transform</span></button>
+      <button class="option" data-letter="D" data-q="q50"><span class="opt-letter">D</span><span class="opt-text">No boundary &mdash; it's a hot spot</span></button>
+    </div>
+  </div>
+
+  <div class="question" id="q51" data-type="mc">
+    <div class="q-header"><span class="q-num">Question 51</span><span class="q-tag tect">Plate Tectonics</span></div>
+    <div class="q-prompt">The <strong>Himalayan mountains</strong> formed when two continental plates collided. This is what type of boundary?</div>
+    <div class="options">
+      <button class="option" data-letter="A" data-q="q51"><span class="opt-letter">A</span><span class="opt-text">Divergent</span></button>
+      <button class="option" data-letter="B" data-q="q51"><span class="opt-letter">B</span><span class="opt-text">Transform</span></button>
+      <button class="option" data-letter="C" data-q="q51"><span class="opt-letter">C</span><span class="opt-text">Convergent (continent–continent)</span></button>
+      <button class="option" data-letter="D" data-q="q51"><span class="opt-letter">D</span><span class="opt-text">Hot spot</span></button>
+    </div>
+  </div>
+
+  <div class="question" id="q52" data-type="mc">
+    <div class="q-header"><span class="q-num">Question 52</span><span class="q-tag tect">Plate Tectonics</span></div>
+    <div class="q-prompt">The <strong>San Andreas Fault</strong> in California is a famous example of what kind of plate boundary?</div>
+    <div class="options">
+      <button class="option" data-letter="A" data-q="q52"><span class="opt-letter">A</span><span class="opt-text">Convergent boundary</span></button>
+      <button class="option" data-letter="B" data-q="q52"><span class="opt-letter">B</span><span class="opt-text">Divergent boundary</span></button>
+      <button class="option" data-letter="C" data-q="q52"><span class="opt-letter">C</span><span class="opt-text">Transform boundary</span></button>
+      <button class="option" data-letter="D" data-q="q52"><span class="opt-letter">D</span><span class="opt-text">Subduction zone</span></button>
+    </div>
+  </div>
+
+  <div class="question" id="q53" data-type="mc">
+    <div class="q-header"><span class="q-num">Question 53</span><span class="q-tag tect">Plate Tectonics</span></div>
+    <div class="q-prompt">When a denser <strong>oceanic plate</strong> meets a less dense <strong>continental plate</strong>, the oceanic plate:</div>
+    <div class="options">
+      <button class="option" data-letter="A" data-q="q53"><span class="opt-letter">A</span><span class="opt-text">Slides on top of the continent</span></button>
+      <button class="option" data-letter="B" data-q="q53"><span class="opt-letter">B</span><span class="opt-text">Subducts (sinks below) the continental plate</span></button>
+      <button class="option" data-letter="C" data-q="q53"><span class="opt-letter">C</span><span class="opt-text">Pushes the continent straight up</span></button>
+      <button class="option" data-letter="D" data-q="q53"><span class="opt-letter">D</span><span class="opt-text">Stops moving completely</span></button>
+    </div>
+  </div>
+
+  <div class="question" id="q54" data-type="mc">
+    <div class="q-header"><span class="q-num">Question 54</span><span class="q-tag tect">Plate Tectonics</span></div>
+    <div class="q-prompt">The rigid outer shell of Earth (the crust + upper mantle), broken into tectonic plates, is called the:</div>
+    <div class="options">
+      <button class="option" data-letter="A" data-q="q54"><span class="opt-letter">A</span><span class="opt-text">Asthenosphere</span></button>
+      <button class="option" data-letter="B" data-q="q54"><span class="opt-letter">B</span><span class="opt-text">Lithosphere</span></button>
+      <button class="option" data-letter="C" data-q="q54"><span class="opt-letter">C</span><span class="opt-text">Hydrosphere</span></button>
+      <button class="option" data-letter="D" data-q="q54"><span class="opt-letter">D</span><span class="opt-text">Mesosphere</span></button>
+    </div>
+  </div>
+
+  <!-- ====== UNIT 6: PERIODIC TABLE (Q55–Q65) ====== -->
+
+  <div class="question" id="q55" data-type="mc">
+    <div class="q-header"><span class="q-num">Question 55</span><span class="q-tag per">Periodic Table</span></div>
+    <div class="q-prompt">The <strong>atomic number</strong> of an element equals the number of:</div>
+    <div class="options">
+      <button class="option" data-letter="A" data-q="q55"><span class="opt-letter">A</span><span class="opt-text">Neutrons</span></button>
+      <button class="option" data-letter="B" data-q="q55"><span class="opt-letter">B</span><span class="opt-text">Electrons in the outermost shell</span></button>
+      <button class="option" data-letter="C" data-q="q55"><span class="opt-letter">C</span><span class="opt-text">Protons</span></button>
+      <button class="option" data-letter="D" data-q="q55"><span class="opt-letter">D</span><span class="opt-text">Atomic mass in grams</span></button>
+    </div>
+  </div>
+
+  <div class="question" id="q56" data-type="mc">
+    <div class="q-header"><span class="q-num">Question 56</span><span class="q-tag per">Periodic Table</span></div>
+    <div class="q-prompt">The <strong>mass number</strong> of an atom equals:</div>
+    <div class="options">
+      <button class="option" data-letter="A" data-q="q56"><span class="opt-letter">A</span><span class="opt-text">Protons + electrons</span></button>
+      <button class="option" data-letter="B" data-q="q56"><span class="opt-letter">B</span><span class="opt-text">Protons + neutrons</span></button>
+      <button class="option" data-letter="C" data-q="q56"><span class="opt-letter">C</span><span class="opt-text">Just the neutrons</span></button>
+      <button class="option" data-letter="D" data-q="q56"><span class="opt-letter">D</span><span class="opt-text">Protons × electrons</span></button>
+    </div>
+  </div>
+
+  <div class="question" id="q57" data-type="mc">
+    <div class="q-header"><span class="q-num">Question 57</span><span class="q-tag per">Periodic Table</span></div>
+    <div class="q-prompt">The horizontal <strong>rows</strong> on the periodic table are called:</div>
+    <div class="options">
+      <button class="option" data-letter="A" data-q="q57"><span class="opt-letter">A</span><span class="opt-text">Groups</span></button>
+      <button class="option" data-letter="B" data-q="q57"><span class="opt-letter">B</span><span class="opt-text">Families</span></button>
+      <button class="option" data-letter="C" data-q="q57"><span class="opt-letter">C</span><span class="opt-text">Periods</span></button>
+      <button class="option" data-letter="D" data-q="q57"><span class="opt-letter">D</span><span class="opt-text">Series</span></button>
+    </div>
+  </div>
+
+  <div class="question" id="q58" data-type="mc">
+    <div class="q-header"><span class="q-num">Question 58</span><span class="q-tag per">Periodic Table</span></div>
+    <div class="q-prompt">The vertical <strong>columns</strong> on the periodic table are called:</div>
+    <div class="options">
+      <button class="option" data-letter="A" data-q="q58"><span class="opt-letter">A</span><span class="opt-text">Periods</span></button>
+      <button class="option" data-letter="B" data-q="q58"><span class="opt-letter">B</span><span class="opt-text">Groups (or families)</span></button>
+      <button class="option" data-letter="C" data-q="q58"><span class="opt-letter">C</span><span class="opt-text">Rows</span></button>
+      <button class="option" data-letter="D" data-q="q58"><span class="opt-letter">D</span><span class="opt-text">Levels</span></button>
+    </div>
+  </div>
+
+  <div class="question" id="q59" data-type="mc">
+    <div class="q-header"><span class="q-num">Question 59</span><span class="q-tag per">Periodic Table</span></div>
+    <div class="q-prompt">The element with the symbol <strong>Na</strong> is:</div>
+    <div class="options">
+      <button class="option" data-letter="A" data-q="q59"><span class="opt-letter">A</span><span class="opt-text">Nitrogen</span></button>
+      <button class="option" data-letter="B" data-q="q59"><span class="opt-letter">B</span><span class="opt-text">Sodium</span></button>
+      <button class="option" data-letter="C" data-q="q59"><span class="opt-letter">C</span><span class="opt-text">Neon</span></button>
+      <button class="option" data-letter="D" data-q="q59"><span class="opt-letter">D</span><span class="opt-text">Nickel</span></button>
+    </div>
+  </div>
+
+  <div class="question" id="q60" data-type="mc">
+    <div class="q-header"><span class="q-num">Question 60</span><span class="q-tag per">Periodic Table</span></div>
+    <div class="q-prompt">The <strong>noble gases</strong> (Group 18) are best described as:</div>
+    <div class="options">
+      <button class="option" data-letter="A" data-q="q60"><span class="opt-letter">A</span><span class="opt-text">Highly reactive</span></button>
+      <button class="option" data-letter="B" data-q="q60"><span class="opt-letter">B</span><span class="opt-text">Inert (very unreactive)</span></button>
+      <button class="option" data-letter="C" data-q="q60"><span class="opt-letter">C</span><span class="opt-text">Magnetic metals</span></button>
+      <button class="option" data-letter="D" data-q="q60"><span class="opt-letter">D</span><span class="opt-text">Liquid at room temperature</span></button>
+    </div>
+  </div>
+
+  <div class="question" id="q61" data-type="mc">
+    <div class="q-header"><span class="q-num">Question 61</span><span class="q-tag per">Periodic Table</span></div>
+    <div class="q-prompt">Which group contains the most <strong>reactive metals</strong>?</div>
+    <div class="options">
+      <button class="option" data-letter="A" data-q="q61"><span class="opt-letter">A</span><span class="opt-text">Group 1 (alkali metals)</span></button>
+      <button class="option" data-letter="B" data-q="q61"><span class="opt-letter">B</span><span class="opt-text">Group 18 (noble gases)</span></button>
+      <button class="option" data-letter="C" data-q="q61"><span class="opt-letter">C</span><span class="opt-text">Group 14</span></button>
+      <button class="option" data-letter="D" data-q="q61"><span class="opt-letter">D</span><span class="opt-text">Group 17 (halogens)</span></button>
+    </div>
+  </div>
+
+  <div class="question" id="q62" data-type="mc">
+    <div class="q-header"><span class="q-num">Question 62</span><span class="q-tag per">Periodic Table</span></div>
+    <div class="q-prompt">Which subatomic particle has <strong>no electric charge</strong>?</div>
+    <div class="options">
+      <button class="option" data-letter="A" data-q="q62"><span class="opt-letter">A</span><span class="opt-text">Proton</span></button>
+      <button class="option" data-letter="B" data-q="q62"><span class="opt-letter">B</span><span class="opt-text">Electron</span></button>
+      <button class="option" data-letter="C" data-q="q62"><span class="opt-letter">C</span><span class="opt-text">Neutron</span></button>
+      <button class="option" data-letter="D" data-q="q62"><span class="opt-letter">D</span><span class="opt-text">Photon</span></button>
+    </div>
+  </div>
+
+  <div class="question" id="q63" data-type="mc">
+    <div class="q-header"><span class="q-num">Question 63</span><span class="q-tag per">Periodic Table</span></div>
+    <div class="q-prompt">Which element is a <strong>metalloid</strong> (has properties of both metals and nonmetals)?</div>
+    <div class="options">
+      <button class="option" data-letter="A" data-q="q63"><span class="opt-letter">A</span><span class="opt-text">Iron (Fe)</span></button>
+      <button class="option" data-letter="B" data-q="q63"><span class="opt-letter">B</span><span class="opt-text">Silicon (Si)</span></button>
+      <button class="option" data-letter="C" data-q="q63"><span class="opt-letter">C</span><span class="opt-text">Sodium (Na)</span></button>
+      <button class="option" data-letter="D" data-q="q63"><span class="opt-letter">D</span><span class="opt-text">Oxygen (O)</span></button>
+    </div>
+  </div>
+
+  <div class="question" id="q64" data-type="mc">
+    <div class="q-header"><span class="q-num">Question 64</span><span class="q-tag per">Periodic Table</span></div>
+    <div class="q-prompt">An atom of <strong>carbon (C)</strong> has atomic number 6. How many <strong>protons</strong> does it have?</div>
+    <div class="options">
+      <button class="option" data-letter="A" data-q="q64"><span class="opt-letter">A</span><span class="opt-text">0</span></button>
+      <button class="option" data-letter="B" data-q="q64"><span class="opt-letter">B</span><span class="opt-text">6</span></button>
+      <button class="option" data-letter="C" data-q="q64"><span class="opt-letter">C</span><span class="opt-text">12</span></button>
+      <button class="option" data-letter="D" data-q="q64"><span class="opt-letter">D</span><span class="opt-text">14</span></button>
+    </div>
+  </div>
+
+  <div class="question" id="q65" data-type="mc">
+    <div class="q-header"><span class="q-num">Question 65</span><span class="q-tag per">Periodic Table</span></div>
+    <div class="q-prompt">Most of the elements on the periodic table are classified as:</div>
+    <div class="options">
+      <button class="option" data-letter="A" data-q="q65"><span class="opt-letter">A</span><span class="opt-text">Nonmetals</span></button>
+      <button class="option" data-letter="B" data-q="q65"><span class="opt-letter">B</span><span class="opt-text">Noble gases</span></button>
+      <button class="option" data-letter="C" data-q="q65"><span class="opt-letter">C</span><span class="opt-text">Metals</span></button>
+      <button class="option" data-letter="D" data-q="q65"><span class="opt-letter">D</span><span class="opt-text">Metalloids</span></button>
+    </div>
+  </div>
+
+  <!-- ======================================================== -->
+  <!-- SECTION B · FILL-IN-THE-BLANK (Q66–Q75)                  -->
+  <!-- ======================================================== -->
+  <div class="section-divider"><span>Section B · Fill-in-the-Blank (66–75)</span></div>
+
+  <div class="question" id="q66" data-type="fill">
+    <div class="q-header"><span class="q-num">Question 66</span><span class="q-tag fill">Fill-in · Cells</span></div>
+    <div class="q-prompt">The organelle that acts as the <strong>"control center"</strong> of a eukaryotic cell and contains the cell's DNA is the _____.</div>
+    <div class="fill-row"><input class="fill-input" data-q="q66" type="text" placeholder="Your answer..." autocomplete="off"></div>
+  </div>
+
+  <div class="question" id="q67" data-type="fill">
+    <div class="q-header"><span class="q-num">Question 67</span><span class="q-tag fill">Fill-in · Periodic Table</span></div>
+    <div class="q-prompt">The chemical <strong>symbol</strong> for the element sodium is _____.</div>
+    <div class="fill-row"><input class="fill-input" data-q="q67" type="text" placeholder="Your answer..." autocomplete="off"></div>
+  </div>
+
+  <div class="question" id="q68" data-type="fill">
+    <div class="q-header"><span class="q-num">Question 68</span><span class="q-tag fill">Fill-in · Plate Tectonics</span></div>
+    <div class="q-prompt">The supercontinent that existed about 250 million years ago, before the modern continents drifted to where they are today, was called _____.</div>
+    <div class="fill-row"><input class="fill-input" data-q="q68" type="text" placeholder="Your answer..." autocomplete="off"></div>
+  </div>
+
+  <div class="question" id="q69" data-type="fill">
+    <div class="q-header"><span class="q-num">Question 69</span><span class="q-tag fill">Fill-in · Periodic Table</span></div>
+    <div class="q-prompt">An atom of oxygen has an atomic number of 8. The number of <strong>protons</strong> in the nucleus of this atom is _____.</div>
+    <div class="fill-row"><input class="fill-input" data-q="q69" type="text" placeholder="Your answer..." autocomplete="off"></div>
+  </div>
+
+  <div class="question" id="q70" data-type="fill">
+    <div class="q-header"><span class="q-num">Question 70</span><span class="q-tag fill">Fill-in · Biomes</span></div>
+    <div class="q-prompt">A cold biome with permafrost (permanently frozen ground), low precipitation, and short summers, found near the Arctic Circle, is called the _____.</div>
+    <div class="fill-row"><input class="fill-input" data-q="q70" type="text" placeholder="Your answer..." autocomplete="off"></div>
+  </div>
+
+  <div class="question" id="q71" data-type="fill">
+    <div class="q-header"><span class="q-num">Question 71</span><span class="q-tag fill">Fill-in · Plate Tectonics</span></div>
+    <div class="q-prompt">The type of plate boundary at which two tectonic plates pull <strong>away</strong> from each other is called a _____ boundary.</div>
+    <div class="fill-row"><input class="fill-input" data-q="q71" type="text" placeholder="Your answer..." autocomplete="off"></div>
+  </div>
+
+  <div class="question" id="q72" data-type="fill">
+    <div class="q-header"><span class="q-num">Question 72</span><span class="q-tag fill">Fill-in · Body Systems</span></div>
+    <div class="q-prompt">The body system that pumps blood through arteries, veins, and capillaries to carry oxygen, nutrients, and wastes is called the _____ system.</div>
+    <div class="fill-row"><input class="fill-input" data-q="q72" type="text" placeholder="Your answer..." autocomplete="off"></div>
+  </div>
+
+  <div class="question" id="q73" data-type="fill">
+    <div class="q-header"><span class="q-num">Question 73</span><span class="q-tag fill">Fill-in · Non-Contact Forces</span></div>
+    <div class="q-prompt">The non-contact force that pulls every object with mass toward every other object with mass &mdash; including what holds the Moon in orbit around Earth &mdash; is _____.</div>
+    <div class="fill-row"><input class="fill-input" data-q="q73" type="text" placeholder="Your answer..." autocomplete="off"></div>
+  </div>
+
+  <div class="question" id="q74" data-type="fill">
+    <div class="q-header"><span class="q-num">Question 74</span><span class="q-tag fill">Fill-in · Cells</span></div>
+    <div class="q-prompt">The process by which plants use sunlight, water, and carbon dioxide to make their own food (glucose) is called _____.</div>
+    <div class="fill-row"><input class="fill-input" data-q="q74" type="text" placeholder="Your answer..." autocomplete="off"></div>
+  </div>
+
+  <div class="question" id="q75" data-type="fill">
+    <div class="q-header"><span class="q-num">Question 75</span><span class="q-tag fill">Fill-in · Plate Tectonics</span></div>
+    <div class="q-prompt">Wegener's idea that the continents have slowly moved over Earth's surface throughout history is called the theory of _____ _____ (two words).</div>
+    <div class="fill-row"><input class="fill-input" data-q="q75" type="text" placeholder="Your answer..." autocomplete="off"></div>
+  </div>
+
+  <!-- ======================================================== -->
+  <!-- SECTION C · FREE RESPONSE (Q76–Q80)                      -->
+  <!-- ======================================================== -->
+  <div class="section-divider"><span>Section C · Free Response (76–80)</span></div>
+
+  <div class="question" id="q76" data-type="frq">
+    <div class="q-header"><span class="q-num">Question 76</span><span class="q-tag frq">FRQ · Cells</span></div>
+    <div class="q-prompt">
+      <strong>Compare and contrast</strong> a plant cell and an animal cell.
+      <br><br><strong>(a)</strong> List at least <strong>three</strong> organelles found in BOTH plant and animal cells, and briefly describe the job of each one.
+      <br><br><strong>(b)</strong> List at least <strong>two</strong> structures found ONLY in plant cells and explain why a plant needs each one.
+      <br><br><strong>(c)</strong> Animal cells often look round or irregular while plant cells look more like rectangles or boxes. Explain <em>why</em> plant cells have this shape.
+    </div>
+    <div class="frq-work">
+      <textarea class="frq-textarea" placeholder="Write your full response here. Use complete sentences and label your parts (a), (b), (c)." data-q="q76"></textarea>
+    </div>
+  </div>
+
+  <div class="question" id="q77" data-type="frq">
+    <div class="q-header"><span class="q-num">Question 77</span><span class="q-tag frq">FRQ · Body Systems</span></div>
+    <div class="q-prompt">
+      Describe how the <strong>respiratory system</strong> and the <strong>circulatory system</strong> work TOGETHER to deliver oxygen from the air all the way to the cells in your body, and to remove carbon dioxide.
+      <br><br>In your answer, you must use and correctly explain at least <strong>five</strong> of these terms: lungs, alveoli, diaphragm, red blood cells, hemoglobin, capillaries, heart, oxygen, carbon dioxide, mitochondria.
+      <br><br>Step-by-step is fine &mdash; pretend you are tracing one molecule of oxygen from the air to a cell.
+    </div>
+    <div class="frq-work">
+      <textarea class="frq-textarea" placeholder="Walk through the path of an oxygen molecule and a carbon dioxide molecule. Use the listed vocabulary." data-q="q77"></textarea>
+    </div>
+  </div>
+
+  <div class="question" id="q78" data-type="frq">
+    <div class="q-header"><span class="q-num">Question 78</span><span class="q-tag frq">FRQ · Plate Tectonics</span></div>
+    <div class="q-prompt">
+      Compare the three main types of <strong>plate boundaries</strong>: convergent, divergent, and transform.
+      <br><br>For <strong>each</strong> of the three boundary types, your answer must include:
+      <br><strong>(a)</strong> what the plates are doing (their motion),
+      <br><strong>(b)</strong> one geological feature or event that forms there (e.g., a mountain range, mid-ocean ridge, volcano, earthquake), and
+      <br><strong>(c)</strong> one real-world example (a place on Earth).
+    </div>
+    <div class="frq-work">
+      <textarea class="frq-textarea" placeholder="Organize your answer by boundary type. You can use bullet points or paragraphs." data-q="q78"></textarea>
+    </div>
+  </div>
+
+  <div class="question" id="q79" data-type="frq">
+    <div class="q-header"><span class="q-num">Question 79</span><span class="q-tag frq">FRQ · Weather &amp; Biomes</span></div>
+    <div class="q-prompt">
+      The <strong>tropical rainforest</strong> biome has very high biodiversity, while the <strong>desert</strong> biome has much lower biodiversity.
+      <br><br><strong>(a)</strong> Identify at least <strong>three abiotic factors</strong> (non-living parts of the environment) that explain why the rainforest can support so many species.
+      <br><br><strong>(b)</strong> Identify at least <strong>two abiotic factors</strong> that make the desert a much harsher environment for life.
+      <br><br><strong>(c)</strong> Describe two <strong>adaptations</strong> &mdash; one of an organism in the rainforest, and one of an organism in the desert &mdash; and explain how each adaptation helps that organism survive.
+    </div>
+    <div class="frq-work">
+      <textarea class="frq-textarea" placeholder="Be specific. Abiotic factors include things like sunlight, temperature, water, soil, etc." data-q="q79"></textarea>
+    </div>
+  </div>
+
+  <div class="question" id="q80" data-type="frq">
+    <div class="q-header"><span class="q-num">Question 80</span><span class="q-tag frq">FRQ · Periodic Table + Forces</span></div>
+    <div class="q-prompt">
+      An atom of <strong>magnesium (Mg)</strong> has an atomic number of <span class="m">12</span> and a mass number of <span class="m">24</span>.
+      <br><br><strong>(a)</strong> How many <strong>protons</strong>, <strong>neutrons</strong>, and <strong>electrons</strong> does a <em>neutral</em> magnesium atom have? Show how you figured each one out.
+      <br><br><strong>(b)</strong> In which <strong>group</strong> and <strong>period</strong> of the periodic table is magnesium located? (You may use a periodic table.)
+      <br><br><strong>(c)</strong> Magnesium is a metal. List <strong>two</strong> general physical properties of metals.
+      <br><br><strong>(d)</strong> Two magnesium ions, each with a charge of <span class="m">+2</span>, are placed near each other. What kind of <strong>non-contact force</strong> exists between them, and is the force <strong>attractive</strong> or <strong>repulsive</strong>? Explain why, using what you know about charges.
+    </div>
+    <div class="frq-work">
+      <textarea class="frq-textarea" placeholder="Label parts (a), (b), (c), (d). Show your reasoning for (a) and (d)." data-q="q80"></textarea>
+    </div>
+  </div>
+
+  <!-- COPY SECTION -->
+  <div class="copy-section">
+    <h3>Submit Your Answers</h3>
+    <p>Click below to copy a clean, formatted version of all your answers. Paste it into Canvas, email, or anywhere else Ms. Madewell asks you to submit.</p>
+    <button class="copy-btn" id="copyBtn" onclick="copyAnswers()">
+      <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+      <span id="copyBtnText">Copy My Answers</span>
+    </button>
+    <div class="copy-status" id="copyStatus">&nbsp;</div>
+    <div class="copy-preview" id="copyPreview"></div>
+  </div>
+
+</div><!-- end .page -->
+
+<div class="scroll-top" id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+  <svg viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"/></svg>
+</div>
+
+<script>
+  // Multiple choice: click to select (toggles, can change mind)
+  document.querySelectorAll('.option').forEach(btn => {
+    btn.addEventListener('click', function() {
+      const wrapper = this.closest('.options');
+      wrapper.querySelectorAll('.option').forEach(o => o.classList.remove('selected'));
+      this.classList.add('selected');
+    });
+  });
+
+  // Progress bar + scroll-to-top
+  window.addEventListener('scroll', () => {
+    const scrolled = window.scrollY;
+    const total = document.documentElement.scrollHeight - window.innerHeight;
+    const pct = total > 0 ? scrolled / total : 0;
+    document.getElementById('progressBar').style.transform = `scaleX(${pct})`;
+    const st = document.getElementById('scrollTop');
+    if (scrolled > 300) st.classList.add('visible'); else st.classList.remove('visible');
+  });
+
+  function buildAnswerText() {
+    const name = document.getElementById('studentName').value.trim() || '[name not entered]';
+    const period = document.getElementById('studentPeriod').value.trim() || '[period/date not entered]';
+    const date = new Date().toLocaleDateString('en-US', { year:'numeric', month:'short', day:'numeric' });
+
+    let out = '';
+    out += '7TH GRADE LIFE SCIENCE · CUMULATIVE FINAL\n';
+    out += 'Ms. Madewell · Room 501 · ALA Vistancia\n';
+    out += '═══════════════════════════════════════\n';
+    out += `Name:      ${name}\n`;
+    out += `Period:    ${period}\n`;
+    out += `Submitted: ${date}\n`;
+    out += '═══════════════════════════════════════\n\n';
+
+    // Section A: MC (Q1-Q65)
+    out += '── SECTION A · MULTIPLE CHOICE ──\n';
+    for (let i = 1; i <= 65; i++) {
+      const q = document.getElementById('q' + i);
+      const sel = q ? q.querySelector('.option.selected') : null;
+      const ans = sel ? sel.dataset.letter : '—';
+      out += `Q${String(i).padStart(2, ' ')}: ${ans}\n`;
+    }
+
+    // Section B: Fill-in (Q66-Q75)
+    out += '\n── SECTION B · FILL-IN ──\n';
+    for (let i = 66; i <= 75; i++) {
+      const input = document.querySelector(`input.fill-input[data-q="q${i}"]`);
+      const v = input ? (input.value.trim() || '—') : '—';
+      out += `Q${i}: ${v}\n`;
+    }
+
+    // Section C: FRQ (Q76-Q80)
+    out += '\n── SECTION C · FREE RESPONSE ──\n';
+    for (let i = 76; i <= 80; i++) {
+      const ta = document.querySelector(`textarea[data-q="q${i}"]`);
+      const text = ta ? (ta.value.trim() || '[no response]') : '[no response]';
+      out += `\nQ${i}:\n${text}\n`;
+      out += '─'.repeat(40) + '\n';
+    }
+
+    return out;
+  }
+
+  async function copyAnswers() {
+    const text = buildAnswerText();
+    const btn = document.getElementById('copyBtn');
+    const btnText = document.getElementById('copyBtnText');
+    const status = document.getElementById('copyStatus');
+    const preview = document.getElementById('copyPreview');
+
+    preview.textContent = text;
+    preview.classList.add('shown');
+
+    try {
+      await navigator.clipboard.writeText(text);
+      btn.classList.add('copied');
+      btnText.textContent = 'Copied to Clipboard ✓';
+      status.textContent = 'Paste your answers into Canvas, email, or wherever Ms. Madewell asked.';
+      status.className = 'copy-status success';
+      setTimeout(() => {
+        btn.classList.remove('copied');
+        btnText.textContent = 'Copy My Answers';
+      }, 3500);
+    } catch (err) {
+      status.textContent = 'Auto-copy blocked. Select all the text below (Ctrl+A) and copy (Ctrl+C).';
+      status.className = 'copy-status';
+      const range = document.createRange();
+      range.selectNodeContents(preview);
+      const sel = window.getSelection();
+      sel.removeAllRanges();
+      sel.addRange(range);
+    }
+  }
+</script>
+</body>
+</html>

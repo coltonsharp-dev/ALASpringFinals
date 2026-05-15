@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>9th Grade Chemistry · Answer Key — TEACHER USE ONLY</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=IBM+Plex+Mono:wght@400;600&family=Source+Serif+4:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#080806;--bg2:#0f0e0c;--bg3:#161410;--bg4:#1c1a14;
+  --gold:#c9a84c;--gold2:#e8c870;
+  --teal:#4fc3f7;--purple:#a78be8;--orange:#e8a870;
+  --green:#6ab87a;--red:#c85858;
+  --text:#e8e0cc;--text2:#b8b098;--text3:#787060;--text4:#504840;
+  --border:rgba(201,168,76,.2);--border2:rgba(201,168,76,.1);
+  --ff-head:'Playfair Display',serif;
+  --ff-mono:'IBM Plex Mono',monospace;
+  --ff-body:'Source Serif 4',serif;
+}
+body{background:var(--bg);color:var(--text);font-family:var(--ff-body);font-weight:300;line-height:1.65;min-height:100vh}
+
+.teacher-banner{background:#1a0505;border-bottom:2px solid var(--red);padding:.6rem 1.5rem;text-align:center;font-family:var(--ff-mono);font-size:.65rem;letter-spacing:.2em;color:var(--red)}
+.site-header{background:linear-gradient(180deg,var(--bg2) 0%,var(--bg) 100%);border-bottom:1px solid var(--border);padding:2rem 2rem 2rem;text-align:center}
+.eyebrow{font-family:var(--ff-mono);font-size:.7rem;letter-spacing:.15em;color:var(--teal);margin-bottom:.6rem}
+.site-title{font-family:var(--ff-head);font-size:clamp(1.8rem,4vw,2.6rem);font-weight:700;margin-bottom:.4rem}
+.site-sub{font-family:var(--ff-mono);font-size:.65rem;letter-spacing:.2em;color:var(--text3)}
+
+.content{max-width:900px;margin:0 auto;padding:2rem 1.5rem 5rem}
+
+/* QUICK REFERENCE */
+.qr-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:var(--border2);border:1px solid var(--border2);border-radius:8px;overflow:hidden;margin-bottom:3rem}
+.qr-section{background:var(--bg3);padding:1.2rem}
+.qr-section-title{font-family:var(--ff-mono);font-size:.6rem;letter-spacing:.15em;color:var(--text3);margin-bottom:.8rem;padding-bottom:.4rem;border-bottom:1px solid var(--border2)}
+.qr-row{display:flex;align-items:baseline;gap:.6rem;margin-bottom:.35rem}
+.qr-num{font-family:var(--ff-mono);font-size:.65rem;color:var(--text3);min-width:2rem;flex-shrink:0}
+.qr-ans{font-family:var(--ff-mono);font-size:.72rem;font-weight:600;color:var(--green)}
+.qr-lbl{font-size:.78rem;color:var(--text2)}
+@media(max-width:700px){.qr-grid{grid-template-columns:1fr}}
+
+/* SECTION HEADERS */
+.section-header{margin:3rem 0 1.5rem;padding-bottom:1rem;border-bottom:1px solid var(--border)}
+.section-tag{font-family:var(--ff-mono);font-size:.6rem;letter-spacing:.18em;color:var(--text3);margin-bottom:.3rem}
+.section-title{font-family:var(--ff-head);font-size:1.5rem;font-weight:700}
+
+.lesson-divider{display:flex;align-items:center;gap:1rem;margin:2rem 0 1.2rem}
+.ld-line{flex:1;height:1px}
+.ld-label{font-family:var(--ff-mono);font-size:.6rem;letter-spacing:.18em;white-space:nowrap}
+
+/* ANSWER CARDS */
+.ak-card{background:var(--bg3);border:1px solid var(--border2);border-radius:8px;padding:1.3rem 1.5rem;margin-bottom:.9rem}
+.ak-head{display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;margin-bottom:.8rem}
+.ak-qnum{font-family:var(--ff-mono);font-size:.6rem;letter-spacing:.12em;color:var(--text3)}
+.ak-badge{font-family:var(--ff-mono);font-size:.65rem;letter-spacing:.1em;font-weight:600;background:#0e1f0e;color:#6ab87a;border:1px solid #2a4a2e;border-radius:4px;padding:.2rem .6rem;white-space:nowrap;flex-shrink:0}
+.ak-q{font-size:.9rem;color:var(--text2);line-height:1.6;margin-bottom:.9rem}
+.ak-answer{background:#0a1a0b;border:1px solid #2a4a2a;border-radius:6px;padding:.8rem 1rem;margin-bottom:.7rem}
+.ak-ans-label{font-family:var(--ff-mono);font-size:.55rem;letter-spacing:.15em;color:#4a8a4a;margin-bottom:.3rem}
+.ak-ans-text{font-family:var(--ff-mono);font-size:.85rem;color:#90d890;font-weight:600}
+.ak-ans-detail{font-size:.85rem;color:var(--text2);line-height:1.5;margin-top:.4rem}
+.ak-explain{font-size:.85rem;color:var(--text3);line-height:1.6;font-style:italic}
+
+/* CALC MODELS */
+.calc-block{background:#060c10;border:1px solid rgba(79,195,247,.28);border-radius:6px;padding:.9rem 1.1rem;margin:.7rem 0;font-family:var(--ff-mono);font-size:.72rem;line-height:1.9}
+.cb-title{font-size:.58rem;letter-spacing:.18em;color:var(--teal);margin-bottom:.6rem;border-bottom:1px solid rgba(79,195,247,.15);padding-bottom:.35rem}
+.cb-step{color:var(--text2)}.cb-divider{color:var(--text4)}.cb-result{color:var(--green);font-weight:600}
+
+/* TERMS REFERENCE */
+.terms-grid{display:grid;grid-template-columns:1fr 1fr;gap:.7rem;margin-bottom:2rem}
+@media(max-width:600px){.terms-grid{grid-template-columns:1fr}}
+.term-card{background:var(--bg3);border:1px solid var(--border2);border-radius:6px;padding:.9rem 1rem}
+.term-word{font-family:var(--ff-mono);font-size:.7rem;letter-spacing:.1em;font-weight:600;margin-bottom:.3rem}
+.term-def{font-size:.82rem;color:var(--text2);line-height:1.5}
+
+@media print{
+  body{background:#fff;color:#111;font-size:10pt}
+  .teacher-banner{background:#fff;border-bottom:2px solid #c00;color:#c00}
+  :root{--bg:#fff;--bg2:#fafafa;--bg3:#f0f0f0;--bg4:#e8e8e8;--text:#111;--text2:#333;--text3:#555;--border:rgba(0,0,0,.2);--border2:rgba(0,0,0,.1)}
+  .site-header{background:#fff!important}
+  .ak-answer{background:#e8f5e9!important;border-color:#4caf50!important}
+  .ak-ans-text{color:#2e7d32!important}
+  .calc-block{background:#e3f2fd!important;border-color:#1976d2!important}
+  .cb-result{color:#1565c0!important}
+  @page{size:letter;margin:.5in .6in}
+  .ak-card{page-break-inside:avoid}
+  .section-header{page-break-before:always}
+}
+</style>
+</head>
+<body>
+
+<div class="teacher-banner">⚠ TEACHER USE ONLY — ANSWER KEY — DO NOT DISTRIBUTE ⚠</div>
+
+<header class="site-header">
+  <div class="eyebrow">9th Grade Chemistry · Non-AP · Ala Vistancia · Mr/Ms Sharp</div>
+  <h1 class="site-title">Foundations of Chemistry — Answer Key</h1>
+  <div class="site-sub">SECTION A: VOCAB (17) &nbsp;·&nbsp; SECTION B: MCQ (20) &nbsp;·&nbsp; SECTION C: FIB (13) &nbsp;·&nbsp; TOTAL: 50 PTS</div>
+</header>
+
+<div class="content">
+
+  <!-- QUICK REFERENCE GRID -->
+  <div class="section-header" style="margin-top:2rem">
+    <div class="section-tag">QUICK REFERENCE</div>
+    <div class="section-title">All Answers At a Glance</div>
+  </div>
+
+  <div class="qr-grid">
+    <!-- Section A -->
+    <div class="qr-section">
+      <div class="qr-section-title">SECTION A · VOCABULARY (Q1–Q17)</div>
+      <div class="qr-row"><span class="qr-num">Q1</span><span class="qr-ans">C.</span><span class="qr-lbl">atom</span></div>
+      <div class="qr-row"><span class="qr-num">Q2</span><span class="qr-ans">B.</span><span class="qr-lbl">element</span></div>
+      <div class="qr-row"><span class="qr-num">Q3</span><span class="qr-ans">E.</span><span class="qr-lbl">compound</span></div>
+      <div class="qr-row"><span class="qr-num">Q4</span><span class="qr-ans">D.</span><span class="qr-lbl">mixture</span></div>
+      <div class="qr-row"><span class="qr-num">Q5</span><span class="qr-ans">E.</span><span class="qr-lbl">proton</span></div>
+      <div class="qr-row"><span class="qr-num">Q6</span><span class="qr-ans">F.</span><span class="qr-lbl">neutron</span></div>
+      <div class="qr-row"><span class="qr-num">Q7</span><span class="qr-ans">E.</span><span class="qr-lbl">electron</span></div>
+      <div class="qr-row"><span class="qr-num">Q8</span><span class="qr-ans">E.</span><span class="qr-lbl">atomic number</span></div>
+      <div class="qr-row"><span class="qr-num">Q9</span><span class="qr-ans">F.</span><span class="qr-lbl">mass number</span></div>
+      <div class="qr-row"><span class="qr-num">Q10</span><span class="qr-ans">E.</span><span class="qr-lbl">isotopes</span></div>
+      <div class="qr-row"><span class="qr-num">Q11</span><span class="qr-ans">F.</span><span class="qr-lbl">ion</span></div>
+      <div class="qr-row"><span class="qr-num">Q12</span><span class="qr-ans">D.</span><span class="qr-lbl">valence</span></div>
+      <div class="qr-row"><span class="qr-num">Q13</span><span class="qr-ans">E.</span><span class="qr-lbl">covalent</span></div>
+      <div class="qr-row"><span class="qr-num">Q14</span><span class="qr-ans">F.</span><span class="qr-lbl">ionic</span></div>
+      <div class="qr-row"><span class="qr-num">Q15</span><span class="qr-ans">C.</span><span class="qr-lbl">mole</span></div>
+      <div class="qr-row"><span class="qr-num">Q16</span><span class="qr-ans">E.</span><span class="qr-lbl">reactant</span></div>
+      <div class="qr-row"><span class="qr-num">Q17</span><span class="qr-ans">F.</span><span class="qr-lbl">product</span></div>
+    </div>
+    <!-- Section B -->
+    <div class="qr-section">
+      <div class="qr-section-title">SECTION B · MULTIPLE CHOICE (Q18–Q37)</div>
+      <div class="qr-row"><span class="qr-num">Q18</span><span class="qr-ans">D.</span><span class="qr-lbl">Ice melting</span></div>
+      <div class="qr-row"><span class="qr-num">Q19</span><span class="qr-ans">C.</span><span class="qr-lbl">Homogeneous mixture</span></div>
+      <div class="qr-row"><span class="qr-num">Q20</span><span class="qr-ans">E.</span><span class="qr-lbl">9.0 g/cm³ ★</span></div>
+      <div class="qr-row"><span class="qr-num">Q21</span><span class="qr-ans">E.</span><span class="qr-lbl">In the nucleus</span></div>
+      <div class="qr-row"><span class="qr-num">Q22</span><span class="qr-ans">D.</span><span class="qr-lbl">35 ★</span></div>
+      <div class="qr-row"><span class="qr-num">Q23</span><span class="qr-ans">C.</span><span class="qr-lbl">Proton</span></div>
+      <div class="qr-row"><span class="qr-num">Q24</span><span class="qr-ans">F.</span><span class="qr-lbl">Chemical properties</span></div>
+      <div class="qr-row"><span class="qr-num">Q25</span><span class="qr-ans">F.</span><span class="qr-lbl">Argon (Ar)</span></div>
+      <div class="qr-row"><span class="qr-num">Q26</span><span class="qr-ans">E.</span><span class="qr-lbl">Atomic number</span></div>
+      <div class="qr-row"><span class="qr-num">Q27</span><span class="qr-ans">F.</span><span class="qr-lbl">Ionic bond</span></div>
+      <div class="qr-row"><span class="qr-num">Q28</span><span class="qr-ans">E.</span><span class="qr-lbl">4 valence e⁻</span></div>
+      <div class="qr-row"><span class="qr-num">Q29</span><span class="qr-ans">C.</span><span class="qr-lbl">Bent (V-shaped)</span></div>
+      <div class="qr-row"><span class="qr-num">Q30</span><span class="qr-ans">F.</span><span class="qr-lbl">Mass and atoms</span></div>
+      <div class="qr-row"><span class="qr-num">Q31</span><span class="qr-ans">F.</span><span class="qr-lbl">2H₂O₂ → 2H₂O+O₂</span></div>
+      <div class="qr-row"><span class="qr-num">Q32</span><span class="qr-ans">E.</span><span class="qr-lbl">Moles/molecules</span></div>
+      <div class="qr-row"><span class="qr-num">Q33</span><span class="qr-ans">D.</span><span class="qr-lbl">1 mole</span></div>
+      <div class="qr-row"><span class="qr-num">Q34</span><span class="qr-ans">F.</span><span class="qr-lbl">18.0 g/mol ★</span></div>
+      <div class="qr-row"><span class="qr-num">Q35</span><span class="qr-ans">F.</span><span class="qr-lbl">2.0 mol ★</span></div>
+      <div class="qr-row"><span class="qr-num">Q36</span><span class="qr-ans">E.</span><span class="qr-lbl">Liquid</span></div>
+      <div class="qr-row"><span class="qr-num">Q37</span><span class="qr-ans">F.</span><span class="qr-lbl">Increases</span></div>
+    </div>
+    <!-- Section C -->
+    <div class="qr-section">
+      <div class="qr-section-title">SECTION C · FILL-IN-BLANK (Q38–Q50)</div>
+      <div class="qr-row"><span class="qr-num">Q38</span><span class="qr-ans">C.</span><span class="qr-lbl">protons</span></div>
+      <div class="qr-row"><span class="qr-num">Q39</span><span class="qr-ans">D.</span><span class="qr-lbl">ion</span></div>
+      <div class="qr-row"><span class="qr-num">Q40</span><span class="qr-ans">C.</span><span class="qr-lbl">isotopes</span></div>
+      <div class="qr-row"><span class="qr-num">Q41</span><span class="qr-ans">D.</span><span class="qr-lbl">covalent</span></div>
+      <div class="qr-row"><span class="qr-num">Q42</span><span class="qr-ans">D.</span><span class="qr-lbl">group</span></div>
+      <div class="qr-row"><span class="qr-num">Q43</span><span class="qr-ans">E.</span><span class="qr-lbl">reactants</span></div>
+      <div class="qr-row"><span class="qr-num">Q44</span><span class="qr-ans">E.</span><span class="qr-lbl">coefficients</span></div>
+      <div class="qr-row"><span class="qr-num">Q45</span><span class="qr-ans">E.</span><span class="qr-lbl">physical</span></div>
+      <div class="qr-row"><span class="qr-num">Q46</span><span class="qr-ans">E.</span><span class="qr-lbl">nucleus</span></div>
+      <div class="qr-row"><span class="qr-num">Q47</span><span class="qr-ans">C.</span><span class="qr-lbl">mole</span></div>
+      <div class="qr-row"><span class="qr-num">Q48</span><span class="qr-ans">D.</span><span class="qr-lbl">44 g/mol ★</span></div>
+      <div class="qr-row"><span class="qr-num">Q49</span><span class="qr-ans">E.</span><span class="qr-lbl">aqueous</span></div>
+      <div class="qr-row"><span class="qr-num">Q50</span><span class="qr-ans">E.</span><span class="qr-lbl">metals</span></div>
+      <div style="margin-top:1.2rem;font-family:var(--ff-mono);font-size:.55rem;color:var(--text4)">★ = calculation model provided</div>
+    </div>
+  </div>
+
+  <!-- ══════════ SECTION A: VOCABULARY ══════════ -->
+  <div class="section-header">
+    <div class="section-tag">SECTION A · 17 POINTS · 1 POINT EACH</div>
+    <div class="section-title">Vocabulary — Answer Key</div>
+  </div>
+
+  <!-- Terms Reference Grid (for teacher) -->
+  <div class="terms-grid">
+    <div class="term-card"><div class="term-word" style="color:#c9a84c">ATOM</div><div class="term-def">Smallest particle of an element retaining its chemical properties.</div></div>
+    <div class="term-card"><div class="term-word" style="color:#c9a84c">ELEMENT</div><div class="term-def">Pure substance of one type of atom; cannot be chemically broken down further.</div></div>
+    <div class="term-card"><div class="term-word" style="color:#c9a84c">COMPOUND</div><div class="term-def">Pure substance of 2+ elements chemically bonded in a fixed ratio.</div></div>
+    <div class="term-card"><div class="term-word" style="color:#c9a84c">MIXTURE</div><div class="term-def">2+ substances NOT chemically combined; each retains own properties.</div></div>
+    <div class="term-card"><div class="term-word" style="color:#4fc3f7">PROTON</div><div class="term-def">Positive (+) subatomic particle in the nucleus. Count = atomic number.</div></div>
+    <div class="term-card"><div class="term-word" style="color:#4fc3f7">NEUTRON</div><div class="term-def">Neutral subatomic particle in the nucleus. Changing neutrons → isotopes.</div></div>
+    <div class="term-card"><div class="term-word" style="color:#4fc3f7">ELECTRON</div><div class="term-def">Negative (−) subatomic particle in orbitals around the nucleus.</div></div>
+    <div class="term-card"><div class="term-word" style="color:#4fc3f7">ATOMIC NUMBER</div><div class="term-def">Number of protons in the nucleus. Unique to each element; never changes.</div></div>
+    <div class="term-card"><div class="term-word" style="color:#4fc3f7">MASS NUMBER</div><div class="term-def">Protons + Neutrons in the nucleus.</div></div>
+    <div class="term-card"><div class="term-word" style="color:#4fc3f7">ISOTOPE</div><div class="term-def">Same element (same protons), different neutron count, different mass number.</div></div>
+    <div class="term-card"><div class="term-word" style="color:#4fc3f7">ION</div><div class="term-def">Atom that gained electrons (anion, −) or lost electrons (cation, +).</div></div>
+    <div class="term-card"><div class="term-word" style="color:#a78be8">VALENCE ELECTRONS</div><div class="term-def">Outermost electrons; responsible for chemical bonding.</div></div>
+    <div class="term-card"><div class="term-word" style="color:#a78be8">COVALENT BOND</div><div class="term-def">Bond formed by SHARING electrons; usually between nonmetals.</div></div>
+    <div class="term-card"><div class="term-word" style="color:#a78be8">IONIC BOND</div><div class="term-def">Bond formed by TRANSFERRING electrons; metal to nonmetal.</div></div>
+    <div class="term-card"><div class="term-word" style="color:#e8a870">MOLE</div><div class="term-def">SI unit for amount; 1 mol = 6.022 × 10²³ particles (Avogadro's number).</div></div>
+    <div class="term-card"><div class="term-word" style="color:#e8a870">REACTANT</div><div class="term-def">Starting substance consumed in a reaction; LEFT side of equation.</div></div>
+    <div class="term-card"><div class="term-word" style="color:#e8a870">PRODUCT</div><div class="term-def">New substance formed in a reaction; RIGHT side of equation.</div></div>
+  </div>
+
+  <!-- ══════════ SECTION B: MCQ DETAILED KEY ══════════ -->
+  <div class="section-header">
+    <div class="section-tag">SECTION B · 20 POINTS · 1 POINT EACH</div>
+    <div class="section-title">Multiple Choice — Answer Key with Rationale</div>
+  </div>
+
+  <!-- L01 -->
+  <div class="lesson-divider">
+    <div class="ld-line" style="background:linear-gradient(90deg,#c9a84c,transparent)"></div>
+    <div class="ld-label" style="color:#c9a84c">L01 · MATTER &amp; MEASUREMENT</div>
+    <div class="ld-line" style="background:linear-gradient(90deg,transparent,#c9a84c)"></div>
+  </div>
+
+  <div class="ak-card">
+    <div class="ak-head">
+      <div class="ak-qnum">Q18 · Physical vs. Chemical Change</div>
+      <div class="ak-badge">D. Ice melting</div>
+    </div>
+    <div class="ak-q">Which of the following is an example of a physical change?</div>
+    <div class="ak-answer">
+      <div class="ak-ans-label">CORRECT ANSWER</div>
+      <div class="ak-ans-text">D. Ice melting into liquid water</div>
+      <div class="ak-ans-detail">Physical change: only the state of matter changes (solid → liquid). H₂O remains H₂O. No new substances are formed. Rusting (A), burning (B), curdling (C), rotting (E), and the baking soda reaction (F) all produce new chemical substances — those are chemical changes.</div>
+    </div>
+  </div>
+
+  <div class="ak-card">
+    <div class="ak-head">
+      <div class="ak-qnum">Q19 · Classification of Matter</div>
+      <div class="ak-badge">C. Homogeneous mixture</div>
+    </div>
+    <div class="ak-q">Salt water (NaCl dissolved in H₂O) is best classified as a...</div>
+    <div class="ak-answer">
+      <div class="ak-ans-label">CORRECT ANSWER</div>
+      <div class="ak-ans-text">C. Homogeneous mixture</div>
+      <div class="ak-ans-detail">Salt water contains two substances not chemically combined (NaCl + H₂O). The salt can be recovered by evaporation. Composition is uniform throughout (homogeneous). It is NOT a pure compound because the ratio of salt to water can vary.</div>
+    </div>
+  </div>
+
+  <div class="ak-card">
+    <div class="ak-head">
+      <div class="ak-qnum">Q20 · Density Calculation ★</div>
+      <div class="ak-badge">E. 9.0 g/cm³</div>
+    </div>
+    <div class="ak-q">A metal sample: mass = 45.0 g, volume = 5.0 cm³. Density?</div>
+    <div class="calc-block">
+      <div class="cb-title">DENSITY CALCULATION — FULL WORK</div>
+      <div class="cb-step">Formula:    D = m ÷ v</div>
+      <div class="cb-step">Values:     m = 45.0 g    |    v = 5.0 cm³</div>
+      <div class="cb-step">Solve:      D = 45.0 ÷ 5.0</div>
+      <div class="cb-result">Answer:     D = 9.0 g/cm³</div>
+    </div>
+    <div class="ak-explain">Common errors: dividing volume by mass (gives 0.11) or multiplying (gives 225). Always identify the formula first: D = m/v.</div>
+  </div>
+
+  <!-- L02 -->
+  <div class="lesson-divider">
+    <div class="ld-line" style="background:linear-gradient(90deg,#4fc3f7,transparent)"></div>
+    <div class="ld-label" style="color:#4fc3f7">L02 · ATOMIC STRUCTURE</div>
+    <div class="ld-line" style="background:linear-gradient(90deg,transparent,#4fc3f7)"></div>
+  </div>
+
+  <div class="ak-card">
+    <div class="ak-head">
+      <div class="ak-qnum">Q21 · Location of Atomic Mass</div>
+      <div class="ak-badge">E. In the nucleus</div>
+    </div>
+    <div class="ak-q">Where is the majority of an atom's mass located?</div>
+    <div class="ak-answer">
+      <div class="ak-ans-label">CORRECT ANSWER</div>
+      <div class="ak-ans-text">E. In the nucleus</div>
+      <div class="ak-ans-detail">Protons (~1 amu each) and neutrons (~1 amu each) are both in the nucleus. Electrons are ~1/1836 the mass of a proton — negligible. Rutherford's gold-foil experiment confirmed that nearly all mass is concentrated in a tiny, dense nucleus.</div>
+    </div>
+  </div>
+
+  <div class="ak-card">
+    <div class="ak-head">
+      <div class="ak-qnum">Q22 · Mass Number Calculation ★</div>
+      <div class="ak-badge">D. 35</div>
+    </div>
+    <div class="ak-q">An atom has 17 protons and 18 neutrons. Mass number?</div>
+    <div class="calc-block">
+      <div class="cb-title">MASS NUMBER CALCULATION — FULL WORK</div>
+      <div class="cb-step">Formula:    Mass Number = Protons + Neutrons</div>
+      <div class="cb-step">Values:     Protons = 17    |    Neutrons = 18</div>
+      <div class="cb-step">Solve:      17 + 18</div>
+      <div class="cb-result">Answer:     Mass Number = 35     (Chlorine-35, ³⁵Cl)</div>
+    </div>
+    <div class="ak-explain">Note: atomic number (17) = element identity (Chlorine). Mass number (35) = this specific isotope.</div>
+  </div>
+
+  <div class="ak-card">
+    <div class="ak-head">
+      <div class="ak-qnum">Q23 · Element Identity</div>
+      <div class="ak-badge">C. Proton</div>
+    </div>
+    <div class="ak-q">Which subatomic particle determines the identity of an atom?</div>
+    <div class="ak-answer">
+      <div class="ak-ans-label">CORRECT ANSWER</div>
+      <div class="ak-ans-text">C. Proton (via atomic number)</div>
+      <div class="ak-ans-detail">Change proton count → different element. Change neutrons → isotope of the SAME element. Change electrons → ion of the SAME element. The atomic number (proton count) is the defining characteristic.</div>
+    </div>
+  </div>
+
+  <!-- L03 -->
+  <div class="lesson-divider">
+    <div class="ld-line" style="background:linear-gradient(90deg,#a78be8,transparent)"></div>
+    <div class="ld-label" style="color:#a78be8">L03 · PERIODIC TABLE</div>
+    <div class="ld-line" style="background:linear-gradient(90deg,transparent,#a78be8)"></div>
+  </div>
+
+  <div class="ak-card">
+    <div class="ak-head">
+      <div class="ak-qnum">Q24 · Groups vs. Periods</div>
+      <div class="ak-badge">F. Chemical properties</div>
+    </div>
+    <div class="ak-q">Elements in the same group share similar...</div>
+    <div class="ak-answer">
+      <div class="ak-ans-label">CORRECT ANSWER</div>
+      <div class="ak-ans-text">F. Chemical properties</div>
+      <div class="ak-ans-detail">Same group = same number of valence electrons = similar chemical behavior. Example: Group 1 (Li, Na, K) all have 1 valence electron and all react vigorously with water. Periods share the same number of electron shells, not valence electrons.</div>
+    </div>
+  </div>
+
+  <div class="ak-card">
+    <div class="ak-head">
+      <div class="ak-qnum">Q25 · Noble Gases</div>
+      <div class="ak-badge">F. Argon (Ar)</div>
+    </div>
+    <div class="ak-q">Which element is a noble gas?</div>
+    <div class="ak-answer">
+      <div class="ak-ans-label">CORRECT ANSWER</div>
+      <div class="ak-ans-text">F. Argon (Ar) — Group 18</div>
+      <div class="ak-ans-detail">Noble gases (Group 18): He, Ne, Ar, Kr, Xe, Rn. Full valence shells = chemically stable/unreactive. Distractors: N (Group 15), O (Group 16), F (Group 17/halogen), Cl (Group 17/halogen), Na (Group 1/alkali metal).</div>
+    </div>
+  </div>
+
+  <div class="ak-card">
+    <div class="ak-head">
+      <div class="ak-qnum">Q26 · Periodic Trends</div>
+      <div class="ak-badge">E. Atomic number</div>
+    </div>
+    <div class="ak-q">Moving left to right across Period 3, which property steadily increases?</div>
+    <div class="ak-answer">
+      <div class="ak-ans-label">CORRECT ANSWER</div>
+      <div class="ak-ans-text">E. Atomic number</div>
+      <div class="ak-ans-detail">Atomic number increases by exactly 1 for each element across any period — that is how the table is organized. Atomic radius DECREASES across a period (more protons pull electrons closer). Metallic character also DECREASES moving right.</div>
+    </div>
+  </div>
+
+  <!-- L04 -->
+  <div class="lesson-divider">
+    <div class="ld-line" style="background:linear-gradient(90deg,#e8a870,transparent)"></div>
+    <div class="ld-label" style="color:#e8a870">L04 · CHEMICAL BONDING</div>
+    <div class="ld-line" style="background:linear-gradient(90deg,transparent,#e8a870)"></div>
+  </div>
+
+  <div class="ak-card">
+    <div class="ak-head">
+      <div class="ak-qnum">Q27 · Ionic vs. Covalent</div>
+      <div class="ak-badge">F. Ionic bond</div>
+    </div>
+    <div class="ak-q">Which bond involves the complete TRANSFER of electrons?</div>
+    <div class="ak-answer">
+      <div class="ak-ans-label">CORRECT ANSWER</div>
+      <div class="ak-ans-text">F. Ionic bond</div>
+      <div class="ak-ans-detail">Ionic bond: electrons fully transferred from metal (loses e⁻ → cation) to nonmetal (gains e⁻ → anion). Na⁺ and Cl⁻ attract and form NaCl. Covalent bond: electrons are SHARED (not transferred).</div>
+    </div>
+  </div>
+
+  <div class="ak-card">
+    <div class="ak-head">
+      <div class="ak-qnum">Q28 · Valence Electrons of Carbon</div>
+      <div class="ak-badge">E. 4</div>
+    </div>
+    <div class="ak-q">How many valence electrons does carbon (Group 14) have?</div>
+    <div class="ak-answer">
+      <div class="ak-ans-label">CORRECT ANSWER</div>
+      <div class="ak-ans-text">E. 4 valence electrons</div>
+      <div class="ak-ans-detail">For main-group elements, the group number gives the valence electron count: Group 14 = 4 valence electrons. Carbon can form 4 bonds — fundamental to all organic chemistry and life.</div>
+    </div>
+  </div>
+
+  <div class="ak-card">
+    <div class="ak-head">
+      <div class="ak-qnum">Q29 · Molecular Shape of Water</div>
+      <div class="ak-badge">C. Bent (V-shaped)</div>
+    </div>
+    <div class="ak-q">H₂O has two lone pairs on O. What molecular shape results?</div>
+    <div class="ak-answer">
+      <div class="ak-ans-label">CORRECT ANSWER</div>
+      <div class="ak-ans-text">C. Bent (V-shaped) — ~104.5° bond angle</div>
+      <div class="ak-ans-detail">Oxygen has 4 electron groups (2 bonds + 2 lone pairs) → tetrahedral electron geometry. Molecular shape only counts ATOMS, giving bent. The lone pairs push H atoms closer together. This bent shape + electronegativity difference = polar molecule = why water has surface tension, high boiling point, etc.</div>
+    </div>
+  </div>
+
+  <!-- L05 -->
+  <div class="lesson-divider">
+    <div class="ld-line" style="background:linear-gradient(90deg,#7cb5c8,transparent)"></div>
+    <div class="ld-label" style="color:#7cb5c8">L05 · CHEMICAL REACTIONS</div>
+    <div class="ld-line" style="background:linear-gradient(90deg,transparent,#7cb5c8)"></div>
+  </div>
+
+  <div class="ak-card">
+    <div class="ak-head">
+      <div class="ak-qnum">Q30 · Law of Conservation of Mass</div>
+      <div class="ak-badge">F. Mass &amp; number of atoms</div>
+    </div>
+    <div class="ak-q">What is always conserved in a chemical reaction?</div>
+    <div class="ak-answer">
+      <div class="ak-ans-label">CORRECT ANSWER</div>
+      <div class="ak-ans-text">F. Total mass and total number of each type of atom</div>
+      <div class="ak-ans-detail">This is the Law of Conservation of Mass (Lavoisier, 1789). Matter is neither created nor destroyed. This is exactly why we balance chemical equations — the number and type of atoms on the left must equal the right.</div>
+    </div>
+  </div>
+
+  <div class="ak-card">
+    <div class="ak-head">
+      <div class="ak-qnum">Q31 · Reaction Types</div>
+      <div class="ak-badge">F. 2H₂O₂ → 2H₂O + O₂</div>
+    </div>
+    <div class="ak-q">Which represents a decomposition reaction?</div>
+    <div class="ak-answer">
+      <div class="ak-ans-label">CORRECT ANSWER</div>
+      <div class="ak-ans-text">F. 2H₂O₂ → 2H₂O + O₂ (hydrogen peroxide decomposing)</div>
+      <div class="ak-ans-detail">Decomposition: ONE compound → TWO or more products. Reaction type reference: A = synthesis, B = combustion, C = single-replacement, D = double-replacement (neutralization), E = synthesis.</div>
+    </div>
+  </div>
+
+  <div class="ak-card">
+    <div class="ak-head">
+      <div class="ak-qnum">Q32 · Coefficients vs. Subscripts</div>
+      <div class="ak-badge">E. Moles / molecules</div>
+    </div>
+    <div class="ak-q">What do coefficients in a balanced equation represent?</div>
+    <div class="ak-answer">
+      <div class="ak-ans-label">CORRECT ANSWER</div>
+      <div class="ak-ans-text">E. The number of moles (or molecules) of each substance</div>
+      <div class="ak-ans-detail">COEFFICIENT (large, in front): number of moles/molecules. SUBSCRIPT (small, inside formula): number of atoms in one molecule. NEVER change subscripts to balance — that changes the substance itself (e.g., H₂O → H₃O changes the compound).</div>
+    </div>
+  </div>
+
+  <!-- L06 -->
+  <div class="lesson-divider">
+    <div class="ld-line" style="background:linear-gradient(90deg,#f08080,transparent)"></div>
+    <div class="ld-label" style="color:#f08080">L06 · STOICHIOMETRY</div>
+    <div class="ld-line" style="background:linear-gradient(90deg,transparent,#f08080)"></div>
+  </div>
+
+  <div class="ak-card">
+    <div class="ak-head">
+      <div class="ak-qnum">Q33 · Avogadro's Number</div>
+      <div class="ak-badge">D. 1 mole of any substance</div>
+    </div>
+    <div class="ak-q">6.022 × 10²³ represents the number of particles in exactly...</div>
+    <div class="ak-answer">
+      <div class="ak-ans-label">CORRECT ANSWER</div>
+      <div class="ak-ans-text">D. 1 mole of any substance</div>
+      <div class="ak-ans-detail">By definition: 1 mole = 6.022 × 10²³ representative particles. This applies to atoms, molecules, ions, formula units, etc. Avogadro's number was chosen so that atomic mass in amu = molar mass in g/mol.</div>
+    </div>
+  </div>
+
+  <div class="ak-card">
+    <div class="ak-head">
+      <div class="ak-qnum">Q34 · Molar Mass of H₂O ★</div>
+      <div class="ak-badge">F. 18.0 g/mol</div>
+    </div>
+    <div class="ak-q">Molar mass of H₂O? (H = 1.0 g/mol, O = 16.0 g/mol)</div>
+    <div class="calc-block">
+      <div class="cb-title">MOLAR MASS — H₂O — FULL WORK</div>
+      <div class="cb-step">Formula:     MM = Σ (# atoms × atomic mass)</div>
+      <div class="cb-step">Hydrogen:    2 atoms × 1.0 g/mol  =   2.0 g/mol</div>
+      <div class="cb-step">Oxygen:      1 atom  × 16.0 g/mol =  16.0 g/mol</div>
+      <div class="cb-divider">─────────────────────────────────────────────────</div>
+      <div class="cb-result">Total MM  =  18.0 g/mol</div>
+    </div>
+    <div class="ak-explain">Common error: students add all atomic masses without multiplying by count. 2 H atoms × 1.0 = 2.0, NOT just 1.0.</div>
+  </div>
+
+  <div class="ak-card">
+    <div class="ak-head">
+      <div class="ak-qnum">Q35 · Moles from Mass ★</div>
+      <div class="ak-badge">F. 2.0 mol</div>
+    </div>
+    <div class="ak-q">How many moles in 36.0 g of water? (MM = 18.0 g/mol)</div>
+    <div class="calc-block">
+      <div class="cb-title">MOLES CALCULATION — FULL WORK</div>
+      <div class="cb-step">Formula:     n = m ÷ M</div>
+      <div class="cb-step">             n = moles   |   m = mass (g)   |   M = molar mass (g/mol)</div>
+      <div class="cb-step">Values:      m = 36.0 g   |   M = 18.0 g/mol</div>
+      <div class="cb-step">Solve:       n = 36.0 ÷ 18.0</div>
+      <div class="cb-result">Answer:      n = 2.0 mol</div>
+    </div>
+    <div class="ak-explain">Intuition check: if 1 mol = 18 g, then 36 g = 2 mol. Like: if 1 dozen = 12 eggs, 24 eggs = 2 dozen.</div>
+  </div>
+
+  <!-- L07 -->
+  <div class="lesson-divider">
+    <div class="ld-line" style="background:linear-gradient(90deg,#6ab87a,transparent)"></div>
+    <div class="ld-label" style="color:#6ab87a">L07 · STATES OF MATTER &amp; SOLUTIONS</div>
+    <div class="ld-line" style="background:linear-gradient(90deg,transparent,#6ab87a)"></div>
+  </div>
+
+  <div class="ak-card">
+    <div class="ak-head">
+      <div class="ak-qnum">Q36 · States of Matter</div>
+      <div class="ak-badge">E. Liquid</div>
+    </div>
+    <div class="ak-q">Which state has a definite volume but no definite shape?</div>
+    <div class="ak-answer">
+      <div class="ak-ans-label">CORRECT ANSWER</div>
+      <div class="ak-ans-text">E. Liquid</div>
+      <div class="ak-ans-detail">Solid: definite shape + definite volume (particles locked). Liquid: definite volume + no definite shape (particles close but can slide past each other). Gas: no definite shape + no definite volume (particles spread to fill container).</div>
+    </div>
+  </div>
+
+  <div class="ak-card">
+    <div class="ak-head">
+      <div class="ak-qnum">Q37 · Solubility &amp; Temperature</div>
+      <div class="ak-badge">F. Increases</div>
+    </div>
+    <div class="ak-q">As temperature increases, solubility of a solid solute in water...</div>
+    <div class="ak-answer">
+      <div class="ak-ans-label">CORRECT ANSWER</div>
+      <div class="ak-ans-text">F. Increases (for most solid solutes)</div>
+      <div class="ak-ans-detail">Higher temperature → faster-moving water molecules → can pull more solid solute into solution. IMPORTANT EXCEPTION to mention: solubility of gases in liquids DECREASES with temperature (warm soda goes flat faster).</div>
+    </div>
+  </div>
+
+  <!-- ══════════ SECTION C: FIB ══════════ -->
+  <div class="section-header">
+    <div class="section-tag">SECTION C · 13 POINTS · 1 POINT EACH</div>
+    <div class="section-title">Fill-in-the-Blank — Answer Key</div>
+  </div>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:.8rem">
+
+    <div class="ak-card">
+      <div class="ak-qnum">Q38 · Atomic Structure</div>
+      <div class="ak-answer" style="margin-top:.6rem">
+        <div class="ak-ans-label">CORRECT ANSWER</div>
+        <div class="ak-ans-text">C. protons</div>
+        <div class="ak-ans-detail" style="font-size:.78rem">Proton count = atomic number = element identity.</div>
+      </div>
+    </div>
+    <div class="ak-card">
+      <div class="ak-qnum">Q39 · Ions</div>
+      <div class="ak-answer" style="margin-top:.6rem">
+        <div class="ak-ans-label">CORRECT ANSWER</div>
+        <div class="ak-ans-text">D. ion</div>
+        <div class="ak-ans-detail" style="font-size:.78rem">Gains electrons → anion (−). Loses electrons → cation (+).</div>
+      </div>
+    </div>
+    <div class="ak-card">
+      <div class="ak-qnum">Q40 · Isotopes</div>
+      <div class="ak-answer" style="margin-top:.6rem">
+        <div class="ak-ans-label">CORRECT ANSWER</div>
+        <div class="ak-ans-text">C. isotopes</div>
+        <div class="ak-ans-detail" style="font-size:.78rem">Same element, same protons, different neutrons.</div>
+      </div>
+    </div>
+    <div class="ak-card">
+      <div class="ak-qnum">Q41 · Covalent Bond</div>
+      <div class="ak-answer" style="margin-top:.6rem">
+        <div class="ak-ans-label">CORRECT ANSWER</div>
+        <div class="ak-ans-text">D. covalent</div>
+        <div class="ak-ans-detail" style="font-size:.78rem">Sharing = covalent. Transferring = ionic.</div>
+      </div>
+    </div>
+    <div class="ak-card">
+      <div class="ak-qnum">Q42 · Groups</div>
+      <div class="ak-answer" style="margin-top:.6rem">
+        <div class="ak-ans-label">CORRECT ANSWER</div>
+        <div class="ak-ans-text">D. group</div>
+        <div class="ak-ans-detail" style="font-size:.78rem">Group = column. Period = row.</div>
+      </div>
+    </div>
+    <div class="ak-card">
+      <div class="ak-qnum">Q43 · Reactants</div>
+      <div class="ak-answer" style="margin-top:.6rem">
+        <div class="ak-ans-label">CORRECT ANSWER</div>
+        <div class="ak-ans-text">E. reactants</div>
+        <div class="ak-ans-detail" style="font-size:.78rem">Left of arrow = reactants. Right = products.</div>
+      </div>
+    </div>
+    <div class="ak-card">
+      <div class="ak-qnum">Q44 · Coefficients</div>
+      <div class="ak-answer" style="margin-top:.6rem">
+        <div class="ak-ans-label">CORRECT ANSWER</div>
+        <div class="ak-ans-text">E. coefficients</div>
+        <div class="ak-ans-detail" style="font-size:.78rem">Never change subscripts when balancing.</div>
+      </div>
+    </div>
+    <div class="ak-card">
+      <div class="ak-qnum">Q45 · Physical Change</div>
+      <div class="ak-answer" style="margin-top:.6rem">
+        <div class="ak-ans-label">CORRECT ANSWER</div>
+        <div class="ak-ans-text">E. physical</div>
+        <div class="ak-ans-detail" style="font-size:.78rem">No new substance formed; salt recoverable by evaporation.</div>
+      </div>
+    </div>
+    <div class="ak-card">
+      <div class="ak-qnum">Q46 · Nucleus</div>
+      <div class="ak-answer" style="margin-top:.6rem">
+        <div class="ak-ans-label">CORRECT ANSWER</div>
+        <div class="ak-ans-text">E. nucleus</div>
+        <div class="ak-ans-detail" style="font-size:.78rem">Contains protons + neutrons; holds nearly all atomic mass.</div>
+      </div>
+    </div>
+    <div class="ak-card">
+      <div class="ak-qnum">Q47 · The Mole</div>
+      <div class="ak-answer" style="margin-top:.6rem">
+        <div class="ak-ans-label">CORRECT ANSWER</div>
+        <div class="ak-ans-text">C. mole</div>
+        <div class="ak-ans-detail" style="font-size:.78rem">1 mole = 6.022 × 10²³ particles (Avogadro's number).</div>
+      </div>
+    </div>
+    <div class="ak-card" style="grid-column:1/-1">
+      <div class="ak-qnum">Q48 · Molar Mass of CO₂ ★</div>
+      <div class="calc-block" style="margin-top:.7rem">
+        <div class="cb-title">MOLAR MASS — CO₂ — FULL WORK</div>
+        <div class="cb-step">Carbon:     1 atom  × 12 g/mol  =  12 g/mol</div>
+        <div class="cb-step">Oxygen:     2 atoms × 16 g/mol  =  32 g/mol</div>
+        <div class="cb-divider">─────────────────────────────────────────</div>
+        <div class="cb-result">Total MM  =  44 g/mol   →   Answer: D. 44</div>
+      </div>
+    </div>
+    <div class="ak-card">
+      <div class="ak-qnum">Q49 · Aqueous Solution</div>
+      <div class="ak-answer" style="margin-top:.6rem">
+        <div class="ak-ans-label">CORRECT ANSWER</div>
+        <div class="ak-ans-text">E. aqueous</div>
+        <div class="ak-ans-detail" style="font-size:.78rem">Aqueous = water as the solvent (Latin: aqua).</div>
+      </div>
+    </div>
+    <div class="ak-card">
+      <div class="ak-qnum">Q50 · Metals</div>
+      <div class="ak-answer" style="margin-top:.6rem">
+        <div class="ak-ans-label">CORRECT ANSWER</div>
+        <div class="ak-ans-text">E. metals</div>
+        <div class="ak-ans-detail" style="font-size:.78rem">Metals: shiny, malleable, ductile, good conductors (~75% of all elements).</div>
+      </div>
+    </div>
+
+  </div><!-- /FIB grid -->
+
+  <!-- SCORING GUIDE -->
+  <div class="section-header" style="margin-top:3rem">
+    <div class="section-tag">SCORING GUIDE</div>
+    <div class="section-title">Grade Scale Reference</div>
+  </div>
+
+  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:.7rem;font-family:var(--ff-mono)">
+    <div style="background:var(--bg3);border:1px solid var(--border2);border-radius:6px;padding:.9rem;text-align:center">
+      <div style="font-size:1.2rem;font-weight:600;color:#6ab87a">90–100</div>
+      <div style="font-size:.6rem;color:var(--text3);letter-spacing:.1em">45–50 pts · A</div>
+    </div>
+    <div style="background:var(--bg3);border:1px solid var(--border2);border-radius:6px;padding:.9rem;text-align:center">
+      <div style="font-size:1.2rem;font-weight:600;color:#8bc34a">80–89</div>
+      <div style="font-size:.6rem;color:var(--text3);letter-spacing:.1em">40–44 pts · B</div>
+    </div>
+    <div style="background:var(--bg3);border:1px solid var(--border2);border-radius:6px;padding:.9rem;text-align:center">
+      <div style="font-size:1.2rem;font-weight:600;color:#c9a84c">70–79</div>
+      <div style="font-size:.6rem;color:var(--text3);letter-spacing:.1em">35–39 pts · C</div>
+    </div>
+    <div style="background:var(--bg3);border:1px solid var(--border2);border-radius:6px;padding:.9rem;text-align:center">
+      <div style="font-size:1.2rem;font-weight:600;color:#e8a870">60–69</div>
+      <div style="font-size:.6rem;color:var(--text3);letter-spacing:.1em">30–34 pts · D</div>
+    </div>
+    <div style="background:var(--bg3);border:1px solid var(--border2);border-radius:6px;padding:.9rem;text-align:center">
+      <div style="font-size:1.2rem;font-weight:600;color:#c85858">Below 60</div>
+      <div style="font-size:.6rem;color:var(--text3);letter-spacing:.1em">Below 30 pts · F</div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

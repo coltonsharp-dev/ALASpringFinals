@@ -1,0 +1,1102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Unit 5 · Final Exam · Answer Key · TEACHER USE ONLY</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Mono:wght@400;500&family=Source+Serif+4:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --bg: #0c0b09;
+    --bg2: #131109;
+    --bg3: #1a1710;
+    --bg4: #201d14;
+    --border: #2e2a1e;
+    --border2: #3e3828;
+    --gold: #c9a84c;
+    --gold2: #e8c870;
+    --blue: #7cb5c8;
+    --green: #6ab87a;
+    --red: #c85858;
+    --text: #e8e0cc;
+    --text2: #b8b098;
+    --text3: #787060;
+    --text4: #504840;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-weight: 300;
+    min-height: 100vh;
+  }
+
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none; z-index: 0;
+  }
+
+  /* ── TEACHER BANNER ── */
+  .teacher-banner {
+    background: linear-gradient(90deg, #2a1a0e, #3a2616, #2a1a0e);
+    border-bottom: 1px solid var(--red);
+    padding: 12px 20px;
+    text-align: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .teacher-banner-text {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: #f4c0a0;
+    letter-spacing: 4px;
+    font-weight: 500;
+  }
+  .teacher-banner-text .dot { color: var(--red); }
+
+  /* ── COVER ── */
+  .cover {
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 48px 32px 32px;
+    position: relative;
+    z-index: 1;
+    text-align: center;
+  }
+  .cover-mark {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px; letter-spacing: 5px;
+    color: var(--text3);
+    margin-bottom: 14px;
+    text-transform: uppercase;
+  }
+  .cover-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 5vw, 46px);
+    font-weight: 700;
+    color: var(--text);
+    line-height: 1.05;
+    letter-spacing: 1px;
+    margin-bottom: 6px;
+  }
+  .cover-key-tag {
+    display: inline-block;
+    margin-top: 14px;
+    padding: 6px 18px;
+    border: 1px solid var(--red);
+    border-radius: 2px;
+    background: rgba(200, 88, 88, 0.08);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: #e89090;
+    letter-spacing: 4px;
+    font-weight: 500;
+  }
+  .cover-sub {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--text3);
+    letter-spacing: 3px;
+    margin: 14px 0 24px;
+  }
+  .cover-divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    margin: 16px auto 28px;
+    width: 70%;
+  }
+
+  /* ── POINT BREAKDOWN ── */
+  .points-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0 auto 36px;
+    max-width: 600px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    text-align: left;
+  }
+  .points-table th {
+    color: var(--gold);
+    letter-spacing: 2px;
+    border-bottom: 1px solid var(--border2);
+    padding: 10px 8px;
+    font-weight: 500;
+  }
+  .points-table td {
+    padding: 9px 8px;
+    color: var(--text2);
+    border-bottom: 1px solid var(--border);
+  }
+  .points-table td:last-child, .points-table th:last-child { text-align: right; }
+  .points-table tr.total td {
+    border-bottom: none;
+    border-top: 1px solid var(--gold);
+    color: var(--gold);
+    font-weight: 500;
+    padding-top: 12px;
+  }
+
+  /* ── BODY ── */
+  .answer-body {
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 0 32px 80px;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ── SECTION HEADERS ── */
+  .section {
+    border-top: 1px solid var(--border2);
+    margin-top: 44px;
+    padding-top: 26px;
+  }
+  .section:first-of-type { border-top: none; margin-top: 0; padding-top: 0; }
+  .section-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 8px;
+    gap: 20px;
+  }
+  .section-letter {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    color: var(--gold);
+    font-weight: 700;
+  }
+  .section-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    color: var(--text);
+    font-weight: 400;
+  }
+  .section-points {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    color: var(--text3);
+    letter-spacing: 3px;
+    white-space: nowrap;
+  }
+  .section-instructions {
+    font-size: 12.5px;
+    color: var(--text3);
+    line-height: 1.55;
+    margin: 8px 0 22px;
+    border-left: 2px solid var(--border2);
+    padding-left: 12px;
+    font-style: italic;
+  }
+
+  /* ── ANSWER KEY GRID (compact MCQ view) ── */
+  .quick-key {
+    background: var(--bg2);
+    border: 1px solid var(--border2);
+    border-radius: 3px;
+    padding: 18px 20px;
+    margin-bottom: 28px;
+  }
+  .quick-key-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px; color: var(--gold);
+    letter-spacing: 3px;
+    margin-bottom: 12px;
+  }
+  .quick-key-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
+    gap: 6px;
+    font-family: 'IBM Plex Mono', monospace;
+  }
+  .qk-cell {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    padding: 8px 4px;
+    text-align: center;
+    font-size: 11px;
+  }
+  .qk-num { color: var(--text4); display: block; margin-bottom: 3px; font-size: 10px; }
+  .qk-ans { color: var(--green); font-weight: 500; font-size: 14px; }
+
+  /* ── MCQ DETAILED ── */
+  .mc-q {
+    margin-bottom: 18px;
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    background: var(--bg2);
+    padding: 16px 18px;
+    page-break-inside: avoid;
+  }
+  .mc-q-stem {
+    font-size: 13.5px;
+    color: var(--text);
+    line-height: 1.55;
+    margin-bottom: 10px;
+  }
+  .mc-q-num {
+    font-family: 'IBM Plex Mono', monospace;
+    color: var(--gold);
+    margin-right: 8px;
+    font-weight: 500;
+  }
+  .mc-opts {
+    margin-bottom: 10px;
+  }
+  .mc-opt {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 5px 8px;
+    margin-bottom: 3px;
+    border-radius: 2px;
+    font-size: 12.5px;
+    color: var(--text3);
+    line-height: 1.5;
+  }
+  .mc-opt.correct {
+    background: #0e1f0e;
+    border: 1px solid #3a7a3a;
+    color: #cce8cc;
+  }
+  .opt-letter {
+    font-family: 'IBM Plex Mono', monospace;
+    color: var(--text4);
+    font-size: 11px;
+    width: 18px;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .mc-opt.correct .opt-letter { color: #6ab87a; font-weight: 500; }
+  .correct-marker {
+    color: #6ab87a;
+    margin-left: auto;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 2px;
+    flex-shrink: 0;
+  }
+  .mc-rationale {
+    background: var(--bg4);
+    border-left: 2px solid var(--gold);
+    padding: 10px 14px;
+    font-size: 12px;
+    color: var(--text2);
+    line-height: 1.6;
+    margin-top: 8px;
+  }
+  .mc-rationale-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 9px;
+    color: var(--gold);
+    letter-spacing: 3px;
+    margin-bottom: 4px;
+  }
+
+  /* ── MATCHING KEY ── */
+  .match-key-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px 24px;
+    margin-bottom: 18px;
+  }
+  .match-key-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 12px;
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    background: var(--bg2);
+  }
+  .match-key-num {
+    font-family: 'IBM Plex Mono', monospace;
+    color: var(--gold);
+    font-size: 11px;
+    font-weight: 500;
+    flex-shrink: 0;
+    width: 24px;
+  }
+  .match-key-term {
+    font-family: 'Playfair Display', serif;
+    font-size: 13.5px;
+    color: var(--text);
+    flex: 1;
+  }
+  .match-key-arrow {
+    color: var(--text4);
+    font-family: 'IBM Plex Mono', monospace;
+  }
+  .match-key-letter {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 14px;
+    color: var(--green);
+    font-weight: 500;
+    flex-shrink: 0;
+  }
+  .match-defs-box {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    padding: 16px 18px;
+  }
+  .match-defs-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    color: var(--gold);
+    letter-spacing: 3px;
+    margin-bottom: 10px;
+  }
+  .match-def-row {
+    display: flex;
+    gap: 10px;
+    padding: 7px 0;
+    border-bottom: 1px dashed var(--border);
+    font-size: 12.5px;
+    line-height: 1.5;
+  }
+  .match-def-row:last-child { border-bottom: none; }
+  .match-def-letter {
+    font-family: 'IBM Plex Mono', monospace;
+    color: var(--blue);
+    font-size: 11px;
+    width: 22px;
+    flex-shrink: 0;
+    font-weight: 500;
+    margin-top: 2px;
+  }
+  .match-def-text { color: var(--text2); }
+  .match-def-term {
+    color: var(--gold);
+    font-size: 10.5px;
+    font-family: 'IBM Plex Mono', monospace;
+    letter-spacing: 1px;
+    margin-left: 8px;
+  }
+
+  /* ── SHORT ANSWER EXEMPLARS ── */
+  .sa-block {
+    margin-bottom: 28px;
+    page-break-inside: avoid;
+  }
+  .sa-prompt {
+    font-size: 13.5px;
+    color: var(--text);
+    line-height: 1.6;
+    margin-bottom: 10px;
+  }
+  .sa-num {
+    font-family: 'IBM Plex Mono', monospace;
+    color: var(--gold);
+    margin-right: 8px;
+    font-weight: 500;
+  }
+  .sa-points {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    color: var(--text4);
+    letter-spacing: 2px;
+    margin-left: 8px;
+  }
+  .sa-model {
+    background: #0d1a0e;
+    border: 1px solid #2a4a2e;
+    border-radius: 3px;
+    padding: 14px 16px;
+    margin-bottom: 10px;
+  }
+  .sa-model-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 9px;
+    color: #6ab87a;
+    letter-spacing: 3px;
+    margin-bottom: 8px;
+  }
+  .sa-model-text {
+    font-size: 13px;
+    color: #c4e0c2;
+    line-height: 1.65;
+  }
+  .sa-rubric {
+    background: var(--bg3);
+    border: 1px solid var(--border2);
+    border-radius: 3px;
+    padding: 12px 14px;
+    font-size: 12px;
+    color: var(--text3);
+    line-height: 1.55;
+  }
+  .sa-rubric-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 9px;
+    color: var(--gold);
+    letter-spacing: 3px;
+    margin-bottom: 6px;
+  }
+  .sa-rubric strong { color: var(--text2); font-weight: 500; }
+  .sa-rubric-row {
+    display: flex;
+    gap: 10px;
+    padding: 3px 0;
+  }
+  .sa-rubric-pts {
+    font-family: 'IBM Plex Mono', monospace;
+    color: var(--gold);
+    font-size: 10px;
+    flex-shrink: 0;
+    width: 30px;
+  }
+
+  /* ── ESSAY RUBRIC ── */
+  .essay-rubric-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 22px;
+  }
+  .essay-prompt-card {
+    background: var(--bg2);
+    border: 1px solid var(--border2);
+    border-radius: 3px;
+    padding: 18px 20px;
+  }
+  .essay-prompt-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    color: var(--gold);
+    letter-spacing: 3px;
+    margin-bottom: 6px;
+  }
+  .essay-prompt-q {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 15px;
+    color: var(--text);
+    line-height: 1.4;
+    margin-bottom: 14px;
+  }
+  .essay-claim-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 9px;
+    color: #7cb5c8;
+    letter-spacing: 3px;
+    margin-bottom: 6px;
+  }
+  .essay-claim {
+    font-size: 12.5px;
+    color: var(--text2);
+    line-height: 1.6;
+    background: var(--bg3);
+    border-left: 2px solid var(--blue);
+    padding: 8px 12px;
+    border-radius: 0 3px 3px 0;
+    margin-bottom: 12px;
+  }
+  .essay-evidence-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 9px;
+    color: var(--green);
+    letter-spacing: 3px;
+    margin-bottom: 6px;
+  }
+  .essay-evidence {
+    font-size: 12.5px;
+    color: var(--text2);
+    line-height: 1.6;
+  }
+  .essay-evidence ul {
+    padding-left: 20px;
+  }
+  .essay-evidence li {
+    margin-bottom: 4px;
+  }
+
+  .essay-rubric-table {
+    background: var(--bg2);
+    border: 1px solid var(--border2);
+    border-radius: 3px;
+    padding: 18px 20px;
+  }
+  .essay-rubric-row {
+    display: grid;
+    grid-template-columns: 90px 1fr;
+    gap: 16px;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border);
+    align-items: start;
+  }
+  .essay-rubric-row:last-child { border-bottom: none; }
+  .essay-rubric-tier {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--gold);
+    letter-spacing: 2px;
+    font-weight: 500;
+  }
+  .essay-rubric-desc {
+    font-size: 12.5px;
+    color: var(--text2);
+    line-height: 1.55;
+  }
+  .essay-rubric-desc strong { color: var(--text); font-weight: 500; }
+
+  /* ── FOOTER ── */
+  .answer-footer {
+    text-align: center;
+    padding: 24px 20px;
+    border-top: 1px solid var(--border);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    color: var(--text4);
+    letter-spacing: 3px;
+    margin-top: 50px;
+  }
+
+  /* ── PRINT STYLES ── */
+  @media print {
+    @page {
+      size: letter;
+      margin: 0.5in 0.6in;
+    }
+    body {
+      background: white !important;
+      color: black !important;
+      font-size: 10pt;
+    }
+    body::before { display: none !important; }
+
+    .teacher-banner {
+      background: white !important;
+      border-bottom: 2px solid #c00 !important;
+      position: static;
+    }
+    .teacher-banner-text { color: #c00 !important; }
+
+    .cover { padding: 20px 0; }
+    .cover, .answer-body { max-width: none; padding-left: 0; padding-right: 0; }
+
+    .cover-mark, .cover-sub, .section-points, .section-instructions,
+    .quick-key-label, .qk-num, .mc-q-num, .sa-num, .match-key-num,
+    .match-def-letter, .match-defs-label, .essay-prompt-label,
+    .essay-claim-label, .essay-evidence-label, .essay-rubric-tier,
+    .sa-model-label, .sa-rubric-label, .sa-points,
+    .mc-rationale-label, .match-def-term {
+      color: #555 !important;
+    }
+    .cover-title, .section-name, .section-letter, .mc-q-stem, .sa-prompt,
+    .match-key-term, .essay-prompt-q, .sa-model-text, .essay-evidence,
+    .mc-opt, .match-def-text, .essay-rubric-desc, .points-table td,
+    .essay-rubric-desc strong, .sa-rubric strong, .essay-evidence strong {
+      color: black !important;
+    }
+    .cover-title { font-size: 22pt; }
+    .section-letter { font-size: 18pt; }
+    .section-name { font-size: 14pt; }
+
+    .cover-key-tag {
+      background: white !important;
+      border: 1.5px solid #c00 !important;
+      color: #c00 !important;
+    }
+    .cover-divider { background: #888 !important; }
+
+    .mc-q, .quick-key, .match-key-row, .match-defs-box,
+    .essay-prompt-card, .essay-rubric-table, .sa-model, .sa-rubric {
+      background: #f7f7f3 !important;
+      border-color: #999 !important;
+    }
+    .mc-opt.correct {
+      background: #e8f5e8 !important;
+      border: 1px solid #4a8a4a !important;
+      color: black !important;
+    }
+    .mc-opt.correct .opt-letter,
+    .correct-marker,
+    .qk-ans,
+    .match-key-letter,
+    .sa-model-text { color: #2a6a2a !important; }
+    .mc-rationale { background: #f4f0e6 !important; border-left-color: #c9a84c !important; }
+    .essay-claim { background: #f0f4f8 !important; border-left-color: #5a8aa0 !important; color: black !important; }
+    .sa-model { background: #ecf5ec !important; border-color: #4a8a4a !important; }
+
+    .section { page-break-inside: auto; }
+    .section[data-section="B"],
+    .section[data-section="C"],
+    .section[data-section="D"] { page-break-before: always; }
+
+    .points-table th, .points-table td { border-color: #aaa !important; }
+    .points-table tr.total td { border-top-color: #444 !important; color: #444 !important; }
+    .answer-footer { color: #888 !important; border-color: #888 !important; }
+
+    a { color: inherit; text-decoration: none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="teacher-banner">
+  <span class="teacher-banner-text"><span class="dot">●</span> ANSWER KEY &middot; TEACHER USE ONLY &middot; DO NOT DISTRIBUTE TO STUDENTS <span class="dot">●</span></span>
+</div>
+
+<!-- ──────────────────────────────────────────
+     COVER
+────────────────────────────────────────── -->
+<section class="cover">
+  <div class="cover-mark">9th Grade World History &middot; 2026</div>
+  <h1 class="cover-title">Unit 5 Final Exam</h1>
+  <div class="cover-key-tag">ANSWER KEY</div>
+  <div class="cover-sub">WORLD WARS &amp; AFTERMATH</div>
+  <div class="cover-divider"></div>
+
+  <table class="points-table">
+    <tr>
+      <th>SECTION</th>
+      <th>ITEMS</th>
+      <th>POINTS</th>
+    </tr>
+    <tr><td>A &middot; Multiple Choice</td><td>25 questions</td><td>50</td></tr>
+    <tr><td>B &middot; Matching (Key Terms)</td><td>10 items</td><td>10</td></tr>
+    <tr><td>C &middot; Short Answer</td><td>3 questions</td><td>15</td></tr>
+    <tr><td>D &middot; Essay (Synthesis)</td><td>1 essay (choice of 2)</td><td>25</td></tr>
+    <tr class="total"><td>TOTAL</td><td>39 items</td><td>100</td></tr>
+  </table>
+</section>
+
+<!-- ──────────────────────────────────────────
+     BODY
+────────────────────────────────────────── -->
+<main class="answer-body">
+
+  <!-- ─── SECTION A · MULTIPLE CHOICE ─── -->
+  <section class="section" data-section="A">
+    <div class="section-title">
+      <div>
+        <div class="section-letter">A</div>
+        <div class="section-name">Multiple Choice &mdash; Answer Key</div>
+      </div>
+      <div class="section-points">25 ITEMS &middot; 2 PTS EACH &middot; 50 PTS</div>
+    </div>
+    <p class="section-instructions">Quick-key grid at top for fast grading. Full questions with rationale follow.</p>
+
+    <div class="quick-key">
+      <div class="quick-key-label">QUICK ANSWER GRID</div>
+      <div class="quick-key-grid" id="quick-key-grid"></div>
+    </div>
+
+    <div id="mc-list"></div>
+  </section>
+
+  <!-- ─── SECTION B · MATCHING ─── -->
+  <section class="section" data-section="B">
+    <div class="section-title">
+      <div>
+        <div class="section-letter">B</div>
+        <div class="section-name">Matching &mdash; Answer Key</div>
+      </div>
+      <div class="section-points">10 ITEMS &middot; 1 PT EACH &middot; 10 PTS</div>
+    </div>
+    <p class="section-instructions">Term-to-letter map below. The full shuffled definition list (as it appears on the student exam) follows for reference.</p>
+
+    <div class="match-key-grid" id="match-key-grid"></div>
+
+    <div class="match-defs-box">
+      <div class="match-defs-label">DEFINITIONS (as shown on student exam, A&ndash;J)</div>
+      <div id="match-defs-list"></div>
+    </div>
+  </section>
+
+  <!-- ─── SECTION C · SHORT ANSWER EXEMPLARS ─── -->
+  <section class="section" data-section="C">
+    <div class="section-title">
+      <div>
+        <div class="section-letter">C</div>
+        <div class="section-name">Short Answer &mdash; Exemplars &amp; Rubric</div>
+      </div>
+      <div class="section-points">3 ITEMS &middot; 5 PTS EACH &middot; 15 PTS</div>
+    </div>
+    <p class="section-instructions">Each short answer is graded on a 5-point scale. Full-credit exemplar shown for each prompt; rubric tiers below.</p>
+
+    <div id="sa-list"></div>
+
+    <div class="sa-rubric" style="margin-top: 14px">
+      <div class="sa-rubric-label">SHORT-ANSWER POINT TIERS (applies to all three items)</div>
+      <div class="sa-rubric-row"><span class="sa-rubric-pts">5 pts</span><span><strong>Complete &amp; specific.</strong> Clear answer to the question, two or more pieces of named evidence (terms / dates / events), and reasoning connecting evidence to claim.</span></div>
+      <div class="sa-rubric-row"><span class="sa-rubric-pts">4 pts</span><span><strong>Solid but partial.</strong> Correct answer with one strong piece of evidence and reasonable reasoning; small gap in specificity or one missing piece.</span></div>
+      <div class="sa-rubric-row"><span class="sa-rubric-pts">3 pts</span><span><strong>Basic answer.</strong> Demonstrates understanding of the core idea but lacks specific evidence; reasoning is vague or general.</span></div>
+      <div class="sa-rubric-row"><span class="sa-rubric-pts">2 pts</span><span><strong>Minimal.</strong> Touches on the topic but with significant errors, no specific evidence, or major missing components.</span></div>
+      <div class="sa-rubric-row"><span class="sa-rubric-pts">1 pt</span><span><strong>Attempted.</strong> Acknowledges the prompt but the answer is mostly off-topic, severely incomplete, or factually incorrect.</span></div>
+      <div class="sa-rubric-row"><span class="sa-rubric-pts">0 pts</span><span>Blank or unrelated to the prompt.</span></div>
+    </div>
+  </section>
+
+  <!-- ─── SECTION D · ESSAY RUBRIC ─── -->
+  <section class="section" data-section="D">
+    <div class="section-title">
+      <div>
+        <div class="section-letter">D</div>
+        <div class="section-name">Essay &mdash; Rubric &amp; Exemplars</div>
+      </div>
+      <div class="section-points">1 ESSAY &middot; 25 PTS</div>
+    </div>
+    <p class="section-instructions">Students chose ONE of two prompts. Sample claim and evidence pool shown for each. Rubric scores out of 25 across four dimensions.</p>
+
+    <div class="essay-rubric-grid">
+
+      <div class="essay-prompt-card">
+        <div class="essay-prompt-label">OPTION 1 &middot; WWI</div>
+        <div class="essay-prompt-q">&ldquo;Was World War I inevitable, or could it have been avoided?&rdquo;</div>
+
+        <div class="essay-claim-label">SAMPLE CLAIM (either direction earns full credit if defended)</div>
+        <div class="essay-claim">WWI was <em>not strictly inevitable</em>, but the MAIN conditions made it overwhelmingly likely &mdash; once those four pressures were in place, almost any sufficient spark would have ignited a continental war.</div>
+
+        <div class="essay-evidence-label">EVIDENCE POOL STUDENTS SHOULD DRAW FROM</div>
+        <div class="essay-evidence">
+          <ul>
+            <li>The four MAIN causes (Militarism, Alliances, Imperialism, Nationalism) &mdash; pre-existing structural tensions</li>
+            <li>Pre-war arms race (Anglo-German naval rivalry, mass conscription)</li>
+            <li>The alliance chain reaction that pulled 6+ nations into war within weeks</li>
+            <li>Assassination of Archduke Franz Ferdinand, June 28, 1914 in Sarajevo by Gavrilo Princip</li>
+            <li>Industrialization fueling both competition and weapons production</li>
+            <li>Nationalism inside multi-ethnic empires (Austria-Hungary, Ottoman Empire)</li>
+            <li>Counterfactual angle: had alliances been weaker or militarism lower, the assassination might have stayed regional</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="essay-prompt-card">
+        <div class="essay-prompt-label">OPTION 2 &middot; INTERWAR</div>
+        <div class="essay-prompt-q">&ldquo;How does a democracy collapse?&rdquo;</div>
+
+        <div class="essay-claim-label">SAMPLE CLAIM</div>
+        <div class="essay-claim">A democracy collapses when <em>economic crisis destroys public trust in democratic institutions</em> at the same moment a demagogue successfully channels desperation into political extremism &mdash; and then uses the democracy's own legal structures to dismantle it from within.</div>
+
+        <div class="essay-evidence-label">EVIDENCE POOL STUDENTS SHOULD DRAW FROM</div>
+        <div class="essay-evidence">
+          <ul>
+            <li>Weimar Republic born in defeat in 1919, blamed for the Treaty of Versailles</li>
+            <li>Hyperinflation 1923 &mdash; 4.2 trillion marks per U.S. dollar &mdash; destroyed savings</li>
+            <li>Great Depression triggered Oct 1929 &mdash; U.S. banks recalled loans; German factories collapsed</li>
+            <li>~6 million unemployed (~33%) by 1932 &mdash; mass desperation</li>
+            <li>Nazi Party surge from 12 to 107 parliament seats (1928&rarr;1930) &mdash; economic crisis &rarr; extremism</li>
+            <li>Hitler legally appointed Chancellor January 1933 by Hindenburg/conservatives</li>
+            <li>Reichstag Fire February 1933 &rarr; emergency decrees suspending civil liberties</li>
+            <li>Enabling Act March 1933 &mdash; parliament voted to give Hitler decree power</li>
+            <li>Mid-1934 consolidation: parties banned, unions abolished, press controlled, offices merged after Hindenburg's death</li>
+            <li>Mussolini's 1922 March on Rome served as the proof-of-concept model</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="essay-rubric-table">
+      <div class="essay-rubric-row">
+        <div class="essay-rubric-tier">25 / A+</div>
+        <div class="essay-rubric-desc"><strong>Exceptional.</strong> Clear, sophisticated claim that directly answers the prompt. <strong>4+ pieces of specific evidence</strong> (named events, dates, terms, people). Reasoning explicitly explains how each piece of evidence proves the claim. Strong introduction and conclusion. Smooth writing.</div>
+      </div>
+      <div class="essay-rubric-row">
+        <div class="essay-rubric-tier">22 / A</div>
+        <div class="essay-rubric-desc"><strong>Strong.</strong> Clear claim, 3 pieces of specific evidence, solid reasoning connecting evidence to claim, organized structure. Minor gaps in depth or transitions.</div>
+      </div>
+      <div class="essay-rubric-row">
+        <div class="essay-rubric-tier">19 / B</div>
+        <div class="essay-rubric-desc"><strong>Competent.</strong> Identifiable claim, 2&ndash;3 pieces of evidence (some specific, some general), reasoning present but inconsistently developed. Adequate structure.</div>
+      </div>
+      <div class="essay-rubric-row">
+        <div class="essay-rubric-tier">15 / C</div>
+        <div class="essay-rubric-desc"><strong>Developing.</strong> Claim is vague or implicit. 1&ndash;2 pieces of evidence, mostly general rather than specific. Reasoning is thin or missing in places. Structure is loose.</div>
+      </div>
+      <div class="essay-rubric-row">
+        <div class="essay-rubric-tier">10 / D</div>
+        <div class="essay-rubric-desc"><strong>Weak.</strong> Major gaps: no clear claim, no specific evidence, or no reasoning. Or significant factual errors. The essay touches the prompt but does not actually argue.</div>
+      </div>
+      <div class="essay-rubric-row">
+        <div class="essay-rubric-tier">5 / F</div>
+        <div class="essay-rubric-desc"><strong>Insufficient.</strong> Off-topic, severely incomplete, or fundamentally inaccurate. Effort visible but the response does not meet basic requirements of an argument essay.</div>
+      </div>
+      <div class="essay-rubric-row">
+        <div class="essay-rubric-tier">0</div>
+        <div class="essay-rubric-desc">Blank, illegible, or completely off-prompt.</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="answer-footer">
+    ANSWER KEY &middot; MR. SHARP &middot; UNIT 5 &middot; 2026 &middot; TEACHER USE ONLY
+  </div>
+
+</main>
+
+<script>
+/* ──────────────────────────────────────────
+   DATA &mdash; mirrors the exam (same content,
+   same shuffle seed) so the answer key
+   stays in sync with the student exam.
+────────────────────────────────────────── */
+
+const MC = [
+  { q:"What does the acronym MAIN stand for in the context of WWI's causes?",
+    opts:["Monarchy, Armaments, Invasion, Nationalism","Militarism, Alliances, Imperialism, Nationalism","Mobilization, Arms, Industry, Nationalism","Militarism, Alliances, Industry, Nationalism"],
+    ans:1,
+    why:"MAIN organizes the four long-term structural causes of WWI: Militarism, Alliances, Imperialism, Nationalism. The other options swap in unrelated terms (Monarchy, Mobilization) or alter the second M (Industry vs. Imperialism)." },
+
+  { q:"Militarism contributed to WWI by encouraging European nations to:",
+    opts:["Reduce their armies to save money for economic growth","Build up armed forces, produce better weapons, and view military strength as a source of national power","Form defensive alliances to prevent war through deterrence","Colonize new territories to fund their armies"],
+    ans:1,
+    why:"Militarism is the buildup of forces and the worship of military power. Industrialization let nations produce weapons at unprecedented scale. Distractor C describes Alliances; D conflates with Imperialism." },
+
+  { q:"How did the alliance system in Europe make a small conflict more dangerous?",
+    opts:["Alliances allowed nations to negotiate peacefully before fighting","Alliances created a chain reaction — when one country was attacked, its allies were pulled in, turning a local crisis into a world war","Alliances gave smaller nations the ability to resist larger empires","Alliances forced countries to share resources and avoid conflict"],
+    ans:1,
+    why:"The defensive alliance chain meant Austria-Hungary attacking Serbia pulled in Russia, then Germany, then France, then Britain. A bilateral dispute became continental." },
+
+  { q:"Extreme nationalism in pre-WWI Europe contributed to war by:",
+    opts:["Encouraging nations to form a unified European government","Creating shared identity across different ethnic groups within empires","Fueling rivalry between nations, ethnic tension, and independence movements that destabilized empires like Austria-Hungary","Reducing competition because nations felt secure in their own identities"],
+    ans:2,
+    why:"Nationalism worked in two directions: rivalry BETWEEN nations and ethnic independence demands INSIDE multi-ethnic empires (Austria-Hungary, Ottoman Empire). Both destabilized Europe." },
+
+  { q:"Archduke Franz Ferdinand was assassinated on June 28, 1914, in Sarajevo. Who killed him?",
+    opts:["A German spy, to give Germany an excuse to invade France","An Austrian nationalist protesting the emperor's policies","Gavrilo Princip, a Serbian nationalist — his death triggered the alliance chain reaction that escalated into WWI","A British agent trying to prevent Austro-Hungarian expansion"],
+    ans:2,
+    why:"Gavrilo Princip, a 19-year-old Serbian nationalist with the Black Hand, killed both the Archduke and his wife Sophie. Austria-Hungary blamed Serbia and activated the alliance chain." },
+
+  { q:"Historians call the assassination of Franz Ferdinand the 'spark' rather than the 'cause' of WWI. What does this distinction mean?",
+    opts:["The assassination was entirely unrelated to the start of WWI","The MAIN causes had already built an unstable system; the assassination triggered it — but the deeper forces were already in place","The assassination directly and singlehandedly caused WWI with no other factors involved","The 'cause' was actually the Treaty of Versailles signed before the war"],
+    ans:1,
+    why:"A spark needs fuel. The MAIN conditions were the fuel; the assassination was the spark. Distractor D is anachronistic — Versailles came after the war." },
+
+  { q:"What was the correct sequence of nations entering WWI after the assassination?",
+    opts:["Britain → France → Russia → Germany → Austria-Hungary","Austria-Hungary attacked Serbia → Russia supported Serbia → Germany backed Austria-Hungary → France supported Russia → Britain entered after Germany violated Belgian neutrality","Serbia attacked Austria-Hungary → Germany invaded France → Russia declared war on Britain","Germany invaded Belgium → Britain attacked Austria-Hungary → Russia stayed neutral"],
+    ans:1,
+    why:"This is the alliance chain in correct order. Britain's entry hinged specifically on Germany violating Belgian neutrality (Schlieffen Plan invasion route), which triggered Britain's 1839 treaty obligation." },
+
+  { q:"Trench warfare developed in WWI primarily because:",
+    opts:["Generals on both sides were incompetent and refused to fight","Industrialized weapons made open battlefield movement suicidal — soldiers dug in for protection because crossing open ground meant certain death","Both sides ran out of ammunition too quickly to fight in the open","The terrain in France was naturally full of trenches"],
+    ans:1,
+    why:"Machine guns (~600 rds/min) + heavy artillery + barbed wire made defense overwhelmingly stronger than offense. Soldiers dug in to survive; armies could not advance without unacceptable casualties." },
+
+  { q:"Which of the following was NOT a weapon or technology that made WWI especially deadly?",
+    opts:["Machine guns","Chemical weapons (poison gas)","Nuclear bombs","Heavy artillery"],
+    ans:2,
+    why:"Nuclear weapons did not exist until 1945 (WWII). All other options are signature WWI-era technologies." },
+
+  { q:"The Treaty of Versailles (1919) included all of the following EXCEPT:",
+    opts:["Germany accepting war guilt through the 'war guilt clause'","Germany being required to pay approximately $33 billion in reparations","Germany gaining new territories as compensation for wartime losses","Germany facing strict military restrictions"],
+    ans:2,
+    why:"Germany LOST territory (Alsace-Lorraine, Polish Corridor, all overseas colonies, etc.) — it did not gain any. The other three are core treaty terms." },
+
+  { q:"How did industrialization connect to both the causes AND the conduct of WWI?",
+    opts:["Industrialization had no connection to how WWI was fought — it only affected economics","Industrialization fueled militarism and competition (cause), and then produced the deadly weapons and technologies that made the war long and devastating (conduct)","Industrialization prevented war by making nations economically dependent on each other","Industrialization caused WWI by creating too many workers who needed wars for employment"],
+    ans:1,
+    why:"Industrialization is the through-line: it enabled arms races (cause) AND produced the weapons (machine guns, artillery, chemical weapons) that made WWI uniquely lethal (conduct)." },
+
+  { q:"Many historians argue that the Treaty of Versailles helped cause WWII. What is the core of that argument?",
+    opts:["The treaty gave Germany too much power, making it dangerous again","By humiliating Germany with blame, crushing reparations, and military restrictions, the treaty created economic devastation and deep resentment that extremists like Hitler later exploited","The treaty ignored Germany entirely, leaving a power vacuum in Europe","The treaty was so generous that Germany felt strong enough to start another war immediately"],
+    ans:1,
+    why:"The treaty produced humiliation + economic damage → resentment → opening for an extremist who promised restoration. This is the standard 'seeds of WWII' argument and the bridge between Lessons 01 and 02." },
+
+  { q:"What was the Weimar Republic, and why was it weak from the beginning?",
+    opts:["Germany's military government that won WWI; weak because it had too few soldiers","Germany's democratic government formed in 1919; weak because many Germans blamed it for accepting the humiliating Treaty of Versailles and it inherited a devastated economy","A council of Allied nations that governed Germany after WWI; weak because it lacked political support from German citizens","A communist government that briefly controlled Germany; weak because it rejected democracy"],
+    ans:1,
+    why:"Weimar was born in defeat: signed the hated Treaty, inherited a shattered economy, and faced attacks from both extremes. 14 chancellors in 14 years showed the instability." },
+
+  { q:"To pay WWI reparations, the Weimar government printed large amounts of money. What was the consequence?",
+    opts:["Germany's economy quickly recovered and reparations were paid off by 1922","The extra money funded massive public works projects that reduced unemployment","Hyperinflation set in — by 1923, 4.2 trillion marks equaled one U.S. dollar, wiping out family savings overnight","The printed money was used to build Germany's military back up secretly"],
+    ans:2,
+    why:"Printing money without underlying economic growth caused catastrophic hyperinflation in 1923. Money became literally worthless &mdash; people burned it for heat." },
+
+  { q:"At its worst point in 1923, how many German marks did it take to equal one U.S. dollar?",
+    opts:["About 1,000 marks — a significant but manageable devaluation","About 1 million marks — serious inflation","4.2 trillion marks — rendering the currency essentially worthless","About 100 marks — a modest decrease from pre-war values"],
+    ans:2,
+    why:"4.2 trillion to 1 is the key figure (November 1923 peak). It represents complete monetary collapse: a lifetime of savings buying a single loaf of bread." },
+
+  { q:"What event in October 1929 triggered Germany's second major economic catastrophe of the Interwar Period?",
+    opts:["Germany officially defaulted on all reparation payments to the Allies","The United States stock market crashed, causing American banks to immediately recall loans to Germany","A severe drought destroyed Germany's agricultural production for three years","Britain imposed a full trade blockade on German exports to weaken their economy"],
+    ans:1,
+    why:"The Wall Street Crash (Oct 1929) was global. U.S. banks recalled the loans that had funded Germany's mid-1920s recovery. Factories closed almost overnight, triggering the Great Depression." },
+
+  { q:"By 1932, the unemployment rate in Germany had reached approximately:",
+    opts:["5% — elevated but within normal range","15% — serious but similar to other European nations","33% — nearly 1 in 3 German workers had no job","50% — half the entire German workforce was unemployed"],
+    ans:2,
+    why:"~6 million unemployed, roughly 33% / 1-in-3 by 1932. This is the desperation context in which Hitler rose &mdash; not abstract economic theory, real mass suffering." },
+
+  { q:"What political shift did the Great Depression produce in Germany's parliament between 1930 and 1932?",
+    opts:["The Social Democrats won a majority and strengthened the Weimar Republic","The Communist Party took full control of the German parliament","The Nazi Party surged from 12 to 107 parliament seats as unemployment and desperation grew","The Nazi Party remained a small fringe movement and lost influence during the crisis"],
+    ans:2,
+    why:"The 1930 election &mdash; held in deepening Depression &mdash; produced a Nazi jump from 12 seats (1928) to 107 seats. Direct causal link: economic catastrophe &rarr; extremism." },
+
+  { q:"Fascism, as practiced by Hitler and Mussolini, is best defined as:",
+    opts:["A democratic system that emphasizes economic equality and workers' rights","A political system placing the nation above the individual, demanding loyalty to one powerful leader, using nationalism and violence to hold power while rejecting democracy as weak","An economic policy focused on free markets and international trade","A religious movement combining Christian values with strong national identity"],
+    ans:1,
+    why:"Fascism's defining features: ultra-nationalism, anti-democracy, cult of the leader, propaganda + violence, suppression of opposition. Positioned as a 'third way' between communism and liberal democracy." },
+
+  { q:"How did the Nazi Party use propaganda to gain and maintain power?",
+    opts:["By publishing honest economic analysis that convinced Germans their policies would work","By using mass rallies, radio broadcasts, films, and posters to manufacture loyalty, simplify complex problems, create enemies, and shape what millions of Germans believed","By suppressing all media entirely so no political discussion could occur","By funding independent newspapers to allow free debate about Nazi policies"],
+    ans:1,
+    why:"Goebbels' Reich Ministry of Propaganda controlled every form of media. The goal was saturation &mdash; flood every cultural channel with Nazi messaging until alternatives became invisible." },
+
+  { q:"Scapegoating, as used by Hitler, means:",
+    opts:["Taking responsibility for Germany's economic problems and promising specific solutions","Blaming Jewish people, communists, and others for Germany's economic collapse and post-WWI humiliation — even though they were not responsible","Creating a policy of economic reform to address Germany's real structural problems","Building alliances with neighboring nations to share Germany's economic burden"],
+    ans:1,
+    why:"Scapegoating channels collective anger onto a target group. It's politically powerful because it offers a simple enemy in place of complex structural explanations." },
+
+  { q:"Who was the first fascist dictator in Europe, and why does this matter for understanding Hitler's rise?",
+    opts:["Adolf Hitler — Germany was the first fascist state in history","Francisco Franco — his Spanish Civil War victory inspired Mussolini and Hitler","Benito Mussolini of Italy — he took power in 1922 and served as Hitler's direct model, proving fascism could work","Joseph Stalin — his Soviet model was copied by European fascists"],
+    ans:2,
+    why:"Mussolini's 1922 March on Rome made him the prototype. Hitler studied his playbook &mdash; tactics, aesthetics, consolidation of power &mdash; for over a decade before applying it." },
+
+  { q:"How did Hitler initially come to power in Germany in January 1933?",
+    opts:["He led a violent military coup that overthrew the Weimar government overnight","He was elected by a majority of German voters in a free and fair presidential election","He was legally appointed Chancellor through a political deal — conservative politicians wrongly believed they could control him","He was installed by the German military, which had grown tired of the Weimar Republic"],
+    ans:2,
+    why:"Hindenburg appointed Hitler Chancellor Jan 30, 1933 in a backroom deal engineered by Papen and other conservatives who thought they could use Hitler's base and then sideline him. Catastrophic miscalculation." },
+
+  { q:"What was the Reichstag Fire (February 1933), and how did Hitler use it?",
+    opts:["A Nazi attack on a Jewish synagogue used to intimidate Jewish communities","Germany's parliament building burned — Hitler blamed Communists and used public fear to pass emergency decrees suspending free speech, free press, and freedom of assembly, all legally","A British bombing raid that Hitler used to declare war on Britain","A workers' strike that Hitler violently suppressed to show his authority"],
+    ans:1,
+    why:"Whoever actually set the fire, Hitler used it as pretext for the Reichstag Fire Decree, suspending civil liberties under Weimar's own emergency-powers article (Article 48). Legal authoritarianism." },
+
+  { q:"The Enabling Act (March 1933) was significant because:",
+    opts:["It created Germany's first democratic constitution after WWI","It gave Hitler the legal power to rule by decree and bypass parliament — passed by parliament itself under intimidation, meaning democracy voted to legally end itself","It banned the Nazi Party from participating in future elections","It gave the German military authority to arrest political opponents without a trial"],
+    ans:1,
+    why:"The Enabling Act is THE hinge moment. Parliament voted 441-94 (under SA intimidation, with Communists arrested and Social Democrats voting no) to hand Hitler decree power. The legislature voluntarily made itself irrelevant." },
+];
+
+const MATCH_PAIRS = [
+  { term:"MAIN",
+    def:"The four long-term causes of WWI: Militarism, Alliances, Imperialism, and Nationalism." },
+  { term:"Militarism",
+    def:"Building up armed forces and treating military strength as a primary source of national power." },
+  { term:"Trench Warfare",
+    def:"A system of dug-in defensive positions used on the Western Front, creating a brutal stalemate driven by industrial weapons." },
+  { term:"Treaty of Versailles (1919)",
+    def:"The peace agreement that ended WWI by forcing Germany to accept war guilt, pay reparations, lose territory, and accept military restrictions." },
+  { term:"Weimar Republic",
+    def:"Germany's democratic government formed in 1919 — born in defeat and blamed by many Germans for the post-WWI peace settlement." },
+  { term:"Hyperinflation",
+    def:"Extreme rapid price increases in 1923 Germany where money lost almost all value — 4.2 trillion marks equaled one U.S. dollar." },
+  { term:"Great Depression",
+    def:"The global economic catastrophe triggered by the U.S. stock market crash of October 1929, which devastated Germany when American banks recalled loans." },
+  { term:"Fascism",
+    def:"A political system placing the nation above the individual, demanding loyalty to one powerful leader, and rejecting democracy as weak." },
+  { term:"Reichstag Fire",
+    def:"The February 1933 burning of Germany's parliament building, which Hitler used to justify emergency decrees suspending civil liberties." },
+  { term:"Enabling Act",
+    def:"A March 1933 law in which Germany's parliament — under intimidation — gave Hitler the power to rule by decree, bypassing parliament entirely." },
+];
+
+const SA_EXEMPLARS = [
+  {
+    q: "Explain specifically how <strong>industrialization transformed warfare</strong> during WWI. Give at least two concrete examples of how industrial technology shaped what the war looked like for soldiers on the ground.",
+    model: "Industrialization gave both sides factories that could mass-produce killing machines on a scale earlier wars never saw. Machine guns could fire hundreds of rounds per minute, which meant that any infantry advance across open ground was instantly cut down. Heavy artillery could destroy positions from miles away, and barbed wire stopped any attempt to walk forward. The result was that soldiers dug into trenches just to survive &mdash; and because defensive technology was so much stronger than offensive technology, neither side could break through. Chemical weapons like mustard gas added a new kind of horror that targeted soldiers even inside their trenches. The bigger point is that industrialization increased the killing power of weapons faster than it improved any way to maneuver around them, which is why WWI looks like a stalemate of mud and casualties instead of the quick, mobile war generals expected.",
+  },
+  {
+    q: "Trace the cause-and-effect steps from the <strong>Treaty of Versailles (1919)</strong> to the conditions that produced Hitler's rise in Germany.",
+    model: "The Treaty of Versailles blamed Germany alone for WWI (war guilt clause), demanded roughly $33 billion in reparations, restricted Germany's military, and took away territory. To pay reparations, the Weimar government printed money, which triggered hyperinflation in 1923 &mdash; at one point 4.2 trillion marks equaled one U.S. dollar, wiping out the savings of millions of families. Germany briefly recovered in the mid-1920s using American loans, but the U.S. stock market crash in October 1929 caused American banks to recall those loans, and German factories collapsed almost overnight. By 1932, about 6 million Germans (one in three workers) were unemployed. A desperate, humiliated population was now ready to listen to anyone who promised restoration. Hitler offered exactly that &mdash; blaming Jewish people, communists, and the Treaty itself, and promising to make Germany powerful again. So the Treaty didn't just punish Germany; it created the economic and emotional conditions that an extremist needed to rise. A peace treaty designed to end war helped cause the next one.",
+  },
+  {
+    q: "Hitler did not seize power through a violent military coup. Briefly explain the <strong>four legal steps</strong> by which he dismantled Germany's democracy between January 1933 and mid-1934.",
+    model: "Step 1 (January 1933): Hitler was legally appointed Chancellor by President Hindenburg through a political deal with conservative politicians who thought they could control him. No coup, no violence &mdash; a handshake. Step 2 (February 1933): The Reichstag Fire burned the parliament building. Hitler blamed Communists and used the public fear to push through emergency decrees that suspended free speech, free press, and freedom of assembly &mdash; all legal under Weimar's own emergency-powers article. Step 3 (March 1933): The Enabling Act passed parliament &mdash; under SA intimidation, with opposition members arrested or absent &mdash; giving Hitler the power to rule by decree and bypass parliament entirely. Democracy used its own rules to vote itself out of existence. Step 4 (1933&ndash;1934): Hitler banned all other political parties, abolished trade unions, removed judges and teachers who opposed him, took over the press, and when President Hindenburg died in August 1934, merged the offices of Chancellor and President into Der F&uuml;hrer. Each step was technically legal &mdash; which is what makes it more dangerous than a military coup: there was never a single obvious moment to say 'this has gone too far.'",
+  },
+];
+
+/* ──────────────────────────────────────────
+   RENDER
+────────────────────────────────────────── */
+
+// --- Quick Key Grid ---
+const qkGrid = document.getElementById('quick-key-grid');
+MC.forEach((q, i) => {
+  const cell = document.createElement('div');
+  cell.className = 'qk-cell';
+  cell.innerHTML = `<span class="qk-num">${i+1}</span><span class="qk-ans">${String.fromCharCode(65 + q.ans)}</span>`;
+  qkGrid.appendChild(cell);
+});
+
+// --- Detailed MC Answer Cards ---
+const mcList = document.getElementById('mc-list');
+MC.forEach((q, i) => {
+  const optsHtml = q.opts.map((o, oi) => {
+    const isCorrect = oi === q.ans;
+    return `
+      <div class="mc-opt ${isCorrect ? 'correct' : ''}">
+        <div class="opt-letter">${String.fromCharCode(65+oi)}.</div>
+        <div>${o}</div>
+        ${isCorrect ? '<div class="correct-marker">CORRECT</div>' : ''}
+      </div>`;
+  }).join('');
+  const card = document.createElement('div');
+  card.className = 'mc-q';
+  card.innerHTML = `
+    <div class="mc-q-stem"><span class="mc-q-num">${i+1}.</span>${q.q}</div>
+    <div class="mc-opts">${optsHtml}</div>
+    <div class="mc-rationale">
+      <div class="mc-rationale-label">WHY</div>
+      ${q.why}
+    </div>`;
+  mcList.appendChild(card);
+});
+
+// --- Matching Key (uses same shuffle seed as the exam) ---
+function shuffleSeeded(arr, seed) {
+  const a = arr.slice();
+  let s = seed;
+  for (let i = a.length - 1; i > 0; i--) {
+    s = (s * 9301 + 49297) % 233280;
+    const j = Math.floor((s / 233280) * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+// shuffled[i] = pair at letter position i (A=0, B=1, ...)
+const shuffled = shuffleSeeded(MATCH_PAIRS.map((p, idx) => ({ ...p, originalIndex: idx })), 7);
+
+// For term originalIndex N, find the letter position in shuffled
+function letterForTerm(originalIndex) {
+  const pos = shuffled.findIndex(p => p.originalIndex === originalIndex);
+  return String.fromCharCode(65 + pos);
+}
+
+const matchKeyGrid = document.getElementById('match-key-grid');
+MATCH_PAIRS.forEach((pair, i) => {
+  const row = document.createElement('div');
+  row.className = 'match-key-row';
+  row.innerHTML = `
+    <div class="match-key-num">${i+1}.</div>
+    <div class="match-key-term">${pair.term}</div>
+    <div class="match-key-arrow">&rarr;</div>
+    <div class="match-key-letter">${letterForTerm(i)}</div>`;
+  matchKeyGrid.appendChild(row);
+});
+
+const matchDefsList = document.getElementById('match-defs-list');
+shuffled.forEach((pair, i) => {
+  const row = document.createElement('div');
+  row.className = 'match-def-row';
+  row.innerHTML = `
+    <div class="match-def-letter">${String.fromCharCode(65+i)}.</div>
+    <div class="match-def-text">${pair.def}<span class="match-def-term">[${pair.term.toUpperCase()}]</span></div>`;
+  matchDefsList.appendChild(row);
+});
+
+// --- Short Answer Exemplars ---
+const saList = document.getElementById('sa-list');
+SA_EXEMPLARS.forEach((sa, i) => {
+  const block = document.createElement('div');
+  block.className = 'sa-block';
+  block.innerHTML = `
+    <div class="sa-prompt"><span class="sa-num">${i+1}.</span>${sa.q}<span class="sa-points">[5 PTS]</span></div>
+    <div class="sa-model">
+      <div class="sa-model-label">FULL-CREDIT EXEMPLAR (5 / 5)</div>
+      <div class="sa-model-text">${sa.model}</div>
+    </div>`;
+  saList.appendChild(block);
+});
+</script>
+</body>
+</html>

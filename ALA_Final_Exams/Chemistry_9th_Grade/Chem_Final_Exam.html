@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>9th Grade Chemistry · Final Exam</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=IBM+Plex+Mono:wght@400;600&family=Source+Serif+4:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0c0b09;--bg2:#131109;--bg3:#1a1710;--bg4:#201d14;
+  --gold:#c9a84c;--gold2:#e8c870;
+  --teal:#4fc3f7;--teal2:#81d4fa;
+  --purple:#a78be8;--orange:#e8a870;
+  --green:#6ab87a;--red:#c85858;
+  --text:#e8e0cc;--text2:#b8b098;--text3:#787060;--text4:#504840;
+  --border:rgba(201,168,76,.2);--border2:rgba(201,168,76,.1);
+  --ff-head:'Playfair Display',serif;
+  --ff-mono:'IBM Plex Mono',monospace;
+  --ff-body:'Source Serif 4',serif;
+}
+body{background:var(--bg);color:var(--text);font-family:var(--ff-body);font-weight:300;line-height:1.65;min-height:100vh}
+
+.site-header{background:linear-gradient(180deg,var(--bg2) 0%,var(--bg) 100%);border-bottom:1px solid var(--border);padding:2.5rem 2rem 2rem;text-align:center}
+.eyebrow{font-family:var(--ff-mono);font-size:.7rem;letter-spacing:.15em;color:var(--teal);text-transform:uppercase;margin-bottom:.6rem}
+.site-title{font-family:var(--ff-head);font-size:clamp(1.8rem,4vw,2.8rem);font-weight:700;color:var(--text);line-height:1.1;margin-bottom:.4rem}
+.site-sub{font-family:var(--ff-mono);font-size:.65rem;letter-spacing:.2em;color:var(--text3);margin-bottom:1.2rem}
+.exam-meta{display:flex;justify-content:center;gap:2rem;flex-wrap:wrap;margin-top:.8rem}
+.meta-item{font-family:var(--ff-mono);font-size:.6rem;letter-spacing:.12em;color:var(--text3)}
+.meta-item span{color:var(--text2)}
+
+.content{max-width:820px;margin:0 auto;padding:2rem 1.5rem 4rem}
+
+/* SECTION HEADERS */
+.section-header{background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:1.2rem 1.5rem;margin:2.5rem 0 1.5rem}
+.section-tag{font-family:var(--ff-mono);font-size:.6rem;letter-spacing:.18em;color:var(--text3);margin-bottom:.3rem}
+.section-title{font-family:var(--ff-head);font-size:1.3rem;font-weight:700;color:var(--text);margin-bottom:.3rem}
+.section-desc{font-family:var(--ff-mono);font-size:.65rem;color:var(--text3);line-height:1.6}
+
+.lesson-divider{display:flex;align-items:center;gap:1rem;margin:2rem 0 1.2rem}
+.ld-line{flex:1;height:1px}
+.ld-label{font-family:var(--ff-mono);font-size:.6rem;letter-spacing:.18em;white-space:nowrap}
+
+/* PROGRESS */
+.exam-progress{position:sticky;top:0;z-index:10;background:var(--bg2);border-bottom:1px solid var(--border2);padding:.6rem 1.5rem;display:flex;align-items:center;gap:1rem}
+.ep-bar-wrap{flex:1;background:var(--bg4);border-radius:4px;height:4px;overflow:hidden}
+.ep-bar-fill{height:100%;background:linear-gradient(90deg,var(--gold),var(--gold2));border-radius:4px;transition:width .4s ease;width:0%}
+.ep-label{font-family:var(--ff-mono);font-size:.6rem;letter-spacing:.1em;color:var(--text3);white-space:nowrap}
+
+/* VOCABULARY FIB (Section A) */
+.vocab-card{background:var(--bg3);border:1px solid var(--border2);border-radius:8px;padding:1.3rem 1.5rem;margin-bottom:1rem}
+.q-num{font-family:var(--ff-mono);font-size:.6rem;letter-spacing:.12em;color:var(--text3);margin-bottom:.6rem}
+.vocab-stem{font-size:.92rem;color:var(--text);line-height:1.85}
+.fib-sel{font-family:var(--ff-mono);font-size:.75rem;color:var(--text2);background:var(--bg4);border:1px solid var(--border);border-radius:4px;padding:.35rem .55rem;cursor:pointer;outline:none;transition:border-color .2s;appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%23787060'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right .5rem center;padding-right:1.6rem;min-width:140px}
+.fib-sel:focus{border-color:var(--gold)}
+.fib-sel.correct{border-color:#3a7a3a;background-color:#0a1a0a;color:#90d890}
+.fib-sel.wrong{border-color:#7a3a3a;background-color:#1a0a0a;color:#d89090}
+.fib-result{display:none;margin-top:.6rem;font-family:var(--ff-mono);font-size:.65rem;line-height:1.5}
+.fib-result.visible{display:block}
+.r-ok{color:var(--green)}.r-no{color:var(--red)}.r-note{color:var(--text3);display:block;margin-top:.2rem;font-size:.6rem}
+
+/* MCQ (Section B) */
+.mc-card{background:var(--bg3);border:1px solid var(--border2);border-radius:8px;padding:1.4rem 1.5rem;margin-bottom:1rem}
+.mc-q{font-size:.93rem;color:var(--text);line-height:1.65;margin-bottom:1rem}
+.mc-opts{display:flex;flex-direction:column;gap:.45rem}
+.mc-opt{display:flex;align-items:flex-start;gap:.7rem;background:var(--bg4);border:1px solid var(--border2);border-radius:5px;padding:.6rem .85rem;cursor:pointer;text-align:left;transition:border-color .15s,background .15s;font-family:var(--ff-body);font-size:.87rem;color:var(--text2);line-height:1.5;width:100%}
+.mc-opt:hover:not(:disabled){border-color:var(--border);background:var(--bg3)}
+.mc-opt-letter{font-family:var(--ff-mono);font-size:.68rem;color:var(--text3);min-width:1.3rem;margin-top:.05rem;flex-shrink:0}
+.mc-opt.correct{background:#0e1f0e;border-color:#3a7a3a;color:#90d890}
+.mc-opt.correct .mc-opt-letter{color:var(--green)}
+.mc-opt.wrong{background:#1f0e0e;border-color:#7a3a3a;color:#d89090}
+.mc-opt.wrong .mc-opt-letter{color:var(--red)}
+.mc-feedback{display:none;margin-top:.9rem}
+.mc-verdict{font-family:var(--ff-mono);font-size:.65rem;letter-spacing:.1em;padding:.35rem .75rem;border-radius:4px;display:inline-block}
+.v-ok{background:#0e1f0e;color:#6ab87a;border:1px solid #2a4a2e}
+.v-no{background:#1f0e0e;color:#c85858;border:1px solid #4a2a2e}
+
+/* CALC MODEL */
+.calc-model-btn{font-family:var(--ff-mono);font-size:.6rem;letter-spacing:.1em;color:var(--teal);background:rgba(79,195,247,.08);border:1px solid rgba(79,195,247,.2);border-radius:4px;padding:.3rem .65rem;cursor:pointer;margin-bottom:.85rem;transition:background .2s;display:block}
+.calc-model-btn:hover{background:rgba(79,195,247,.15)}
+.calc-model{display:none;background:#060c10;border:1px solid rgba(79,195,247,.28);border-radius:6px;padding:.9rem 1.1rem;margin-bottom:.9rem;font-family:var(--ff-mono);font-size:.7rem;line-height:1.9}
+.calc-model.visible{display:block}
+.cm-title{font-size:.58rem;letter-spacing:.18em;color:var(--teal);margin-bottom:.6rem;border-bottom:1px solid rgba(79,195,247,.15);padding-bottom:.35rem}
+.cm-step{color:var(--text2)}.cm-divider{color:var(--text4)}.cm-result{color:var(--green);font-weight:600}
+
+/* SUBMIT & SCORE */
+.submit-section{text-align:center;padding:2.5rem 0;border-top:1px solid var(--border2);margin-top:2rem}
+.submit-note{font-family:var(--ff-mono);font-size:.65rem;color:var(--text3);margin-bottom:1.2rem;line-height:1.7}
+.submit-btn{font-family:var(--ff-mono);font-size:.7rem;letter-spacing:.14em;color:var(--bg);background:var(--gold);border:none;border-radius:5px;padding:.65rem 2rem;cursor:pointer;transition:background .2s}
+.submit-btn:hover{background:var(--gold2)}
+.submit-btn:disabled{opacity:.5;cursor:not-allowed}
+
+.results-panel{display:none;background:var(--bg3);border:1px solid var(--border);border-radius:12px;padding:2rem;margin-top:2rem;text-align:center}
+.results-panel.visible{display:block}
+.res-big{font-family:var(--ff-head);font-size:3.5rem;font-weight:700;line-height:1;margin-bottom:.3rem}
+.res-lbl{font-family:var(--ff-mono);font-size:.6rem;letter-spacing:.18em;color:var(--text3);margin-bottom:1rem}
+.res-bar-wrap{background:var(--bg2);border-radius:4px;height:8px;margin:.8rem auto;max-width:340px;overflow:hidden}
+.res-bar-fill{height:100%;border-radius:4px;background:linear-gradient(90deg,var(--gold),var(--gold2));transition:width 1s ease}
+.res-breakdown{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin:1.5rem 0;max-width:420px;margin-left:auto;margin-right:auto}
+.res-section{background:var(--bg2);border:1px solid var(--border2);border-radius:6px;padding:.9rem}
+.res-sec-score{font-family:var(--ff-head);font-size:1.6rem;font-weight:700;margin-bottom:.2rem}
+.res-sec-lbl{font-family:var(--ff-mono);font-size:.55rem;letter-spacing:.12em;color:var(--text3)}
+.res-msg{font-family:var(--ff-mono);font-size:.65rem;color:var(--text3);line-height:1.7;margin:.8rem 0 1.2rem}
+.reset-btn{font-family:var(--ff-mono);font-size:.65rem;letter-spacing:.12em;color:var(--bg);background:var(--gold);border:none;border-radius:4px;padding:.5rem 1.2rem;cursor:pointer;transition:background .2s}
+.reset-btn:hover{background:var(--gold2)}
+
+@media(max-width:600px){
+  .res-breakdown{grid-template-columns:1fr}
+  .exam-meta{gap:1rem}
+}
+@media print{
+  body{background:#fff;color:#111}
+  .exam-progress,.calc-model-btn,.submit-section,.results-panel{display:none}
+  .mc-opt,.vocab-card,.mc-card{border-color:#ccc!important;background:#fff!important;color:#111!important}
+  .mc-opt-letter{color:#555!important}
+  .q-num,.section-tag,.section-desc,.mc-num,.ld-label,.meta-item,.eyebrow,.site-sub{color:#555!important}
+  :root{--bg:#fff;--bg2:#f8f8f8;--bg3:#f0f0f0;--bg4:#e8e8e8;--text:#111;--text2:#222;--text3:#555;--border:rgba(0,0,0,.15);--border2:rgba(0,0,0,.08)}
+  .site-header{background:#fff!important}
+}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="eyebrow">9th Grade Chemistry · Non-AP · Ala Vistancia · Mr/Ms Sharp</div>
+  <h1 class="site-title">Foundations of Chemistry</h1>
+  <div class="site-sub">FINAL EXAM · 50 QUESTIONS · 100 POINTS</div>
+  <div class="exam-meta">
+    <div class="meta-item">SECTION A &nbsp;·&nbsp; <span>VOCABULARY · 17 pts</span></div>
+    <div class="meta-item">SECTION B &nbsp;·&nbsp; <span>MULTIPLE CHOICE · 20 pts</span></div>
+    <div class="meta-item">SECTION C &nbsp;·&nbsp; <span>FILL-IN-BLANK · 13 pts</span></div>
+  </div>
+</header>
+
+<div class="exam-progress">
+  <div class="ep-bar-wrap"><div class="ep-bar-fill" id="ep-fill"></div></div>
+  <div class="ep-label" id="ep-label">0 / 50 answered</div>
+</div>
+
+<div class="content">
+
+  <!-- ══════════ SECTION A: VOCABULARY ══════════ -->
+  <div class="section-header">
+    <div class="section-tag">SECTION A · 17 POINTS</div>
+    <div class="section-title">Vocabulary</div>
+    <div class="section-desc">Read each definition. Select the correct chemistry term from the dropdown. · 1 point each</div>
+  </div>
+
+  <div id="vocab-container"></div>
+
+  <!-- ══════════ SECTION B: MULTIPLE CHOICE ══════════ -->
+  <div class="section-header">
+    <div class="section-tag">SECTION B · 20 POINTS</div>
+    <div class="section-title">Multiple Choice</div>
+    <div class="section-desc">Select the single best answer from the six options. Calculation models are available for math-based questions. · 1 point each</div>
+  </div>
+
+  <div id="mc-container"></div>
+
+  <!-- ══════════ SECTION C: FILL-IN-BLANK ══════════ -->
+  <div class="section-header">
+    <div class="section-tag">SECTION C · 13 POINTS</div>
+    <div class="section-title">Fill-in-the-Blank</div>
+    <div class="section-desc">Select the word or value that correctly completes each sentence. · 1 point each</div>
+  </div>
+
+  <div id="fib-container"></div>
+
+  <!-- ══════════ SUBMIT ══════════ -->
+  <div class="submit-section" id="submit-section">
+    <div class="submit-note">Answer all 50 questions before submitting.<br>Calculation models are available — use them.</div>
+    <button class="submit-btn" id="submit-btn" onclick="submitExam()">SUBMIT EXAM</button>
+  </div>
+
+  <div class="results-panel" id="results-panel">
+    <div class="res-big" id="res-pct">—</div>
+    <div class="res-lbl">TOTAL SCORE</div>
+    <div class="res-bar-wrap"><div class="res-bar-fill" id="res-bar" style="width:0%"></div></div>
+    <div class="res-breakdown">
+      <div class="res-section">
+        <div class="res-sec-score" id="rs-a">—</div>
+        <div class="res-sec-lbl">SEC A · VOCAB</div>
+      </div>
+      <div class="res-section">
+        <div class="res-sec-score" id="rs-b">—</div>
+        <div class="res-sec-lbl">SEC B · MCQ</div>
+      </div>
+      <div class="res-section">
+        <div class="res-sec-score" id="rs-c">—</div>
+        <div class="res-sec-lbl">SEC C · FIB</div>
+      </div>
+    </div>
+    <div class="res-msg" id="res-msg"></div>
+    <button class="reset-btn" onclick="resetExam()">RESET EXAM</button>
+  </div>
+
+</div>
+
+<script>
+// ═══════════════════════════════ DATA ═══════════════════════════════
+
+// SECTION A — Vocabulary (definition given → select the term)
+const VOCAB = [
+  {stem:"The smallest particle of an element that still retains that element's chemical properties is a(n) <span class='blank'>___</span>.",
+   opts:["compound","element","atom","ion","electron","isotope"],ans:2,qn:1,note:"Atoms are the building blocks of matter."},
+  {stem:"A pure substance composed of only one type of atom — which cannot be broken down by ordinary chemical means — is called a(n) <span class='blank'>___</span>.",
+   opts:["compound","element","mixture","molecule","ion","alloy"],ans:1,qn:2,note:"Elements are listed on the periodic table."},
+  {stem:"A pure substance formed when two or more elements chemically bond together in a fixed ratio is called a(n) <span class='blank'>___</span>.",
+   opts:["element","mixture","alloy","suspension","compound","solution"],ans:4,qn:3,note:"Water (H₂O) and salt (NaCl) are both compounds."},
+  {stem:"A combination of two or more substances that are NOT chemically combined — where each substance keeps its own properties — is called a <span class='blank'>___</span>.",
+   opts:["compound","element","pure substance","mixture","molecule","formula unit"],ans:3,qn:4,note:"Salt water is a mixture; water alone is a compound."},
+  {stem:"A positively charged (+) subatomic particle found in the nucleus of an atom is called a <span class='blank'>___</span>.",
+   opts:["neutron","electron","isotope","ion","proton","photon"],ans:4,qn:5,note:"Number of protons = atomic number = element identity."},
+  {stem:"A neutral (no charge) subatomic particle found in the nucleus of an atom is called a <span class='blank'>___</span>.",
+   opts:["proton","electron","photon","ion","isotope","neutron"],ans:5,qn:6,note:"Adding or removing neutrons creates isotopes of the same element."},
+  {stem:"A negatively charged (−) subatomic particle that moves in orbitals around the nucleus is called a(n) <span class='blank'>___</span>.",
+   opts:["proton","neutron","photon","isotope","electron","nucleus"],ans:4,qn:7,note:"Electrons are involved in bonding and chemical reactions."},
+  {stem:"The number of protons in an atom's nucleus — which is unique to every element and never changes — is called the <span class='blank'>___</span>.",
+   opts:["mass number","molar mass","neutron count","electron count","atomic number","isotope number"],ans:4,qn:8,note:"Atomic number = identity of the element."},
+  {stem:"The total count of protons plus neutrons in an atom's nucleus is called the <span class='blank'>___</span>.",
+   opts:["atomic number","molar mass","neutron count","electron number","group number","mass number"],ans:5,qn:9,note:"Mass Number = Protons + Neutrons."},
+  {stem:"Atoms of the same element that have the same atomic number but different numbers of neutrons are called <span class='blank'>___</span>.",
+   opts:["ions","allotropes","isomers","polymers","isotopes","isobars"],ans:4,qn:10,note:"Example: Carbon-12 and Carbon-14 are both carbon, but C-14 has 2 extra neutrons."},
+  {stem:"An atom or group of atoms that carries an electric charge because it has gained or lost electrons is called a(n) <span class='blank'>___</span>.",
+   opts:["element","molecule","compound","isotope","allotrope","ion"],ans:5,qn:11,note:"Gains electrons → anion (−). Loses electrons → cation (+)."},
+  {stem:"The electrons in the outermost energy level of an atom that participate in chemical bonding are called <span class='blank'>___</span> electrons.",
+   opts:["core","free","mobile","valence","neutron","nuclear"],ans:3,qn:12,note:"Valence electrons determine how an atom bonds."},
+  {stem:"A chemical bond formed when two atoms SHARE one or more pairs of electrons is called a <span class='blank'>___</span> bond.",
+   opts:["ionic","metallic","hydrogen","nuclear","covalent","compound"],ans:4,qn:13,note:"Covalent bonds typically form between nonmetal atoms."},
+  {stem:"A chemical bond formed by the complete TRANSFER of electrons from a metal to a nonmetal is called a(n) <span class='blank'>___</span> bond.",
+   opts:["covalent","metallic","hydrogen","nuclear","polar","ionic"],ans:5,qn:14,note:"Ionic bonds form oppositely charged ions that attract each other."},
+  {stem:"The SI unit for amount of substance in chemistry — equal to 6.022 × 10²³ representative particles — is the <span class='blank'>___</span>.",
+   opts:["gram","liter","mole","joule","kelvin","newton"],ans:2,qn:15,note:"1 mole of any substance contains Avogadro's number of particles."},
+  {stem:"A substance that is present at the START of a chemical reaction and is consumed (used up) during the reaction is called a <span class='blank'>___</span>.",
+   opts:["product","catalyst","ion","solution","reactant","compound"],ans:4,qn:16,note:"Reactants are written on the LEFT side of a chemical equation."},
+  {stem:"A new substance that is FORMED as a result of a chemical reaction — written on the right side of the equation — is called a <span class='blank'>___</span>.",
+   opts:["reactant","catalyst","ion","solution","compound","product"],ans:5,qn:17,note:"Products are what you end up with after the reaction."},
+];
+
+// SECTION B — Multiple Choice (6 options each)
+const MC = [
+  {qn:18,lesson:"L01 · MATTER",color:"#c9a84c",
+   q:"Which of the following is an example of a <strong>physical change</strong>?",
+   opts:["Iron rusting after exposure to rain","Natural gas burning in a stove flame","Milk curdling when it spoils","Ice melting into liquid water","Wood rotting over several years","Baking soda fizzing when mixed with vinegar"],
+   ans:3,calc:null},
+  {qn:19,lesson:"L01 · MATTER",color:"#c9a84c",
+   q:"Salt water (NaCl dissolved in H₂O) is best classified as a...",
+   opts:["Pure element","Pure compound","Homogeneous mixture","Heterogeneous mixture","Suspension","Single-element substance"],
+   ans:2,calc:null},
+  {qn:20,lesson:"L01 · MEASUREMENT",color:"#c9a84c",
+   q:"A metal sample has a mass of 45.0 g and a volume of 5.0 cm³. What is its <strong>density</strong>?",
+   opts:["0.11 g/cm³","225 g/cm³","50.0 g/cm³","40.0 g/cm³","9.0 g/cm³","4.5 g/cm³"],
+   ans:4,calc:{title:"DENSITY CALCULATION",steps:[
+     "Formula:    D = m ÷ v",
+     "Values:     m = 45.0 g    |    v = 5.0 cm³",
+     "Solve:      D = 45.0 g ÷ 5.0 cm³",
+     "Result:     D = 9.0 g/cm³"]}},
+  {qn:21,lesson:"L02 · ATOMIC STRUCTURE",color:"#4fc3f7",
+   q:"Where is the majority of an atom's <strong>mass</strong> located?",
+   opts:["In the electron cloud surrounding the nucleus","Evenly distributed throughout the atom","In the outermost electron shells","In the valence electrons only","In the nucleus","In the space between the nucleus and electrons"],
+   ans:4,calc:null},
+  {qn:22,lesson:"L02 · ATOMIC STRUCTURE",color:"#4fc3f7",
+   q:"An atom has <strong>17 protons</strong> and <strong>18 neutrons</strong>. What is its <strong>mass number</strong>?",
+   opts:["17","18","1","35","34","51"],
+   ans:3,calc:{title:"MASS NUMBER CALCULATION",steps:[
+     "Formula:    Mass Number = Protons + Neutrons",
+     "Values:     Protons = 17    |    Neutrons = 18",
+     "Solve:      17 + 18",
+     "Result:     Mass Number = 35"]}},
+  {qn:23,lesson:"L02 · ATOMIC STRUCTURE",color:"#4fc3f7",
+   q:"Which subatomic particle determines the <strong>identity</strong> (which element) of an atom?",
+   opts:["Neutron","Electron","Proton","Both protons and neutrons equally","Ion","Valence electron"],
+   ans:2,calc:null},
+  {qn:24,lesson:"L03 · PERIODIC TABLE",color:"#a78be8",
+   q:"Elements in the same <strong>group</strong> (vertical column) on the periodic table share similar...",
+   opts:["Atomic masses","Numbers of neutrons","Mass numbers","Physical states at room temperature","Numbers of electron shells","Chemical properties"],
+   ans:5,calc:null},
+  {qn:25,lesson:"L03 · PERIODIC TABLE",color:"#a78be8",
+   q:"Which of the following elements is classified as a <strong>noble gas</strong>?",
+   opts:["Nitrogen (N)","Fluorine (F)","Chlorine (Cl)","Oxygen (O)","Sodium (Na)","Argon (Ar)"],
+   ans:5,calc:null},
+  {qn:26,lesson:"L03 · PERIODIC TABLE",color:"#a78be8",
+   q:"Moving from left to right across Period 3 (Na → Ar), which property <strong>steadily increases</strong>?",
+   opts:["Atomic radius","Metallic character","Number of electron shells","Reactivity with water","Atomic number","Number of neutrons in all atoms"],
+   ans:4,calc:null},
+  {qn:27,lesson:"L04 · CHEMICAL BONDING",color:"#e8a870",
+   q:"Which type of chemical bond involves the complete <strong>transfer</strong> of electrons from one atom to another?",
+   opts:["Covalent bond","Metallic bond","Polar covalent bond","Hydrogen bond","Van der Waals force","Ionic bond"],
+   ans:5,calc:null},
+  {qn:28,lesson:"L04 · CHEMICAL BONDING",color:"#e8a870",
+   q:"How many <strong>valence electrons</strong> does a carbon atom (Group 14) have?",
+   opts:["1","2","3","6","4","14"],
+   ans:4,calc:null},
+  {qn:29,lesson:"L04 · CHEMICAL BONDING",color:"#e8a870",
+   q:"A water molecule (H₂O) has two lone pairs on oxygen. What <strong>molecular shape</strong> does this produce?",
+   opts:["Linear","Trigonal planar","Bent (V-shaped)","Tetrahedral","Octahedral","T-shaped"],
+   ans:2,calc:null},
+  {qn:30,lesson:"L05 · CHEMICAL REACTIONS",color:"#7cb5c8",
+   q:"According to the <strong>Law of Conservation of Mass</strong>, what is always conserved in a chemical reaction?",
+   opts:["Number of molecules only","Volume of all substances","Temperature of the system","Number of moles only","Color and physical state","Total mass and total number of each type of atom"],
+   ans:5,calc:null},
+  {qn:31,lesson:"L05 · CHEMICAL REACTIONS",color:"#7cb5c8",
+   q:"Which equation represents a <strong>decomposition</strong> reaction?",
+   opts:["2Na + Cl₂ → 2NaCl","CH₄ + 2O₂ → CO₂ + 2H₂O","Zn + CuSO₄ → ZnSO₄ + Cu","HCl + NaOH → NaCl + H₂O","2H₂ + O₂ → 2H₂O","2H₂O₂ → 2H₂O + O₂"],
+   ans:5,calc:null},
+  {qn:32,lesson:"L05 · CHEMICAL REACTIONS",color:"#7cb5c8",
+   q:"What do <strong>coefficients</strong> in a balanced chemical equation represent?",
+   opts:["The charge of each ion","The number of atoms within one molecule","The subscripts of each element","The temperature of the reaction","The number of moles (or molecules) of each substance","The oxidation states of atoms"],
+   ans:4,calc:null},
+  {qn:33,lesson:"L06 · STOICHIOMETRY",color:"#f08080",
+   q:"Avogadro's number (6.022 × 10²³) represents the number of particles in exactly...",
+   opts:["1 gram of any substance","1 liter of any gas at STP","1 molecule of any compound","1 mole of any substance","1 atomic mass unit","1 formula unit only"],
+   ans:3,calc:null},
+  {qn:34,lesson:"L06 · STOICHIOMETRY",color:"#f08080",
+   q:"What is the <strong>molar mass</strong> of water, H₂O? (H = 1.0 g/mol, O = 16.0 g/mol)",
+   opts:["2.0 g/mol","10.0 g/mol","16.0 g/mol","32.0 g/mol","20.0 g/mol","18.0 g/mol"],
+   ans:5,calc:{title:"MOLAR MASS — H₂O",steps:[
+     "Formula:     Molar Mass = Σ (# atoms × atomic mass)",
+     "Hydrogen:    2 × 1.0  =   2.0 g/mol",
+     "Oxygen:      1 × 16.0 =  16.0 g/mol",
+     "─────────────────────────────────────",
+     "Total:       18.0 g/mol"]}},
+  {qn:35,lesson:"L06 · STOICHIOMETRY",color:"#f08080",
+   q:"How many <strong>moles</strong> are in 36.0 g of water? (Molar mass of H₂O = 18.0 g/mol)",
+   opts:["0.5 mol","36.0 mol","18.0 mol","4.0 mol","1.0 mol","2.0 mol"],
+   ans:5,calc:{title:"MOLES CALCULATION",steps:[
+     "Formula:     n = m ÷ M",
+     "Values:      m = 36.0 g   |   M = 18.0 g/mol",
+     "Solve:       n = 36.0 ÷ 18.0",
+     "Result:      n = 2.0 mol"]}},
+  {qn:36,lesson:"L07 · STATES & SOLUTIONS",color:"#6ab87a",
+   q:"Which state of matter has a <strong>definite volume</strong> but <strong>no definite shape</strong>?",
+   opts:["Solid","Gas","Plasma","Suspension","Liquid","Colloid"],
+   ans:4,calc:null},
+  {qn:37,lesson:"L07 · STATES & SOLUTIONS",color:"#6ab87a",
+   q:"As temperature increases, what generally happens to the solubility of a <strong>solid solute</strong> in water?",
+   opts:["Decreases significantly","Stays exactly the same","First increases, then decreases sharply","Drops to zero","Doubles instantly","Increases"],
+   ans:5,calc:null},
+];
+
+// SECTION C — Fill-in-Blank (application)
+const FIB = [
+  {qn:38,label:"F01 · L02 · ATOMIC STRUCTURE",
+   stem:"The number of <span class='blank'>___</span> in an atom's nucleus determines which element it is.",
+   opts:["electrons","neutrons","protons","nucleons","ions","isotopes"],ans:2,
+   calc:null,note:"Proton count = atomic number = element identity."},
+  {qn:39,label:"F02 · L02 · ATOMIC STRUCTURE",
+   stem:"An atom that has gained or lost electrons becomes a(n) <span class='blank'>___</span>.",
+   opts:["molecule","element","compound","ion","isotope","allotrope"],ans:3,
+   calc:null,note:"Gains electrons → anion (−). Loses electrons → cation (+)."},
+  {qn:40,label:"F03 · L02 · ATOMIC STRUCTURE",
+   stem:"Atoms of the same element with different numbers of neutrons are called <span class='blank'>___</span>.",
+   opts:["ions","allotropes","isotopes","isomers","polymers","isobars"],ans:2,
+   calc:null,note:"Same atomic number, different mass numbers."},
+  {qn:41,label:"F04 · L03–L04 · BONDING",
+   stem:"A <span class='blank'>___</span> bond forms when two nonmetal atoms SHARE a pair of electrons.",
+   opts:["ionic","metallic","nuclear","covalent","hydrogen","network"],ans:3,
+   calc:null,note:"Covalent = sharing. Ionic = transferring."},
+  {qn:42,label:"F05 · L03 · PERIODIC TABLE",
+   stem:"Elements in the same vertical column (same <span class='blank'>___</span>) have the same number of valence electrons.",
+   opts:["period","block","series","group","row","zone"],ans:3,
+   calc:null,note:"Group = column. Period = row."},
+  {qn:43,label:"F06 · L05 · REACTIONS",
+   stem:"In 2H₂ + O₂ → 2H₂O, the H₂ and O₂ on the LEFT side are called the <span class='blank'>___</span>.",
+   opts:["products","catalysts","coefficients","subscripts","reactants","compounds"],ans:4,
+   calc:null,note:"Left of arrow = reactants. Right of arrow = products."},
+  {qn:44,label:"F07 · L05 · REACTIONS",
+   stem:"When balancing equations, we adjust the <span class='blank'>___</span> in front of formulas — never the subscripts.",
+   opts:["subscripts","charges","superscripts","exponents","coefficients","symbols"],ans:4,
+   calc:null,note:"Changing subscripts would change the substance itself."},
+  {qn:45,label:"F08 · L01 · MATTER",
+   stem:"Salt dissolving in water is a <span class='blank'>___</span> change because no new substance is formed.",
+   opts:["chemical","nuclear","thermal","electrical","physical","magnetic"],ans:4,
+   calc:null,note:"Physical change: same substances, just rearranged. The salt can be recovered by evaporation."},
+  {qn:46,label:"F09 · L02 · ATOMIC STRUCTURE",
+   stem:"The dense central region of an atom that contains protons and neutrons is called the <span class='blank'>___</span>.",
+   opts:["orbital","shell","electron cloud","valence layer","nucleus","lattice"],ans:4,
+   calc:null,note:"The nucleus holds nearly all of the atom's mass in a tiny space."},
+  {qn:47,label:"F10 · L06 · STOICHIOMETRY",
+   stem:"The SI unit for amount of substance — equal to 6.022 × 10²³ particles — is the <span class='blank'>___</span>.",
+   opts:["gram","liter","mole","joule","kelvin","newton"],ans:2,
+   calc:null,note:"1 mole = 6.022 × 10²³ (Avogadro's number)."},
+  {qn:48,label:"F11 · L06 · STOICHIOMETRY",
+   stem:"The molar mass of CO₂ is <span class='blank'>___</span> g/mol. (C = 12 g/mol, O = 16 g/mol)",
+   opts:["28","32","40","44","48","56"],ans:3,
+   calc:{title:"MOLAR MASS — CO₂",steps:[
+     "Carbon:     1 × 12 g/mol  =  12 g/mol",
+     "Oxygen:     2 × 16 g/mol  =  32 g/mol",
+     "─────────────────────────────────────",
+     "Total:      44 g/mol"]},
+   note:"1C + 2O = 12 + 32 = 44 g/mol."},
+  {qn:49,label:"F12 · L07 · SOLUTIONS",
+   stem:"A solution in which water is the solvent is called a(n) <span class='blank'>___</span> solution.",
+   opts:["ionic","covalent","dilute","saturated","aqueous","polar"],ans:4,
+   calc:null,note:"Aqueous = water is the solvent (Latin: aqua = water)."},
+  {qn:50,label:"F13 · L03 · PERIODIC TABLE",
+   stem:"Elements that are shiny, malleable, ductile, and good electrical conductors are classified as <span class='blank'>___</span>.",
+   opts:["nonmetals","metalloids","noble gases","halogens","metals","actinides"],ans:4,
+   calc:null,note:"Metals make up ~75% of the periodic table and are found mostly on the left and center."},
+];
+
+// ═══════════════════════════════ STATE ═══════════════════════════════
+const answers = {}; // key: "a-0", "b-0", "c-0", etc.
+const TOTAL = VOCAB.length + MC.length + FIB.length; // 50
+
+function updateProgress() {
+  const count = Object.keys(answers).length;
+  document.getElementById('ep-fill').style.width = Math.round((count/TOTAL)*100) + '%';
+  document.getElementById('ep-label').textContent = count + ' / ' + TOTAL + ' answered';
+  document.getElementById('submit-btn').disabled = false;
+}
+
+// ═══════════════════════════════ BUILD VOCAB ═══════════════════════════════
+function buildVocab() {
+  const container = document.getElementById('vocab-container');
+  VOCAB.forEach((q, qi) => {
+    const selOpts = ['<option value="">— select term —</option>',
+      ...q.opts.map((o,i)=>`<option value="${i}">${o}</option>`)].join('');
+    const stemWithSel = q.stem.replace(/<span class='blank'>___<\/span>/,
+      `<select class="fib-sel" id="va-sel-${qi}" onchange="answerVocab(${qi})">${selOpts}</select>`);
+    container.insertAdjacentHTML('beforeend', `<div class="vocab-card" id="vc-${qi}">
+      <div class="q-num">Q${q.qn} &nbsp;·&nbsp; VOCABULARY</div>
+      <div class="vocab-stem">${stemWithSel}</div>
+      <div class="fib-result" id="va-result-${qi}"></div>
+    </div>`);
+  });
+}
+
+function answerVocab(qi) {
+  const sel = document.getElementById('va-sel-'+qi);
+  if (sel.value === '') return;
+  answers['a-'+qi] = parseInt(sel.value);
+  updateProgress();
+}
+
+// ═══════════════════════════════ BUILD MCQ ═══════════════════════════════
+function buildMC() {
+  const container = document.getElementById('mc-container');
+  const letters = ['A','B','C','D','E','F'];
+  let lastLesson = '';
+
+  MC.forEach((q, qi) => {
+    if (q.lesson !== lastLesson) {
+      lastLesson = q.lesson;
+      const c = q.color || '#c9a84c';
+      container.insertAdjacentHTML('beforeend', `<div class="lesson-divider">
+        <div class="ld-line" style="background:linear-gradient(90deg,${c},transparent)"></div>
+        <div class="ld-label" style="color:${c}">${q.lesson}</div>
+        <div class="ld-line" style="background:linear-gradient(90deg,transparent,${c})"></div>
+      </div>`);
+    }
+
+    const calcHTML = q.calc ? `<button class="calc-model-btn" id="mcbtn-${qi}" onclick="toggleCalc('mc',${qi})">▶ SHOW CALCULATION MODEL</button>
+      <div class="calc-model" id="mc-calc-${qi}">
+        <div class="cm-title">${q.calc.title}</div>
+        ${q.calc.steps.map((s,si)=>`<div class="${si===q.calc.steps.length-1?'cm-result':s.startsWith('─')?'cm-divider':'cm-step'}">${s}</div>`).join('')}
+      </div>` : '';
+
+    const optsHTML = q.opts.map((o,oi)=>
+      `<button class="mc-opt" id="mco-${qi}-${oi}" onclick="selectMC(${qi},${oi})">
+        <span class="mc-opt-letter">${letters[oi]}.</span>${o}
+      </button>`).join('');
+
+    container.insertAdjacentHTML('beforeend', `<div class="mc-card" id="mc-${qi}">
+      <div class="q-num">Q${q.qn} &nbsp;·&nbsp; ${q.lesson}</div>
+      <div class="mc-q">${q.q}</div>
+      ${calcHTML}
+      <div class="mc-opts">${optsHTML}</div>
+      <div class="mc-feedback" id="mc-fb-${qi}">
+        <div class="mc-verdict" id="mc-verd-${qi}"></div>
+      </div>
+    </div>`);
+  });
+}
+
+function toggleCalc(type, qi) {
+  const id = type === 'mc' ? 'mc-calc-'+qi : 'fib-calc-'+qi;
+  const btnId = type === 'mc' ? 'mcbtn-'+qi : 'fibbtn-'+qi;
+  const el = document.getElementById(id), btn = document.getElementById(btnId);
+  const v = el.classList.toggle('visible');
+  btn.textContent = (v ? '▼ HIDE' : '▶ SHOW') + ' CALCULATION MODEL';
+}
+
+function selectMC(qi, oi) {
+  if (answers['b-'+qi] !== undefined) return;
+  answers['b-'+qi] = oi;
+  updateProgress();
+  // Highlight selection (grey) — no reveal until submit
+  MC[qi].opts.forEach((_,i) => {
+    const b = document.getElementById(`mco-${qi}-${i}`);
+    if (i === oi) { b.style.borderColor = 'var(--gold)'; b.style.background = 'rgba(201,168,76,.08)'; }
+    b.style.cursor = 'default';
+  });
+  document.querySelectorAll(`#mc-${qi} .mc-opt`).forEach(b => b.disabled = true);
+}
+
+// ═══════════════════════════════ BUILD FIB ═══════════════════════════════
+function buildFIB() {
+  const container = document.getElementById('fib-container');
+  FIB.forEach((q, qi) => {
+    const selOpts = ['<option value="">— select —</option>',
+      ...q.opts.map((o,i)=>`<option value="${i}">${o}</option>`)].join('');
+
+    const calcHTML = q.calc ? `<button class="calc-model-btn" id="fibbtn-${qi}" onclick="toggleCalc('fib',${qi})">▶ SHOW CALCULATION MODEL</button>
+      <div class="calc-model" id="fib-calc-${qi}">
+        <div class="cm-title">${q.calc.title}</div>
+        ${q.calc.steps.map((s,si)=>`<div class="${si===q.calc.steps.length-1?'cm-result':s.startsWith('─')?'cm-divider':'cm-step'}">${s}</div>`).join('')}
+      </div>` : '';
+
+    const stemWithSel = q.stem.replace(/<span class='blank'>___<\/span>/,
+      `<select class="fib-sel" id="fib-sel-${qi}" onchange="answerFIB(${qi})">${selOpts}</select>`);
+
+    container.insertAdjacentHTML('beforeend', `<div class="vocab-card" id="fib-card-${qi}">
+      <div class="q-num">${q.label} &nbsp;·&nbsp; Q${q.qn}</div>
+      ${calcHTML}
+      <div class="vocab-stem">${stemWithSel}</div>
+      <div class="fib-result" id="fib-result-${qi}"></div>
+    </div>`);
+  });
+}
+
+function answerFIB(qi) {
+  const sel = document.getElementById('fib-sel-'+qi);
+  if (sel.value === '') return;
+  answers['c-'+qi] = parseInt(sel.value);
+  updateProgress();
+}
+
+// ═══════════════════════════════ SUBMIT ═══════════════════════════════
+function submitExam() {
+  let scoreA = 0, scoreB = 0, scoreC = 0;
+
+  // Grade Section A
+  VOCAB.forEach((q, qi) => {
+    const chosen = answers['a-'+qi];
+    const correct = q.ans;
+    const sel = document.getElementById('va-sel-'+qi);
+    const result = document.getElementById('va-result-'+qi);
+    if (chosen === undefined) {
+      result.classList.add('visible');
+      result.innerHTML = `<span class="r-no">✗ NOT ANSWERED — Correct: "${q.opts[correct]}"</span><span class="r-note">${q.note}</span>`;
+    } else {
+      sel.disabled = true;
+      sel.classList.add(chosen === correct ? 'correct' : 'wrong');
+      result.classList.add('visible');
+      if (chosen === correct) {
+        scoreA++;
+        result.innerHTML = `<span class="r-ok">✓ CORRECT</span><span class="r-note">${q.note}</span>`;
+      } else {
+        result.innerHTML = `<span class="r-no">✗ Correct answer: "${q.opts[correct]}"</span><span class="r-note">${q.note}</span>`;
+      }
+    }
+  });
+
+  // Grade Section B
+  MC.forEach((q, qi) => {
+    const chosen = answers['b-'+qi];
+    const correct = q.ans;
+    if (chosen !== undefined) {
+      // Reset selection highlight
+      MC[qi].opts.forEach((_,i) => {
+        const b = document.getElementById(`mco-${qi}-${i}`);
+        b.style.borderColor = ''; b.style.background = '';
+        if (i === correct) b.classList.add('correct');
+        else if (i === chosen && chosen !== correct) b.classList.add('wrong');
+      });
+      const fb = document.getElementById('mc-fb-'+qi);
+      const vd = document.getElementById('mc-verd-'+qi);
+      fb.style.display = 'block';
+      if (chosen === correct) {
+        scoreB++;
+        vd.textContent = '✓ CORRECT'; vd.className = 'mc-verdict v-ok';
+      } else {
+        vd.textContent = '✗ INCORRECT'; vd.className = 'mc-verdict v-no';
+      }
+    } else {
+      MC[qi].opts.forEach((_,i) => {
+        const b = document.getElementById(`mco-${qi}-${i}`);
+        if (i === correct) b.classList.add('correct');
+      });
+      const fb = document.getElementById('mc-fb-'+qi);
+      const vd = document.getElementById('mc-verd-'+qi);
+      fb.style.display = 'block';
+      vd.textContent = '✗ NOT ANSWERED'; vd.className = 'mc-verdict v-no';
+    }
+  });
+
+  // Grade Section C
+  FIB.forEach((q, qi) => {
+    const chosen = answers['c-'+qi];
+    const correct = q.ans;
+    const sel = document.getElementById('fib-sel-'+qi);
+    const result = document.getElementById('fib-result-'+qi);
+    if (chosen === undefined) {
+      result.classList.add('visible');
+      result.innerHTML = `<span class="r-no">✗ NOT ANSWERED — Correct: "${q.opts[correct]}"</span><span class="r-note">${q.note}</span>`;
+    } else {
+      sel.disabled = true;
+      sel.classList.add(chosen === correct ? 'correct' : 'wrong');
+      result.classList.add('visible');
+      if (chosen === correct) {
+        scoreC++;
+        result.innerHTML = `<span class="r-ok">✓ CORRECT</span><span class="r-note">${q.note}</span>`;
+      } else {
+        result.innerHTML = `<span class="r-no">✗ Correct answer: "${q.opts[correct]}"</span><span class="r-note">${q.note}</span>`;
+      }
+    }
+  });
+
+  const total = scoreA + scoreB + scoreC;
+  const pct = Math.round((total / TOTAL) * 100);
+
+  document.getElementById('submit-section').style.display = 'none';
+  const panel = document.getElementById('results-panel');
+  panel.classList.add('visible');
+
+  const bigEl = document.getElementById('res-pct');
+  bigEl.textContent = pct + '%';
+  bigEl.style.color = pct >= 80 ? '#6ab87a' : pct >= 60 ? '#c9a84c' : '#c85858';
+
+  document.getElementById('rs-a').textContent = scoreA + '/17';
+  document.getElementById('rs-a').style.color = scoreA >= 14 ? '#6ab87a' : scoreA >= 11 ? '#c9a84c' : '#c85858';
+  document.getElementById('rs-b').textContent = scoreB + '/20';
+  document.getElementById('rs-b').style.color = scoreB >= 16 ? '#6ab87a' : scoreB >= 12 ? '#c9a84c' : '#c85858';
+  document.getElementById('rs-c').textContent = scoreC + '/13';
+  document.getElementById('rs-c').style.color = scoreC >= 10 ? '#6ab87a' : scoreC >= 8 ? '#c9a84c' : '#c85858';
+
+  document.getElementById('res-msg').textContent =
+    pct >= 90 ? 'Outstanding work — you have a strong command of chemistry fundamentals.' :
+    pct >= 80 ? 'Excellent — well above passing. Review any missed items using the Review Tool.' :
+    pct >= 70 ? 'Good job — above average. Focus on the sections where you lost the most points.' :
+    pct >= 60 ? 'Passing — but use the Review Tool to strengthen weaker areas before the next unit.' :
+    'Below passing — schedule extra review time. Every concept here builds on the next unit.';
+
+  setTimeout(() => { document.getElementById('res-bar').style.width = pct + '%'; }, 50);
+  panel.scrollIntoView({behavior:'smooth', block:'start'});
+}
+
+function resetExam() {
+  location.reload();
+}
+
+// INIT
+buildVocab();
+buildMC();
+buildFIB();
+</script>
+</body>
+</html>
