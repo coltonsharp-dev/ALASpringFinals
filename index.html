@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ALA Spring Finals 2026 · Administration</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #fafaf6;
+    --ink: #1a1a1a;
+    --muted: #6b6b6b;
+    --soft: #f1efe7;
+    --line: #e5e2d6;
+    --card: #ffffff;
+    --calc: #2563eb;
+    --precalc: #7c3aed;
+    --chem: #dc2626;
+    --history: #b45309;
+    --life: #059669;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    line-height: 1.6;
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+  }
+  .container { max-width: 1120px; margin: 0 auto; padding: 72px 32px 96px; }
+
+  .eyebrow {
+    font-family: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 0 0 20px;
+  }
+  h1 {
+    font-family: "Fraunces", Georgia, "Times New Roman", serif;
+    font-size: clamp(56px, 9vw, 104px);
+    font-weight: 700;
+    margin: 0 0 20px;
+    line-height: 0.95;
+    letter-spacing: -0.025em;
+  }
+  .sub {
+    font-size: 18px;
+    color: #444;
+    max-width: 680px;
+    margin: 0 0 16px;
+  }
+  .meta {
+    font-family: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 0 0 64px;
+  }
+
+  h2 {
+    font-family: "Fraunces", Georgia, "Times New Roman", serif;
+    font-size: 36px;
+    font-weight: 600;
+    margin: 88px 0 28px;
+    letter-spacing: -0.015em;
+  }
+  h2 .label {
+    font-family: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-right: 14px;
+    vertical-align: middle;
+    font-weight: 500;
+  }
+
+  /* Class cards */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
+    gap: 20px;
+  }
+  .card {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    transition: border-color 0.15s ease;
+  }
+  .card:hover { border-color: #c9c5b5; }
+  .card-accent { height: 4px; }
+  .card.calc .card-accent { background: var(--calc); }
+  .card.precalc .card-accent { background: var(--precalc); }
+  .card.chem .card-accent { background: var(--chem); }
+  .card.history .card-accent { background: var(--history); }
+  .card.life .card-accent { background: var(--life); }
+
+  .card-body { padding: 24px 24px 20px; flex: 1; display: flex; flex-direction: column; }
+  .card-eyebrow {
+    font-family: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 0 0 10px;
+  }
+  .card h3 {
+    font-family: "Fraunces", Georgia, "Times New Roman", serif;
+    font-size: 24px;
+    font-weight: 600;
+    margin: 0 0 6px;
+    letter-spacing: -0.01em;
+  }
+  .card-meta {
+    font-size: 14px;
+    color: var(--muted);
+    margin: 0 0 22px;
+  }
+  .links {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-top: auto;
+  }
+  .link {
+    display: flex;
+    flex-direction: column;
+    padding: 12px 14px;
+    background: var(--soft);
+    border: 1px solid transparent;
+    border-radius: 7px;
+    text-decoration: none;
+    color: var(--ink);
+    transition: background 0.15s ease, border-color 0.15s ease, transform 0.15s ease;
+  }
+  .link:hover {
+    background: #fff;
+    border-color: var(--ink);
+    transform: translateY(-1px);
+  }
+  .link-label {
+    font-family: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 2px;
+  }
+  .link-title { font-weight: 500; font-size: 14px; }
+
+  .print-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 12px;
+    padding: 14px 18px;
+    background: var(--ink);
+    color: #fff;
+    text-decoration: none;
+    border: 0;
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    cursor: pointer;
+    transition: background 0.15s ease, transform 0.15s ease;
+    width: 100%;
+  }
+  .print-btn:hover { transform: translateY(-1px); }
+  .card.calc .print-btn { background: var(--calc); }
+  .card.precalc .print-btn { background: var(--precalc); }
+  .card.chem .print-btn { background: var(--chem); }
+  .card.history .print-btn { background: var(--history); }
+  .card.life .print-btn { background: var(--life); }
+  .print-btn:hover { filter: brightness(1.1); }
+  .print-btn .icon {
+    display: inline-block;
+    width: 14px; height: 14px;
+    border: 1.5px solid currentColor;
+    border-bottom: 0;
+    border-radius: 1px 1px 0 0;
+    position: relative;
+  }
+  .print-btn .icon::before {
+    content: "";
+    position: absolute;
+    left: -2px; right: -2px; top: 8px;
+    height: 5px;
+    background: currentColor;
+    border-radius: 1px;
+  }
+
+  /* Panels */
+  .panel {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 28px 32px;
+    margin-bottom: 16px;
+  }
+  .panel h3 {
+    font-family: "Fraunces", Georgia, "Times New Roman", serif;
+    font-size: 22px;
+    font-weight: 600;
+    margin: 0 0 14px;
+    letter-spacing: -0.01em;
+  }
+  .panel ul, .panel ol { padding-left: 22px; margin: 0; }
+  .panel li { margin-bottom: 8px; color: #2b2b2b; }
+  .panel li:last-child { margin-bottom: 0; }
+  .panel p { margin: 0 0 12px; color: #2b2b2b; }
+  .panel p:last-child { margin-bottom: 0; }
+
+  /* Submission table */
+  .table-wrap {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  table { width: 100%; border-collapse: collapse; }
+  th, td {
+    padding: 14px 20px;
+    text-align: left;
+    border-bottom: 1px solid var(--line);
+    font-size: 14px;
+    vertical-align: top;
+  }
+  th {
+    background: var(--soft);
+    font-family: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-weight: 500;
+  }
+  tr:last-child td { border-bottom: none; }
+  td.class-cell { font-weight: 500; white-space: nowrap; }
+  td.class-cell .dot {
+    display: inline-block;
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    margin-right: 8px;
+    vertical-align: middle;
+  }
+  .dot.calc { background: var(--calc); }
+  .dot.precalc { background: var(--precalc); }
+  .dot.chem { background: var(--chem); }
+  .dot.history { background: var(--history); }
+  .dot.life { background: var(--life); }
+
+  /* Notice */
+  .notice {
+    background: #fff8e6;
+    border: 1px solid #f5d57a;
+    border-radius: 10px;
+    padding: 20px 24px;
+    margin: 32px 0 0;
+    font-size: 14px;
+    color: #5c4a10;
+  }
+  .notice strong {
+    display: block;
+    font-family: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #846017;
+    margin-bottom: 6px;
+  }
+
+  footer {
+    margin-top: 96px;
+    padding-top: 32px;
+    border-top: 1px solid var(--line);
+    font-family: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  @media (max-width: 600px) {
+    .container { padding: 48px 20px 64px; }
+    h2 { margin-top: 64px; font-size: 28px; }
+    .links { grid-template-columns: 1fr; }
+    .panel { padding: 24px; }
+    th, td { padding: 12px 14px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+<header>
+  <p class="eyebrow">ALA Queen Creek · Spring 2026 · Administration</p>
+  <h1>Final Exams.</h1>
+  <p class="sub">Proctor hub for the 2026 spring finals. Every class card below links to the interactive student exam, the printable PDF, and the matching answer key.</p>
+  <p class="meta">Five classes · Twenty files · One source of truth</p>
+</header>
+
+<section>
+  <h2><span class="label">01</span>Exams</h2>
+  <div class="grid">
+
+    <div class="card calc">
+      <div class="card-accent"></div>
+      <div class="card-body">
+        <p class="card-eyebrow">Mathematics · Grade 12</p>
+        <h3>AP Calculus AB</h3>
+        <p class="card-meta">35 questions · 29 MC + 1 multi-part numerical + 5 FRQ</p>
+        <div class="links">
+          <a class="link" target="_blank" rel="noopener" href="AP_Calculus_AB/calculus-final-exam.html">
+            <span class="link-label">Exam · HTML</span>
+            <span class="link-title">Student Exam</span>
+          </a>
+          <a class="link" target="_blank" rel="noopener" href="AP_Calculus_AB/calculus-final-exam-key.html">
+            <span class="link-label">Key · HTML</span>
+            <span class="link-title">Answer Key</span>
+          </a>
+          <a class="link" target="_blank" rel="noopener" href="AP_Calculus_AB/CalcFinal2026Spring.pdf">
+            <span class="link-label">Exam · PDF</span>
+            <span class="link-title">Print Version</span>
+          </a>
+          <a class="link" target="_blank" rel="noopener" href="AP_Calculus_AB/CalcFinalAK2026Spring.pdf">
+            <span class="link-label">Key · PDF</span>
+            <span class="link-title">Print Version</span>
+          </a>
+        </div>
+        <button class="print-btn" onclick="printExam('AP_Calculus_AB/CalcFinal2026Spring.pdf')">
+          <span class="icon"></span>
+          Print this exam
+        </button>
+      </div>
+    </div>
+
+    <div class="card precalc">
+      <div class="card-accent"></div>
+      <div class="card-body">
+        <p class="card-eyebrow">Mathematics · Grade 11</p>
+        <h3>AP Pre-Calculus</h3>
+        <p class="card-meta">35 questions · 28 MC + 2 multi-part FRQ (7 inputs)</p>
+        <div class="links">
+          <a class="link" target="_blank" rel="noopener" href="AP_Pre-Calculus/precalc-final.html">
+            <span class="link-label">Exam · HTML</span>
+            <span class="link-title">Student Exam</span>
+          </a>
+          <a class="link" target="_blank" rel="noopener" href="AP_Pre-Calculus/precalc-answer-key.html">
+            <span class="link-label">Key · HTML</span>
+            <span class="link-title">Answer Key</span>
+          </a>
+          <a class="link" target="_blank" rel="noopener" href="AP_Pre-Calculus/PRECalcFinal2026Spring.pdf">
+            <span class="link-label">Exam · PDF</span>
+            <span class="link-title">Print Version</span>
+          </a>
+          <a class="link" target="_blank" rel="noopener" href="AP_Pre-Calculus/PRECalcFinalAK2026Spring.pdf">
+            <span class="link-label">Key · PDF</span>
+            <span class="link-title">Print Version</span>
+          </a>
+        </div>
+        <button class="print-btn" onclick="printExam('AP_Pre-Calculus/PRECalcFinal2026Spring.pdf')">
+          <span class="icon"></span>
+          Print this exam
+        </button>
+      </div>
+    </div>
+
+    <div class="card chem">
+      <div class="card-accent"></div>
+      <div class="card-body">
+        <p class="card-eyebrow">Science · Grade 9 (Non-AP)</p>
+        <h3>Foundations of Chemistry</h3>
+        <p class="card-meta">50 questions · 17 vocab + 20 MC + 13 fill-in · 100 pts</p>
+        <div class="links">
+          <a class="link" target="_blank" rel="noopener" href="Chemistry_9th_Grade/Chem_Final_Exam.html">
+            <span class="link-label">Exam · HTML</span>
+            <span class="link-title">Student Exam</span>
+          </a>
+          <a class="link" target="_blank" rel="noopener" href="Chemistry_9th_Grade/Chem_Answer_Key.html">
+            <span class="link-label">Key · HTML</span>
+            <span class="link-title">Answer Key</span>
+          </a>
+          <a class="link" target="_blank" rel="noopener" href="Chemistry_9th_Grade/ChemistryFinal2026Spring.pdf">
+            <span class="link-label">Exam · PDF</span>
+            <span class="link-title">Print Version</span>
+          </a>
+          <a class="link" target="_blank" rel="noopener" href="Chemistry_9th_Grade/ChemistryFinalAK2026Spring.pdf">
+            <span class="link-label">Key · PDF</span>
+            <span class="link-title">Print Version</span>
+          </a>
+        </div>
+        <button class="print-btn" onclick="printExam('Chemistry_9th_Grade/ChemistryFinal2026Spring.pdf')">
+          <span class="icon"></span>
+          Print this exam
+        </button>
+      </div>
+    </div>
+
+    <div class="card history">
+      <div class="card-accent"></div>
+      <div class="card-body">
+        <p class="card-eyebrow">Social Studies · Grade 9</p>
+        <h3>World History — Unit 5</h3>
+        <p class="card-meta">World Wars &amp; Aftermath · 39 items · 100 pts</p>
+        <div class="links">
+          <a class="link" target="_blank" rel="noopener" href="World_History_9th_Grade/U05_Final_Exam.html">
+            <span class="link-label">Exam · HTML</span>
+            <span class="link-title">Student Exam</span>
+          </a>
+          <a class="link" target="_blank" rel="noopener" href="World_History_9th_Grade/U05_Answer_Key.html">
+            <span class="link-label">Key · HTML</span>
+            <span class="link-title">Answer Key</span>
+          </a>
+          <a class="link" target="_blank" rel="noopener" href="World_History_9th_Grade/HistoryFinal2026Spring.pdf">
+            <span class="link-label">Exam · PDF</span>
+            <span class="link-title">Print Version</span>
+          </a>
+          <a class="link" target="_blank" rel="noopener" href="World_History_9th_Grade/HistoryFinalAK2026Spring.pdf">
+            <span class="link-label">Key · PDF</span>
+            <span class="link-title">Print Version</span>
+          </a>
+        </div>
+        <button class="print-btn" onclick="printExam('World_History_9th_Grade/HistoryFinal2026Spring.pdf')">
+          <span class="icon"></span>
+          Print this exam
+        </button>
+      </div>
+    </div>
+
+    <div class="card life">
+      <div class="card-accent"></div>
+      <div class="card-body">
+        <p class="card-eyebrow">Science · Grade 7</p>
+        <h3>Life Science — Cumulative</h3>
+        <p class="card-meta">80 questions · 65 MC + 10 fill-in + 5 FRQ</p>
+        <div class="links">
+          <a class="link" target="_blank" rel="noopener" href="Life_Science_7th_Grade/life-science-final-exam.html">
+            <span class="link-label">Exam · HTML</span>
+            <span class="link-title">Student Exam</span>
+          </a>
+          <a class="link" target="_blank" rel="noopener" href="Life_Science_7th_Grade/life-science-final-exam-key.html">
+            <span class="link-label">Key · HTML</span>
+            <span class="link-title">Answer Key</span>
+          </a>
+          <a class="link" target="_blank" rel="noopener" href="Life_Science_7th_Grade/LifeScienceFinal2026Spring.pdf">
+            <span class="link-label">Exam · PDF</span>
+            <span class="link-title">Print Version</span>
+          </a>
+          <a class="link" target="_blank" rel="noopener" href="Life_Science_7th_Grade/LifeScienceFinalAK2026Spring.pdf">
+            <span class="link-label">Key · PDF</span>
+            <span class="link-title">Print Version</span>
+          </a>
+        </div>
+        <button class="print-btn" onclick="printExam('Life_Science_7th_Grade/LifeScienceFinal2026Spring.pdf')">
+          <span class="icon"></span>
+          Print this exam
+        </button>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section>
+  <h2><span class="label">02</span>Printing</h2>
+
+  <div class="panel">
+    <h3>The fastest path</h3>
+    <ol>
+      <li>Hit the colored <strong>Print this exam</strong> button on the class card above. The exam PDF loads in a hidden frame and the print dialog opens automatically.</li>
+      <li>Set <strong>Copies</strong> to your class roster count, choose your school printer, click Print.</li>
+      <li>If the dialog doesn't open in your browser (Safari can be picky), use the <em>Exam · PDF</em> link instead — that opens the PDF in a new tab where you can hit <kbd>⌘P</kbd> / <kbd>Ctrl P</kbd>.</li>
+    </ol>
+  </div>
+
+  <div class="panel">
+    <h3>Recommended print settings</h3>
+    <ul>
+      <li><strong>Paper:</strong> Letter · 8.5″ × 11″ · white · 20 lb copy paper.</li>
+      <li><strong>Sides:</strong> Double-sided is fine for every exam. World History is a write-in booklet — keep it stapled.</li>
+      <li><strong>Color vs. B/W:</strong> Black &amp; white is fine for all exams. The answer keys use color highlighting but print legibly in grayscale.</li>
+      <li><strong>Scaling:</strong> "Fit to printable area" or 100% — do not enable shrink-to-fit.</li>
+      <li><strong>Page range:</strong> Print the full PDF unless you only need a section.</li>
+    </ul>
+  </div>
+
+  <div class="panel">
+    <h3>Page counts &amp; copies</h3>
+    <div class="table-wrap" style="border-radius:8px;">
+      <table>
+        <thead>
+          <tr>
+            <th>Class</th>
+            <th>Exam pages</th>
+            <th>Key pages</th>
+            <th>Estimated copies needed</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class="class-cell"><span class="dot calc"></span>AP Calculus AB</td><td>17</td><td>16</td><td>1 per student · 1 key for proctor</td></tr>
+          <tr><td class="class-cell"><span class="dot precalc"></span>AP Pre-Calculus</td><td>20</td><td>23</td><td>1 per student · 1 key for proctor</td></tr>
+          <tr><td class="class-cell"><span class="dot chem"></span>Chemistry · 9th</td><td>15</td><td>15</td><td>1 per student · 1 key for proctor</td></tr>
+          <tr><td class="class-cell"><span class="dot history"></span>World History · 9th</td><td>13</td><td>16</td><td>1 per student · 1 key for proctor</td></tr>
+          <tr><td class="class-cell"><span class="dot life"></span>Life Science · 7th</td><td>28</td><td>43</td><td>1 per student · 1 key for proctor</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="notice">
+    <strong>Reminder</strong>
+    Answer keys are confidential. Print exactly one copy per proctor and shred it after the exam. Never email a key as an attachment, and never leave the key sitting on a shared printer tray.
+  </div>
+</section>
+
+<section>
+  <h2><span class="label">03</span>How to Administer</h2>
+
+  <div class="panel">
+    <h3>Before the exam</h3>
+    <ul>
+      <li>Verify each student has a charged device with internet, or hand out the printed PDF version.</li>
+      <li>Confirm class-specific tools per the teacher's policy (calculator, periodic table, scratch paper).</li>
+      <li>Open the answer key in a separate tab on the proctor device only — never project.</li>
+      <li>Post the start time and end time visibly on the board.</li>
+      <li>Remind students to silence and stow phones, smartwatches, and earbuds.</li>
+    </ul>
+  </div>
+
+  <div class="panel">
+    <h3>During the exam</h3>
+    <ul>
+      <li>Maintain silent testing conditions. No collaboration of any kind.</li>
+      <li>Clarifying questions about wording are fine; questions about content are not.</li>
+      <li>Bathroom one student at a time — log the time out and the time back.</li>
+      <li>Students who finish early must remain seated and review their work; no phones or other materials.</li>
+    </ul>
+  </div>
+
+  <div class="panel">
+    <h3>After the exam</h3>
+    <ul>
+      <li>Confirm every student has submitted via the method in the table below.</li>
+      <li>Collect scratch paper and shred per school policy.</li>
+      <li>Close every open browser tab on the proctor device and lock the screen.</li>
+      <li>Return printed exams to the teacher's mailbox or designated drop point.</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h2><span class="label">04</span>How Students Turn It In</h2>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Class</th>
+          <th>Method</th>
+          <th>Submit To</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="class-cell"><span class="dot calc"></span>AP Calculus AB</td>
+          <td>"Copy My Answers" button at the bottom of the HTML exam — paste into Canvas.</td>
+          <td>Canvas · Final Exam assignment</td>
+        </tr>
+        <tr>
+          <td class="class-cell"><span class="dot precalc"></span>AP Pre-Calculus</td>
+          <td>Click "Submit Exam" at the bottom — the page locks and shows the score. Screenshot the result.</td>
+          <td>Canvas · upload screenshot</td>
+        </tr>
+        <tr>
+          <td class="class-cell"><span class="dot chem"></span>Chemistry · 9th</td>
+          <td>Either complete in HTML and screenshot, or bubble the printed PDF and hand it in.</td>
+          <td>Canvas screenshot · or printed test to teacher</td>
+        </tr>
+        <tr>
+          <td class="class-cell"><span class="dot history"></span>World History · 9th</td>
+          <td>Paper exam only — bubble the MC, write short answers, complete the essay in the booklet.</td>
+          <td>Hand booklet directly to the proctor</td>
+        </tr>
+        <tr>
+          <td class="class-cell"><span class="dot life"></span>Life Science · 7th</td>
+          <td>"Copy My Answers" button at the bottom of the HTML exam — paste into Canvas.</td>
+          <td>Canvas · Final Exam assignment</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="notice">
+    <strong>Proctor note</strong>
+    Confirm submission before dismissing each student. Canvas timestamps are the official record — a verbal "I submitted" is not enough. If Canvas is down, take a clear photo of the student's submission page and email it to the teacher before the student leaves the room.
+  </div>
+</section>
+
+<footer>
+  <span>Spring 2026 · ALA Queen Creek</span>
+  <span>Updated 2026-05-15</span>
+</footer>
+
+</div>
+
+<script>
+  function printExam(pdfUrl) {
+    let frame = document.getElementById('print-frame');
+    if (frame) frame.remove();
+
+    frame = document.createElement('iframe');
+    frame.id = 'print-frame';
+    frame.style.cssText = 'position:fixed;right:0;bottom:0;width:1px;height:1px;border:0;visibility:hidden;';
+    frame.src = pdfUrl;
+
+    let printed = false;
+    const tryPrint = () => {
+      if (printed) return;
+      try {
+        frame.contentWindow.focus();
+        frame.contentWindow.print();
+        printed = true;
+      } catch (err) {
+        window.open(pdfUrl, '_blank', 'noopener');
+      }
+    };
+
+    frame.addEventListener('load', () => setTimeout(tryPrint, 500));
+    document.body.appendChild(frame);
+
+    // Safari / some PDF viewers won't fire onload — fall back after 3s.
+    setTimeout(() => {
+      if (!printed) window.open(pdfUrl, '_blank', 'noopener');
+    }, 3000);
+  }
+</script>
+
+</body>
+</html>
